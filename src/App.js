@@ -10,7 +10,7 @@ import RecipeSearchPage from './views/RecipeSearchPage';
 import RegisterPage from "./views/RegisterPage";
 import UserProfilePage from "./views/UserProfilePage"
 import Navbar from "./components/Navbar"
-import { Container } from './css/common-styles';
+
 function App() {
   return (
     
