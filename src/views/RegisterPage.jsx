@@ -1,13 +1,13 @@
 
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 const RegisterPage = () => {
 
 
     return (
-        <Container id="registerPage">
+        <PageContainer id="registerPage">
             <h2>Register</h2>
 
-        </Container>
+        </PageContainer>
     );
 };
 export default RegisterPage;
