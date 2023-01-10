@@ -1,13 +1,13 @@
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 
 const RecipeInfoPage = () => {
 
 
     return (
-    <Container id="recipeInfoPage">
+    <PageContainer id="recipeInfoPage">
         <h2>RecipeInfoPage</h2>
 
-    </Container>
+    </PageContainer>
     );
 };
 export default RecipeInfoPage;

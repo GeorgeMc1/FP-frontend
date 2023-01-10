@@ -1,4 +1,4 @@
-import './css/App.css';
+import './css/common.css';
 import React from "react";
 //import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"

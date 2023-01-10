@@ -1,13 +1,13 @@
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 
 const UserProfilePage = () => {
 
 
     return (
-    <Container id="userProfilePage">
+    <PageContainer id="userProfilePage">
         <h2>User Profile Page</h2>
 
-    </Container>
+    </PageContainer>
     );
 };
 export default UserProfilePage;

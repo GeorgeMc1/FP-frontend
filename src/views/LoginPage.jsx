@@ -1,14 +1,14 @@
 
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 const LoginPage = ({action}) => {
 
 
     return (
-        <Container id="loginPage">
+        <PageContainer id="loginPage">
             <h2>LoginPage</h2>
             {action}
 
-        </Container>
+        </PageContainer>
     );
 };
 export default LoginPage;

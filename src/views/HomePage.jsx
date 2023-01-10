@@ -1,12 +1,12 @@
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 
 const Homepage = () => {
 
 
     return (
-    <Container id="homepage">
+    <PageContainer id="homepage">
         <h2>homepage</h2>
-    </Container>
+    </PageContainer>
     );
 };
 export default Homepage;
