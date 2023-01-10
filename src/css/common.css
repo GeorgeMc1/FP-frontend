@@ -32,7 +32,7 @@ dd {
   border-radius:10px;
   margin-top:10px ;
 }
-#recipe-search * {
+#recipe-search input,#recipe-search select {
   flex:0 0 80%;
   padding:3px;
   margin:5px 0px;
