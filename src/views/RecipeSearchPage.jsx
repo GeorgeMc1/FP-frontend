@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import RecipeGallery from "../components/RecipeGallery/RecipeGallery";
 import RecipeSearchForm from "../components/RecipeSearchForm/RecipeSearchForm";
 import ResultsCounter from "../components/ResultCounter/ResultCounter";
