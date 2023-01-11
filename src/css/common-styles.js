@@ -24,3 +24,14 @@ export const FlexContainerColumn = styled.div`
 	width:100%;
 	margin: auto auto;
 	`
+	export const GalleryContainer = styled.div`
+	width:100%;
+	max-width:400px;
+	margin: auto auto;
+	`
+	export const ContainerFlexedColumn = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center; 
+	flex-direction: column;
+	`

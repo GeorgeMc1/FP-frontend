@@ -13,7 +13,6 @@ const RecipeSearchForm = ({ setSearchResults }) => {
     const cuisineTypeRef = useRef();
 
 
-
     const submitHandler = async (e) => {
         e.preventDefault();
         console.debug("staring recipeSearchForm submitHandler")
