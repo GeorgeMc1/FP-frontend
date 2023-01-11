@@ -6,15 +6,22 @@ import React from 'react';
 //import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
+import { useNavigate } from "react-router-dom";
 
-
-const RecipeGallery = ({ searchResults }) => {
+const RecipeGallery = ({ searchResults,setRecipe }) => {
     console.log(searchResults)
-  
+    const navigate = useNavigate();
     const tapped = (index) => {
+        
         console.log("tapped",index)
+        console.log(searchResults.hits[index])
+        setRecipe(searchResults.hits[index]);
+        navigate("/viewRecipie", {
+          });
     }
     
+    
+
     return (
         <>
             <h1>gallery</h1>

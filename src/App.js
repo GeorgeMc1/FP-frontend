@@ -10,8 +10,15 @@ import RecipeSearchPage from './views/RecipeSearchPage';
 import RegisterPage from "./views/RegisterPage";
 import UserProfilePage from "./views/UserProfilePage"
 import Navbar from "./components/Navbar"
+import { useState } from 'react';
+
+
 
 function App() {
+
+
+  const [searchResults, setSearchResults] = useState();
+  const [recipe,setRecipe]=useState()
   return (
     
 
@@ -29,13 +36,13 @@ function App() {
       <Route
         path="/searchRecipes"
         element={
-          <RecipeSearchPage />
+          <RecipeSearchPage searchResults={searchResults} setSearchResults={setSearchResults} setRecipe={setRecipe}/>
         }
       />
       <Route
         path="/viewRecipie"
         element={
-          <RecipeInfoPage />
+          <RecipeInfoPage recipe={recipe}/>
         }
       />
       <Route

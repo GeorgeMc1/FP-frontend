@@ -1,7 +1,8 @@
 import { PageContainer } from "../css/common-styles"
 
-const RecipeInfoPage = () => {
-
+const RecipeInfoPage = ({recipe}) => {
+console.log("inside recipieinfopage")
+console.debug(recipe)
 
     return (
     <PageContainer id="recipeInfoPage">
