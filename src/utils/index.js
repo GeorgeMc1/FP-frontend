@@ -19,6 +19,7 @@ export const getRecipiesFromApi = async (url) => {
 //obj passed in preformated to match required api createuser
 export const createUser = async (obj) => {
     try {
+        console.log(`${process.env.REACT_APP_REST_API_URL}/createuser`)
         const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/createuser`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
