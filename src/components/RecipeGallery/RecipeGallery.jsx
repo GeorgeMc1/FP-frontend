@@ -1,4 +1,3 @@
-import 'react-gallery-carousel/dist/index.css';
 import React from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
