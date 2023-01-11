@@ -1,52 +1,49 @@
-
-// import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 import React from 'react';
-
-//import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 
-const RecipeGallery = ({ searchResults,setRecipe }) => {
+const RecipeGallery = ({ searchResults, setRecipe, galleryIndexMemory, setIndexMemory }) => {
     console.log(searchResults)
     const navigate = useNavigate();
+
+
+    const changeRecipe = (index) => {
+        console.log("changed", index)
+        setRecipe(searchResults.hits[index]);
+        setIndexMemory(index)
+    }
+
     const tapped = (index) => {
-        
-        console.log("tapped",index)
+        console.log("tapped", index)
         console.log(searchResults.hits[index])
         setRecipe(searchResults.hits[index]);
+        setIndexMemory(index)
         navigate("/viewRecipie", {
-          });
+        });
     }
-    
-    
 
-    return (
-        <>
-            <h1>gallery</h1>
-            
-            <Carousel onClickItem={tapped} swipeable={true} autoPlay={true}>
-                {
-                    searchResults.hits.map((result,index) => {
-                        let  image = result.recipe.image
-                        let  legend = result.recipe.label
-                        return (
+    let galleryIndex = galleryIndexMemory || 0
 
-                            <div>
-                                <img src={image} alt={legend} />
-                                <p className="legend">{legend} 1</p>
-                            </div>
-                        )
-                    }
+    return (//selectedItem
+        <Carousel selectedItem={galleryIndex} infiniteLoop={true} useKeyboardArrows={true} emulateTouch={true} className='search-carousel' onChange={changeRecipe} onClickItem={tapped} swipeable={true} autoPlay={true}>
+            {
+                searchResults.hits.map((result, index) => {
+                    let image = result.recipe.image
+                    let legend = result.recipe.label
+                    return (
+                        <div key={index}>
+                            <img src={image} alt={legend} />
+                            <p className="legend">{legend} 1</p>
+                        </div>
                     )
                 }
-
-               
-            </Carousel>
-        </>
+                )
+            }
+        </Carousel>
     )
-   
+
 };
 export default RecipeGallery;
 
