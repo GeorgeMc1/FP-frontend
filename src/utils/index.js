@@ -19,7 +19,7 @@ export const getRecipiesFromApi = async (url) => {
 //obj passed in preformated to match required api createuser
 export const createUser = async (obj) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/api/signup`, {
+        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/createuser`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj)
@@ -34,7 +34,7 @@ export const createUser = async (obj) => {
 export const updateUser = async (obj) => {
     try {
         console.log("update called",obj)
-        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/api/updateUser`, {
+        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/updateUser`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj)
@@ -48,7 +48,7 @@ export const updateUser = async (obj) => {
 //obj passed in preformated to match required api deleteuser
 export const deleteUser = async (obj) => {
     try {
-        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/api/deleteUser`, {
+        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/deleteUser`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj)
@@ -63,7 +63,7 @@ export const deleteUser = async (obj) => {
 export const authCheck = async (jwtToken) => {
     console.log("authCheck",jwtToken)
     try {
-        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/api/authCheck`, {
+        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/authCheck`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export const authCheck = async (jwtToken) => {
 export const loginUser = async (obj, setter,setJWT) => {
     try {
         console.log(obj)
-        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/api/login`, {
+        const response = await fetch(`${process.env.REACT_APP_REST_API_URL}/loginuser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
