@@ -1,12 +1,12 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 /* Remove default margin */
 body,
@@ -19,26 +19,33 @@ figure,
 blockquote,
 dl,
 dd {
-  margin: 0;
+	margin: 0;
 }
 
-#recipe-search, #registerPageForm {
-  background-color: wheat;
-  width:100%;
-  display:flex;
-  flex-direction: column;
-  padding:5px 10px;
-  border:1px solid black;
-  border-radius:10px;
-  margin-top:10px ;
+#loginPageForm,
+#recipe-search,
+#registerPageForm {
+	background-color: wheat;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin-top: 10px;
 }
 
-#registerPageForm input,#registerPageForm select,
-#recipe-search input,#recipe-search select {
-  flex:0 0 80%;
-  padding:3px;
-  margin:5px 0px;
-  border-radius:5px;
-  background-color: whitesmoke;
+#loginPageForm input,
+#loginPageForm select,
+#registerPageForm input,
+#registerPageForm select,
+#recipe-search input,
+#recipe-search select {
+	flex: 0 0 80%;
+	padding: 3px;
+	margin: 5px 0px;
+	border-radius: 5px;
+	background-color: whitesmoke;
 }
+
 
