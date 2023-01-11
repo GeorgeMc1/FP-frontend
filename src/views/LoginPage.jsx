@@ -3,7 +3,6 @@ import { PageContainer } from "../css/common-styles"
 import { loginUser } from "../utils";
 import { useState } from "react";
 import "../css/logInPage.css";
-import { deleteCookie } from "../common";
 
 
 const LoginPage = ({ setJWT, action, setter }) => {
@@ -14,14 +13,7 @@ const LoginPage = ({ setJWT, action, setter }) => {
         await loginUser(obj, setJWT, setter);
     }
 
-    const logout = () => {
-        if (action === "logout") {
-            setJWT();
-            setter();
-            deleteCookie("jwt_token")
-            action = "login"
-        }
-    }
+   
 
     return (
         
