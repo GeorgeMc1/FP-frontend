@@ -42,7 +42,7 @@ function App() {
       <Route
         path="/viewRecipie"
         element={
-          <RecipeInfoPage recipe={recipe}/>
+          <RecipeInfoPage data={recipe}/>
         }
       />
       <Route
