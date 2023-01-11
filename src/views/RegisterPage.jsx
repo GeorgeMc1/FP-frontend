@@ -51,7 +51,7 @@ const RegisterPage = () => {
                 <form id="registerPageForm" onSubmit={submitHandler}>
                     <label>First Name</label>
                     <input
-                        onChange={(event) => {
+                        onChange={(event) => { 
                             setObj(obj => (
                                 {
                                     ...obj,

@@ -4,6 +4,7 @@ import {loginUser} from "../utils";
 import { useState } from "react";
 import "../css/logInPage.css";
 
+
 const LoginPage = ({setJWT, action, setter}) => {
     const [obj, setObj] = useState({});
 
@@ -12,6 +13,7 @@ const LoginPage = ({setJWT, action, setter}) => {
         console.log(obj);
         await loginUser(obj, setJWT, setter);
     }
+
 
     return (
         <PageContainer id="loginPage">

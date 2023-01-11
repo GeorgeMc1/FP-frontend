@@ -16,6 +16,7 @@ export const getRecipiesFromApi = async (url) => {
 
 //obj passed in preformated to match required api createuser
 export const createUser = async (obj) => {
+
 	try {
 		const response = await fetch(
 			`${process.env.REACT_APP_REST_API_URL}/createuser`,
@@ -30,6 +31,7 @@ export const createUser = async (obj) => {
 		console.log(error);
 	}
 };
+
 
 //obj passed in preformated to match required api updateuser
 export const updateUser = async (obj) => {
