@@ -33,9 +33,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
             {
                 Object.keys(loggedInUser).map((element, index) => {
-                    { console.log(element) }
-
-                    {
+                    { console.log(element) 
                         if (element.charAt(0) === "_" || element === "password") {
                             return null
                         } else {
