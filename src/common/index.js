@@ -4,7 +4,11 @@ export const writeCookie = (key,value,days=1)=>{
     let cookie = document.cookie = key + "=" + value + "; expires="+expireDate.toGMTString() +"; paths=/"
     return cookie;
 }
-
+export const deleteCookie = (key)=>{
+    if( getCookie( key ) ) {
+        document.cookie = key+'=; Max-Age=-99999999;';
+      }
+}
 export const getCookie = (cookieName) =>{
     const re = new RegExp(`(?<=${cookieName}=)[^;]*`)
     try {
