@@ -9,7 +9,7 @@ import "../../css/profilePage.css"
 const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     const [updateKey, setUpdateKey] = useState();
-    const [userChanges, setUserChanges] = useState(loggedInUser);
+    const [userChanges] = useState(loggedInUser);
 
     const userEdits = loggedInUser;
     const [editing, setEditing] = useState();
@@ -27,6 +27,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
         setUpdateKey();
     }
     console.log(userEdits)
+    console.log("userChanges",userChanges);
     return (
         <Container id="userProfileCard">
 
