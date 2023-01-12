@@ -6,13 +6,17 @@ import redCrossImg from "../../assets/images/redCross.png"
 import { updateUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
+
 const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     const [updateKey, setUpdateKey] = useState();
     const [editing, setEditing] = useState();
     const [errMsg, setErrorMsg] = useState();
     const userEdits = { ...loggedInUser };
-
+    if (!loggedInUser) {
+        window.location.replace('/login');
+        return;
+    }
     const onSaveEdit = async (element) => {
         try {
             //format obj from element(user key) clicked using userEdits state value
