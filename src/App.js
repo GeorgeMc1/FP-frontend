@@ -11,6 +11,7 @@ import RecipeSearchPage from "./views/RecipeSearchPage";
 import RegisterPage from "./views/RegisterPage";
 import UserProfilePage from "./views/UserProfilePage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer"
 
 
 
@@ -97,6 +98,7 @@ function App() {
 				/>
 
 			</Routes>
+			<Footer/>
 		</BrowserRouter>
 	);
 
