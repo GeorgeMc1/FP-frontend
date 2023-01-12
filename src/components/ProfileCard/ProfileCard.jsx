@@ -3,87 +3,102 @@ import React, { useState } from "react";
 import { Container } from "../../css/common-styles.js";
 import cogImg from "../../assets/images/OptionsCog.png"
 import redCrossImg from "../../assets/images/redCross.png"
-
+import { updateUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
 const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     const [updateKey, setUpdateKey] = useState();
-    const [userChanges] = useState(loggedInUser);
-
-    const userEdits = loggedInUser;
     const [editing, setEditing] = useState();
 
-    console.log(loggedInUser);
+    const userEdits = { ...loggedInUser };
+
+    const onSaveEdit = async (element) => {
+        try {
+            let obj = {
+                "username": loggedInUser.username,
+                "key": element,
+                "value": userEdits[element]
+            }
+            let res = await updateUser(obj, jwt);
+            console.debug("save changes res ",res)
+            let temp = loggedInUser;
+            temp[element] = userEdits[element]
+            setEditing(false)
+            setUpdateKey();
+        } catch (error) {
+
+            console.log(error)
+            return (
+                <p>res.error</p>
+            )
+        }
+    }
 
     const onCogClick = (element) => {
         setEditing(true);
-        console.log("element clciked", element);
         setUpdateKey(element);
     }
 
-    const onCancelEdit = () => {
+    const onCancelEdit = (element) => {
         setEditing(false);
         setUpdateKey();
+        userEdits[element] = loggedInUser[element]
     }
-    console.log(userEdits)
-    console.log("userChanges",userChanges);
+
     return (
         <Container id="userProfileCard">
 
             {
                 Object.keys(loggedInUser).map((element, index) => {
-                     console.log(element) 
-                        if (element.charAt(0) === "_" || element === "password") {
-                            return null
+                    console.log(element)
+                    if (element.charAt(0) === "_") {
+                        return null
+                    } else {
+                        if (updateKey === element) {
+                            return (
+                                <div key={index} className="cardRow">
+                                    <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
+                                    <input type="text" defaultValue={(element === "password") ? null : loggedInUser[element]}
+                                        onChange={(event) => {
+                                            userEdits[element] = event.target.value
+                                        }} />
+                                    {editing
+                                        ?
+                                        <div id="icons">
+                                            <img src={SaveImg} alt="save edit" onClick={(e) => { onSaveEdit(element) }} />
+                                            <img src={redCrossImg} alt="cancel edit cog" onClick={(e) => { onCancelEdit(element) }} />
+                                        </div>
+                                        :
+                                        <div id="icons">
+                                            <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                        </div>
+                                    }
+                                </div>
+                            )
                         } else {
-                            if (updateKey === element) {
-                                return (
-                                    <div key={index} className="cardRow">
-                                        <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
-                                        <input type="text" defaultValue={loggedInUser[element]}
-                                            onChange={(event) => {
+                            return (
+                                <div key={index} className="cardRow">
+                                    <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
+                                    {
+                                        (element === "password") ? <p></p> : <p>{loggedInUser[element]}</p>
+                                    }
 
-                                                userEdits[element] = event.target.value
-                                            }} />
-                                        {editing
-                                            ?
-                                            <div id="icons">
-                                                <img src={SaveImg} alt="save edit" onClick={(e) => { onCancelEdit(element) }} />
-                                                <img src={redCrossImg} alt="cancel edit cog" onClick={(e) => { onCancelEdit(element) }} />
-                                            </div>
-                                            :
-                                            <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
-                                            </div>
-                                        }
-                                    </div>
-                                )
-                            } else {
-                                return (
-                                    <div key={index} className="cardRow">
-                                        <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
-                                        <p>{loggedInUser[element]}</p>
-                                        {editing
-                                            ?
-                                            <div id="icons">
-
-                                            </div>
-                                             :
-                                            <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
-                                            </div>
-                                        }
-                                    </div>
-                                )
-                            }
+                                    {editing
+                                        ?
+                                        null
+                                        :
+                                        <div id="icons">
+                                            <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                        </div>
+                                    }
+                                </div>
+                            )
                         }
-
-                    
+                    }
 
                 })
             }
-            <div id="underLine"></div>
             <button>Change Password</button>
 
 

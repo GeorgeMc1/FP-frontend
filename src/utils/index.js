@@ -33,14 +33,14 @@ export const createUser = async (obj) => {
 };
 
 //obj passed in preformated to match required api updateuser
-export const updateUser = async (obj) => {
+export const updateUser = async (obj,token) => {
 	try {
 		console.log("update called", obj);
 		const response = await fetch(
 			`${process.env.REACT_APP_REST_API_URL}/updateUser`,
 			{
-				method: "PATCH",
-				headers: { "Content-Type": "application/json" },
+				method: "PUT",
+				headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}` },
 				body: JSON.stringify(obj)
 			}
 		);

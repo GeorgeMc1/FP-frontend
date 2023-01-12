@@ -1,15 +1,10 @@
 body{
     font-family: 'Libre Baskerville', serif;
-    font-weight: bold;
-    font-size: 25px;
-    /* font-family: 'PT Serif', serif; */
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     background-color: aquamarine;
 }
 button {
     background-color: rgb(18, 122, 187);
     border: 2px solid whitesmoke;
-    /* color: white; */
     padding: 5px;
     text-align: center;
     display: inline-block;
@@ -17,10 +12,6 @@ button {
     border-radius: 20px;
 }
 
-h2 {
-    display: flex;
-    justify-content: center;
-}
 
 .btn-group {
     display: flex;
@@ -41,26 +32,13 @@ h2 {
 }
 
 .homepageLink {
-    /* background-color: red; */
-    /* width: 200px; */
+   
     text-align: center;
     text-decoration: none;
     color: aliceblue;
 }
 
-/* .inner {
-    background-color: green;
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-}
 
-.outer {
-    background-color: blueviolet;
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-} */
 
 
 
