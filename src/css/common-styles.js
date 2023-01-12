@@ -18,6 +18,10 @@ export const FlexContainerColumn = styled.div`
 	width:90%;
 	margin: 0 auto;
 	margin-top:50px;
+
+	h2{
+		text-align: center;
+	}
 	`
 	
 	export const Container = styled.div`
