@@ -1,0 +1,38 @@
+body{
+    margin-top: 100px;
+}
+
+.errmessage {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    
+}
+
+h3, h4 {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.width {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.linkbox {
+    width: fit-content;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:hover {
+    color: black;
+    font-size: 26px;
+}
