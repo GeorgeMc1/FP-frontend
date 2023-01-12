@@ -1,14 +1,15 @@
-const NutritionalListContainer = ({ data }) => {
+import InfoContainer from "../InfoContainer";
+
+const NutritionalList = ({ data }) => {
     console.log("inside NutritionalListContainer")
     console.debug(data)
     return (
-        <div id="NutritionalListContainer">
-            <h2>NutritionalListContainer</h2>
+        <InfoContainer>
+            <h2>Nutritional List</h2>
             <div id="nutrition">
                 <ul>
                     {data.map((item, i) => {
                         if(i < ((data.length - 1) / 2)){
-                            console.log(i)
                             let total = item.total;
                             if(total !== 0){
                                 total = total.toFixed(2);
@@ -24,7 +25,6 @@ const NutritionalListContainer = ({ data }) => {
                 <ul>
                     {data.map((item, i) => {
                         if(i > ((data.length - 1) / 2)){
-                            console.log(i)
                             let total = item.total;
                             if(total !== 0){
                                 total = total.toFixed(2);
@@ -39,7 +39,7 @@ const NutritionalListContainer = ({ data }) => {
                     }
                 </ul>
             </div>
-        </div>
+        </InfoContainer>
     );
 };
-export default NutritionalListContainer;
+export default NutritionalList;

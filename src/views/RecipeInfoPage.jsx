@@ -1,8 +1,8 @@
 import { PageContainer } from "../css/common-styles"
 import React from 'react';
-import IngredientListContainer from "../components/IngredientListContainer/IngredientListContainer";
-import NutritionalListContainer from "../components/NutritionalListContainer/NutritionalListContainer";
-import RecipieImageContainer from "../components/RecipieImageContainer/RecipieImageContainer";
+import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
+import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
+import RecipieImage from "../components/RecipeInfoPage/RecipieImage/RecipieImage";
 import RecipieInfoPageActionContainer from "../components/RecipieInfoPageActionContainer/RecipieInfoPageActionContainer"
 
 const RecipeInfoPage = ({ data }) => {
@@ -24,14 +24,12 @@ const RecipeInfoPage = ({ data }) => {
     const mealType = data.recipe.mealType;
     //theres still more
 
-
     return (
         <PageContainer id="recipeInfoPage">
-            <h2>RecipeInfoPage</h2>
-            {data.recipe.label}
-            <IngredientListContainer data={ingLines} cautions={cautions}></IngredientListContainer>
-            <NutritionalListContainer data={digest}></NutritionalListContainer>
-            <RecipieImageContainer data={images}></RecipieImageContainer>
+            <h2>{data.recipe.label}</h2>
+            <RecipieImage data={images}></RecipieImage>
+            <IngredientList data={ingLines} cautions={cautions}></IngredientList>
+            <NutritionalList data={digest}></NutritionalList>
             <RecipieInfoPageActionContainer
                 timeToPlate={timeToPlate}
                 cuisineType={cuisineType}

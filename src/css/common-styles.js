@@ -14,7 +14,7 @@ export const FlexContainerColumn = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	max-width: 90%;
+	max-width: 1000px;
 	width:90%;
 	margin: 0 auto;
 	margin-top:50px;
