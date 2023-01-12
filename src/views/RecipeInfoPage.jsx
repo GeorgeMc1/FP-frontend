@@ -3,7 +3,7 @@ import React from 'react';
 import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
 import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
-import RecipieInfoPageActionContainer from "../components/RecipieInfoPageActionContainer/RecipieInfoPageActionContainer"
+import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 
 const RecipeInfoPage = ({ data }) => {
     console.log("inside recipieinfopage");
@@ -30,13 +30,13 @@ const RecipeInfoPage = ({ data }) => {
             <RecipieImage data={images}></RecipieImage>
             <IngredientList data={ingLines} cautions={cautions}></IngredientList>
             <NutritionalList data={digest}></NutritionalList>
-            <RecipieInfoPageActionContainer
+            <RecipeInfoPageAction
                 timeToPlate={timeToPlate}
                 cuisineType={cuisineType}
                 dishType={dishType}
                 mealType={mealType}
                 serves={serves}>
-            </RecipieInfoPageActionContainer>
+            </RecipeInfoPageAction>
         </PageContainer>
     );
 };
