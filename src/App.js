@@ -57,7 +57,7 @@ function App() {
 				<Route path="/" element={<Homepage />} />
 
 				<Route
-					path="/searchRecipes"
+					path="/SearchRecipes"
 					element={
 						<RecipeSearchPage
 							searchResults={searchResults}
@@ -70,12 +70,12 @@ function App() {
 				/>
 				{recipe ? (
 					<Route
-						path="/viewRecipie"
+						path="/ViewRecipie"
 						element={<RecipeInfoPage data={recipe} />}
 					/>
 				) : null}
 
-				<Route path="/registerUser"
+				<Route path="/SignUp"
 					element={
 						<RegisterPage
 							setJWT={setJWT}

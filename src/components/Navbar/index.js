@@ -1,27 +1,22 @@
 import React from 'react'
 import { Nav, NavLink } from './NavbarElements';
 
-
 const Navbar = ({ loggedInUser, setter, recipe }) => {
   return (
     <Nav>
       <NavLink to='/'>
         <h1>Admin</h1>
       </NavLink>
-      {/* {loggedInUser ?
-         <> */}
-      <NavLink to='/searchRecipes' >Search Recipes</NavLink>
+
+      <NavLink to='/SearchRecipes' >Search Recipes</NavLink>
 
       {
         recipe
           ?
-          <NavLink to='/viewRecipie' >View Recipie</NavLink>
+          <NavLink to='/ViewRecipie' >View Recipie</NavLink>
           :
           null
       }
-
-      
-
 
       {
         loggedInUser
@@ -32,18 +27,11 @@ const Navbar = ({ loggedInUser, setter, recipe }) => {
           </>
           :
           <>
-          <NavLink to='/registerUser' >Sign Up</NavLink>
-          <NavLink to='/Login' action="login">Login</NavLink>
+          <NavLink to='/SignUp' >Sign Up</NavLink>
+          <NavLink to='/login' action="login">Login</NavLink>
           
           </>
-
       }
-
-
-
-
-
-
 
     </Nav>
   );
