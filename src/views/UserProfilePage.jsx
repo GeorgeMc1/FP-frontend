@@ -1,13 +1,12 @@
 import { PageContainer } from "../css/common-styles"
-
+import React from "react";
+import ProfileCard from "../components/ProfileCard/ProfileCard.jsx"
 const UserProfilePage = ({loggedInUser,setLoggedInUser,jwt,setJWT}) => {
 
 
     return (
     <PageContainer id="userProfilePage">
-        <h2>User Profile Page</h2>
-       <p> { loggedInUser?loggedInUser.username : null}</p>
-       <p> { jwt?jwt : null} </p>
+        <ProfileCard loggedInUser={loggedInUser} />
     </PageContainer>
     );
 };
