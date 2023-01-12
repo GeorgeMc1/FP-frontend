@@ -10,9 +10,9 @@ const IngredientList = ({ data, cautions }) => {
                 <>
                     <h3>Cautions</h3>
                     <ul>
-                        {cautions.map(item => {
+                        {cautions.map((item, i) => {
                             return(
-                                <li>{item}</li>
+                                <li key={i}>{item}</li>
                             )
                         })}
                     </ul>
@@ -22,9 +22,9 @@ const IngredientList = ({ data, cautions }) => {
             }
             <h2>Ingredients</h2>
             <ul>
-                {data.map(item => {
+                {data.map((item, i) => {
                     return(
-                        <li>{item}</li>
+                        <li key={i}>{item}</li>
                     )
                 })}
             </ul>
