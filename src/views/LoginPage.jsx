@@ -1,19 +1,22 @@
 
 import { PageContainer } from "../css/common-styles"
-import { loginUser } from "../utils";
+import { loginUser} from "../utils";
 import { useState } from "react";
+import {useNavigate } from "react-router-dom";
 import "../css/logInPage.css";
 
 
 const LoginPage = ({ setJWT, action, setter }) => {
     const [obj, setObj] = useState({});
+    const navigate = useNavigate();
+
     const submitHandler = async (event) => {
         event.preventDefault();
         console.log(obj);
-        await loginUser(obj, setJWT, setter);
+       let submitResp = await loginUser(obj, setJWT, setter);
+       console.log("response:", submitResp);
+       navigate("/UserProfile")
     }
-
-   
 
     return (
         
