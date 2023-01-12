@@ -1,0 +1,35 @@
+#userProfileCard{
+    background-color: wheat;
+    display:flex;
+    flex-direction: column;
+    margin-top:20px;
+    border:3px solid rgb(241, 205, 136);
+    border-radius:10px;
+   
+}
+
+.cardRow {
+    display:flex;
+    flex-direction: row;
+}
+
+.cardRow p,.cardRow  input {
+    flex: 1 1 35%;
+    padding:5px 15px;
+}
+.cardRow p:first-child {
+    flex: 0 1 35%;
+    padding:5px 15px;
+    background-color:rgb(241, 205, 136); 
+}
+.cardRow #underLine {
+    width:100%;
+    height:3px;
+    border-bottom: 3px solid rgb(241, 205, 136); 
+}
+.cardRow img {
+    padding:0 10px;
+}#userProfileCard button{
+    margin:20px 0;
+    align-self: center;
+}
