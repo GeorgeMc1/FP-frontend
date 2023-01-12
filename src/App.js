@@ -75,7 +75,14 @@ function App() {
 					/>
 				) : null}
 
-				<Route path="/registerUser" element={<RegisterPage />} />
+				<Route path="/registerUser"
+					element={
+						<RegisterPage
+							setJWT={setJWT}
+							setter={setLoggedInUser}
+						/>
+					}
+				/>
 
 				<Route
 					path="/UserProfile"
