@@ -15,7 +15,7 @@ const RecipeSearchPage = ({ searchResults, setSearchResults, setRecipe, setIndex
                     <ResultsCounter count={searchResults?.count || null}></ResultsCounter>
                 </ContainerFlexedColumn> :
                 <ContainerFlexedColumn>
-                    <button class="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
+                    <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
                     <GalleryContainer>
                         <RecipeGallery searchResults={searchResults} setRecipe={setRecipe} setIndexMemory={setIndexMemory} galleryIndexMemory={galleryIndexMemory}></RecipeGallery>
                     </GalleryContainer>
