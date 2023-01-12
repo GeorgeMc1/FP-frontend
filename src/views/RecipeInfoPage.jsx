@@ -2,7 +2,7 @@ import { PageContainer } from "../css/common-styles"
 import React from 'react';
 import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
 import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
-import RecipieImage from "../components/RecipeInfoPage/RecipieImage/RecipieImage";
+import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipieInfoPageActionContainer from "../components/RecipieInfoPageActionContainer/RecipieInfoPageActionContainer"
 
 const RecipeInfoPage = ({ data }) => {
