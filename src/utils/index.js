@@ -1,11 +1,12 @@
 import { writeCookie } from "../common";
+
 export const getRecipiesFromApi = async (url) => {
 	try {
-		console.debug("starting getRecipiesFromApi \nurl paramater = ", url);
+		console.log("starting getRecipiesFromApi \nurl paramater = ", url);
 		let response = await fetch(url);
-		console.debug(response);
+		console.log(response);
 		const data = await response.json();
-		console.debug("returning data = ", data);
+		console.log("returning data = ", data);
 		return data;
 	} catch (e) {
 		console.error("Error getRecipiesFromApi(url)", url);
@@ -16,7 +17,6 @@ export const getRecipiesFromApi = async (url) => {
 
 //obj passed in preformated to match required api createuser
 export const createUser = async (obj) => {
-
 	try {
 		const response = await fetch(
 			`${process.env.REACT_APP_REST_API_URL}/createuser`,
@@ -31,7 +31,6 @@ export const createUser = async (obj) => {
 		console.log(error);
 	}
 };
-
 
 //obj passed in preformated to match required api updateuser
 export const updateUser = async (obj) => {

@@ -67,7 +67,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
         }
 
         const data = await getRecipiesFromApi(fetchUrl);
-        setSearchResults(data)
+        setSearchResults(data);
     }
 
     return (
