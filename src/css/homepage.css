@@ -1,7 +1,5 @@
 body{
     font-family: 'Libre Baskerville', serif;
-    font-weight: bold;
-    font-size: 25px;
     /* font-family: 'PT Serif', serif; */
     /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     background-color: aquamarine;
@@ -15,11 +13,6 @@ button {
     display: inline-block;
     font-size: 25px;
     border-radius: 20px;
-}
-
-h2 {
-    display: flex;
-    justify-content: center;
 }
 
 .btn-group {
