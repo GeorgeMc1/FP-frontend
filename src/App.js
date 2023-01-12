@@ -41,6 +41,11 @@ function App() {
 		setCookie(cookie);
 	};
 
+	// tests
+	console.log("set user is:", user);
+	console.log("cookie is:", cookie);
+	console.log("jwt is:", jwt);
+
 	return (
 		<BrowserRouter>
 			<Navbar
