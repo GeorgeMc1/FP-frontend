@@ -7,11 +7,13 @@ const RecipeInfoPageAction = ({timeToPlate,cuisineType,dishType,mealType,serves}
 
     return (
         <InfoContainer>
-            <h2>RecipieInfoPageActionContainer</h2>
-            <p>Time to Plate: {timeToPlate} hours</p>
-            <p>Cuisine: {cuisineType.join(", ")}</p>
-            <p>Type of Dish: {dishType.join(", ")}</p>
-            <p>serves</p>
+            <h2>Recipe Info</h2>
+            <ul>
+                <li>Time to Plate: {timeToPlate} hours</li>
+                <li>Serves {serves}</li>
+                <li>Cuisine: {cuisineType.join(", ")}</li>
+                <li>Type of Dish: {dishType.join(", ")}</li>
+            </ul>
         </InfoContainer>
     );
 };

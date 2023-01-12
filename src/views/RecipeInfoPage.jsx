@@ -29,7 +29,6 @@ const RecipeInfoPage = ({ data }) => {
             <h2>{data.recipe.label}</h2>
             <RecipieImage data={images}></RecipieImage>
             <IngredientList data={ingLines} cautions={cautions}></IngredientList>
-            <NutritionalList data={digest}></NutritionalList>
             <RecipeInfoPageAction
                 timeToPlate={timeToPlate}
                 cuisineType={cuisineType}
@@ -37,6 +36,7 @@ const RecipeInfoPage = ({ data }) => {
                 mealType={mealType}
                 serves={serves}>
             </RecipeInfoPageAction>
+            <NutritionalList data={digest}></NutritionalList>
         </PageContainer>
     );
 };
