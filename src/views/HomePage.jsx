@@ -12,12 +12,12 @@ const Homepage = () => {
             <div class="outer">
                 <div class="btn-group">
                     
-                    <button class="btn-lg"><a class="homepageLink" href="https://regal-cobbler-3c979e.netlify.app/Login">Log in</a></button>
-                    <button class="btn-lg"><a class="homepageLink" href="https://regal-cobbler-3c979e.netlify.app/registerUser">Register</a></button>
+                    <button class="btn-lg"><a class="homepageLink" href="/Login">Log in</a></button>
+                    <button class="btn-lg"><a class="homepageLink" href="/registerUser">Register</a></button>
                 
                 </div>
                 <div class="inner">
-                    <button class="btn-lg"><a class="homepageLink" href="https://regal-cobbler-3c979e.netlify.app/searchRecipes">Search recipe</a></button>
+                    <button class="btn-lg"><a class="homepageLink" href="/searchRecipes">Search recipe</a></button>
                 </div>
             </div>
         </nav>
