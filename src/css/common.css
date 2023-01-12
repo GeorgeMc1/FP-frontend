@@ -48,4 +48,6 @@ dd {
 	background-color: whitesmoke;
 }
 
-
+#nutrition{
+	display: flex;
+}

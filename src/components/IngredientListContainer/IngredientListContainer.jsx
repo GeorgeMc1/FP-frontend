@@ -6,7 +6,14 @@ const IngredientListContainer = ({ data }) => {
 
     return (
         <div id="IngredientListContainer">
-            <h2>IngredientListContainer</h2>
+            <h2>Ingredients</h2>
+            <ul>
+                {data.map(item => {
+                    return(
+                        <li>{item}</li>
+                    )
+                })}
+            </ul>
         </div>
     );
 };

@@ -13,7 +13,7 @@ const RecipeInfoPage = ({ data }) => {
     // const totalDaily = data.recipe.totalDaily;
     // const totalNutrients = data.recipe.totalNutrients;
     const digest = data.recipe.digest;
-    // const cautions = data.recipe.cautions;
+    const cautions = data.recipe.cautions;
     // const calories = data.recipe.calories;
     const cuisineType = data.recipe.cuisineType;
     const dishType = data.recipe.dishType;
@@ -29,7 +29,7 @@ const RecipeInfoPage = ({ data }) => {
         <PageContainer id="recipeInfoPage">
             <h2>RecipeInfoPage</h2>
             {data.recipe.label}
-            <IngredientListContainer data={ingLines} ></IngredientListContainer>
+            <IngredientListContainer data={ingLines} cautions={cautions}></IngredientListContainer>
             <NutritionalListContainer data={digest}></NutritionalListContainer>
             <RecipieImageContainer data={images}></RecipieImageContainer>
             <RecipieInfoPageActionContainer
