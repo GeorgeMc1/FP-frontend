@@ -1,13 +1,14 @@
-import { Container } from "../css/common-styles"
+import { PageContainer } from "../css/common-styles"
 
-const UserProfilePage = () => {
+const UserProfilePage = ({loggedInUser,setLoggedInUser,jwt,setJWT}) => {
 
 
     return (
-    <Container id="userProfilePage">
+    <PageContainer id="userProfilePage">
         <h2>User Profile Page</h2>
-
-    </Container>
+       <p> { loggedInUser?loggedInUser.username : null}</p>
+       <p> { jwt?jwt : null} </p>
+    </PageContainer>
     );
 };
 export default UserProfilePage;
