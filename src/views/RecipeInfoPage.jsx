@@ -1,9 +1,9 @@
 import { PageContainer } from "../css/common-styles"
 import React from 'react';
-import IngredientListContainer from "../components/IngredientListContainer/IngredientListContainer";
-import NutritionalListContainer from "../components/NutritionalListContainer/NutritionalListContainer";
-import RecipieImageContainer from "../components/RecipieImageContainer/RecipieImageContainer";
-import RecipieInfoPageActionContainer from "../components/RecipieInfoPageActionContainer/RecipieInfoPageActionContainer"
+import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
+import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
+import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
+import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 
 const RecipeInfoPage = ({ data }) => {
     console.log("inside recipieinfopage");
@@ -13,7 +13,7 @@ const RecipeInfoPage = ({ data }) => {
     // const totalDaily = data.recipe.totalDaily;
     // const totalNutrients = data.recipe.totalNutrients;
     const digest = data.recipe.digest;
-    // const cautions = data.recipe.cautions;
+    const cautions = data.recipe.cautions;
     // const calories = data.recipe.calories;
     const cuisineType = data.recipe.cuisineType;
     const dishType = data.recipe.dishType;
@@ -24,21 +24,19 @@ const RecipeInfoPage = ({ data }) => {
     const mealType = data.recipe.mealType;
     //theres still more
 
-
     return (
         <PageContainer id="recipeInfoPage">
-            <h2>RecipeInfoPage</h2>
-            {data.recipe.label}
-            <IngredientListContainer data={ingLines} ></IngredientListContainer>
-            <NutritionalListContainer data={digest}></NutritionalListContainer>
-            <RecipieImageContainer data={images}></RecipieImageContainer>
-            <RecipieInfoPageActionContainer
+            <h2>{data.recipe.label}</h2>
+            <RecipieImage data={images}></RecipieImage>
+            <IngredientList data={ingLines} cautions={cautions}></IngredientList>
+            <NutritionalList data={digest}></NutritionalList>
+            <RecipeInfoPageAction
                 timeToPlate={timeToPlate}
                 cuisineType={cuisineType}
                 dishType={dishType}
                 mealType={mealType}
                 serves={serves}>
-            </RecipieInfoPageActionContainer>
+            </RecipeInfoPageAction>
         </PageContainer>
     );
 };
