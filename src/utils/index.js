@@ -54,13 +54,14 @@ export const updateUser = async (obj, token) => {
 };
 
 //obj passed in preformated to match required api deleteuser
-export const deleteUser = async (obj) => {
+export const deleteUser = async (obj,jwtToken) => {
 	try {
+		console.log("delete user jwt",jwtToken)
 		const response = await fetch(
 			`${process.env.REACT_APP_REST_API_URL}/deleteUser`,
 			{
 				method: "DELETE",
-				headers: { "Content-Type": "application/json" },
+				headers: { "Content-Type": "application/json","Authorization": `Bearer ${jwtToken}` },
 				body: JSON.stringify(obj)
 			}
 		);
