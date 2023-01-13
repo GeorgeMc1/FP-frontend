@@ -33,14 +33,17 @@ export const createUser = async (obj) => {
 };
 
 //obj passed in preformated to match required api updateuser
-export const updateUser = async (obj,token) => {
+export const updateUser = async (obj, token) => {
 	try {
 		console.log("update called", obj);
 		const response = await fetch(
 			`${process.env.REACT_APP_REST_API_URL}/updateUser`,
 			{
 				method: "PUT",
-				headers: { "Content-Type": "application/json","Authorization": `Bearer ${token}` },
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`
+				},
 				body: JSON.stringify(obj)
 			}
 		);
@@ -83,7 +86,12 @@ export const authCheck = async (jwtToken) => {
 		);
 		const data = await response.json();
 		console.log("data", data);
-		return data.username;
+		const callResponse = await readUser(jwtToken, data.username);
+		console.log("the callResponse found is:", callResponse);
+		if (callResponse.users.length === 1) {
+			return callResponse.users[0];
+		}
+		// return data.username;
 	} catch (error) {
 		console.log(error);
 	}
