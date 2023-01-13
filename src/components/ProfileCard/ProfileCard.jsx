@@ -6,6 +6,7 @@ import redCrossImg from "../../assets/images/redCross.png"
 import { updateUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
+
 const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     const [updateKey, setUpdateKey] = useState();
