@@ -81,7 +81,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
                 }
                 />
 
-                <select name="mealType" id="mealType" ref={mealTypeRef} multiple={true} size={3} onKeyDown={(e) => { console.log(e);if (e && e.keyCode == 13) submitHandler(e)}}>
+                <select name="mealType" id="mealType" ref={mealTypeRef} multiple={true} size={3} onKeyDown={(e) => { console.log(e);if (e && e.keyCode === 13) submitHandler(e)}}>
                     <option value="breakfast">breakfast</option>
                     <option value="dinner">dinner</option>
                     <option value="Lunch">Lunch</option>
@@ -90,7 +90,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
                 </select>
 
 
-                <select multiple name="dishType" id="dishType-list" ref={dishTypeRef} onKeyDown={(e) => { console.log(e);if (e && e.keyCode == 13) submitHandler(e)}}>
+                <select multiple name="dishType" id="dishType-list" ref={dishTypeRef} onKeyDown={(e) => { console.log(e);if (e && e.keyCode === 13) submitHandler(e)}}>
                     <option value="biscuits and cookies">biscuits and cookies</option>
                     <option value="bread">bread</option>
                     <option value="cereals">cereals</option>
@@ -115,7 +115,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
                     <option value="sweets">sweets</option>
                 </select>
 
-                <select multiple name="cuisineType" id="cuisineType-list" ref={cuisineTypeRef} onKeyDown={(e) => { console.log(e);if (e && e.keyCode == 13) submitHandler(e)}}>
+                <select multiple name="cuisineType" id="cuisineType-list" ref={cuisineTypeRef} onKeyDown={(e) => { console.log(e);if (e && e.keyCode === 13) submitHandler(e)}}>
                     <option value="american">american</option>
                     <option value="asian">asian</option>
                     <option value="british">british</option>
