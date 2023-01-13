@@ -13,6 +13,7 @@ import RegisterPage from "./views/RegisterPage";
 import UserProfilePage from "./views/UserProfilePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+// import { useNavigate } from "react-router-dom";
 
 // import cookie functions
 import { getCookie } from "./common";
