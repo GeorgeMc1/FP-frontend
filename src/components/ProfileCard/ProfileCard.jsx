@@ -13,10 +13,10 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     const [editing, setEditing] = useState();
     const [errMsg, setErrorMsg] = useState();
     const userEdits = { ...loggedInUser };
-    // if (!loggedInUser) {
-    //     window.location.replace('/login');
-    //     return;
-    // }
+    if (!loggedInUser) {
+        window.location.replace('/login');
+        return;
+    }
     const onSaveEdit = async (element) => {
         try {
             //format obj from element(user key) clicked using userEdits state value

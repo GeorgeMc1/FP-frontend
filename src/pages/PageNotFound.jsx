@@ -6,9 +6,9 @@ const PageNotFound = () => {
 
 
     return (
-        <div class="content">
+        <div id="margin-top" className="content">
             <PageContainer id="page-not-found">
-                <div class="errmessage">
+                <div className="errmessage">
                     <h1>Error 404</h1>
                 </div>
                 <div>
@@ -19,13 +19,13 @@ const PageNotFound = () => {
                 </div>
             <div className="width">
                 <div className="linkbox">
-                    <Link class="link" to="/">HomePage</Link>
+                    <Link className="link" to="/">HomePage</Link>
                 </div>
                 <div className="linkbox">
-                    <Link class="link" to="/searchRecipes">Recipe Search</Link>
+                    <Link className="link" to="/searchRecipes">Recipe Search</Link>
                 </div>
                 <div className="linkbox">
-                    <Link class="link" to="/registerUser">Register with us</Link>
+                    <Link className="link" to="/registerUser">Register with us</Link>
                 </div>
             </div>
             </PageContainer>

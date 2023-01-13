@@ -2,15 +2,15 @@ import "./css/common.css";
 import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./views/HomePage";
-import LoginPage from "./views/LoginPage";
+import Homepage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
 import { authCheck } from "./utils";
-import LogOutPage from "./views/LogOutPage";
-import PageNotFound from "./views/PageNotFound";
-import RecipeInfoPage from "./views/RecipeInfoPage";
-import RecipeSearchPage from "./views/RecipeSearchPage";
-import RegisterPage from "./views/RegisterPage";
-import UserProfilePage from "./views/UserProfilePage";
+import LogOutPage from "./pages/LogOutPage";
+import PageNotFound from "./pages/PageNotFound";
+import RecipeInfoPage from "./pages/RecipeInfoPage";
+import RecipeSearchPage from "./pages/RecipeSearchPage";
+import RegisterPage from "./pages/RegisterPage";
+import UserProfilePage from "./pages/UserProfilePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 // import { useNavigate } from "react-router-dom";
@@ -91,19 +91,23 @@ function App() {
 						/>
 					}
 				/>
-				{jwt ? (
-					<Route
-						path="/UserProfile"
-						element={
+				{/* {jwt ? ( */}
+				<Route
+					path="/UserProfile"
+					element={
+						jwt ? (
 							<UserProfilePage
 								loggedInUser={loggedInUser}
 								setLoggedInUser={setLoggedInUser}
 								jwt={jwt}
 								setJWT={setJWT}
 							/>
-						}
-					/>
-				) : null}
+						) : (
+							<Homepage />
+						)
+					}
+				/>
+				{/* ) : null} */}
 
 				<Route
 					path="/logout"

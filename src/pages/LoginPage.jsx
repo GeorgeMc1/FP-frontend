@@ -22,6 +22,7 @@ const LoginPage = ({ setJWT, action, setter, jwt, setforcelogin }) => {
 		}
     }
 
+
     return (
         
         <PageContainer id="loginPage">
