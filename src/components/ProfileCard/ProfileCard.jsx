@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Container } from "../../css/common-styles.js";
 import cogImg from "../../assets/images/OptionsCog.png"
 import redCrossImg from "../../assets/images/redCross.png"
-import { updateUser } from "../../utils"
+import { updateUser,deleteUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
 
@@ -16,6 +16,20 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     if (!loggedInUser) {
         window.location.replace('/login');
         return;
+    }
+
+    const onDeleteHandler = async (e) => {
+        try {
+            let obj ={
+                username:loggedInUser.username
+            }
+            console.log(obj,jwt)
+            let res = await deleteUser({obj,jwt});
+            console.log(res)
+        } catch (error) {
+            
+        }
+
     }
     const onSaveEdit = async (element) => {
         try {
@@ -136,7 +150,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                         }
                     })
                 }
-                <button>Delete Account</button>
+                <button onClick={(e)=>onDeleteHandler()}>Delete Account</button>
             </Container>
         </Container>
     );

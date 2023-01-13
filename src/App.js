@@ -78,8 +78,10 @@ function App() {
 					/>
 				) : null}
 
-				<Route
-					path="/registerUser"
+
+
+				<Route path="/SignUp"
+
 					element={
 						<RegisterPage
 							setJWT={setJWT}
