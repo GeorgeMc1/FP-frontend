@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
-import { PageContainer } from "../css/common-styles"
-import "../css/pagenotfound.css" 
+import { PageContainer } from "../css/common-styles";
+import "../css/pagenotfound.css" ;
 const PageNotFound = () => {
 
 
