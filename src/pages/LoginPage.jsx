@@ -2,24 +2,26 @@
 import { PageContainer } from "../css/common-styles"
 import { loginUser} from "../utils";
 import { useState } from "react";
-import {useNavigate } from "react-router-dom";
+// import {useNavigate } from "react-router-dom";
 import "../css/logInPage.css";
 import { getCookie } from "../common";
 
 
-const LoginPage = ({ setJWT, action, setter }) => {
+const LoginPage = ({ setJWT, action, setter, jwt, setforcelogin }) => {
     const [obj, setObj] = useState({});
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const submitHandler = async (event) => {
         event.preventDefault();
         console.log(obj);
-        await loginUser(obj, setJWT, setter);
+        let temp = await loginUser(obj, setJWT, setter);
+        console.log("the temp is:", temp, jwt);
         let cookie = getCookie("jwt_token");
-		if (cookie !== false) {
-            navigate("/UserProfile")
+		if (cookie) {
+            window.location.replace("/UserProfile");
 		}
     }
+
 
     return (
         
