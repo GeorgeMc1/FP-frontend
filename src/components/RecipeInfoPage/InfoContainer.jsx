@@ -18,6 +18,7 @@ const InfoContainer = styled.div`
         justify-content: center;
     }
     &.recipeAction{
+        margin-left: 15px;
         align-items: center;
     }
     .recipeLink{
