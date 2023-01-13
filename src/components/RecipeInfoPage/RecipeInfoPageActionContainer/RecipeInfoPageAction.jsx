@@ -9,7 +9,7 @@ const RecipeInfoPageAction = ({timeToPlate,cuisineType,dishType,mealType,serves,
         <InfoContainer className='recipeAction'>
             <h2>Recipe Info</h2>
             <ul>
-                <li>Time to Plate: {timeToPlate} hours</li>
+                <li>Time to Plate: {timeToPlate} minutes</li>
                 <li>Serves {serves}</li>
                 <li>Cuisine: {cuisineType.join(", ")}</li>
                 <li>Type of Dish: {dishType.join(", ")}</li>
