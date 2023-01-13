@@ -4,6 +4,7 @@ import IngredientList from "../components/RecipeInfoPage/IngredientList/Ingredie
 import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
+import styled from "styled-components";
 
 const RecipeInfoPage = ({ data }) => {
     console.log("inside recipieinfopage");
@@ -27,17 +28,26 @@ const RecipeInfoPage = ({ data }) => {
     return (
         <PageContainer id="recipeInfoPage">
             <h2>{data.recipe.label}</h2>
-            <RecipieImage data={images}></RecipieImage>
+            <TopRow>
+                <RecipieImage data={images}></RecipieImage>
+                <RecipeInfoPageAction
+                    timeToPlate={timeToPlate}
+                    cuisineType={cuisineType}
+                    dishType={dishType}
+                    mealType={mealType}
+                    serves={serves}>
+                </RecipeInfoPageAction>
+            </TopRow>
+
             <IngredientList data={ingLines} cautions={cautions}></IngredientList>
-            <RecipeInfoPageAction
-                timeToPlate={timeToPlate}
-                cuisineType={cuisineType}
-                dishType={dishType}
-                mealType={mealType}
-                serves={serves}>
-            </RecipeInfoPageAction>
+            
             <NutritionalList data={digest}></NutritionalList>
         </PageContainer>
     );
 };
+
+const TopRow = styled.div`
+    display: flex;
+    justify-content: center;
+`
 export default RecipeInfoPage;

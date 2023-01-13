@@ -5,7 +5,7 @@ const InfoContainer = styled.div`
     flex-direction: column;
     /* align-items: center; */
     max-width: 800px;
-    margin: 0 auto;
+    /* margin: 0 auto; */
 
     h2{
         text-align: center;
