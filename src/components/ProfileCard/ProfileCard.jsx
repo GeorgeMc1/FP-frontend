@@ -23,11 +23,18 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
             let obj ={
                 username:loggedInUser.username
             }
-            console.log(obj,jwt)
-            let res = await deleteUser({obj,jwt});
+            console.log("ondeletehandler",obj,jwt)
+            let res = await deleteUser(obj,jwt);
+            console.log("passed to here",res)
+             if (res.success) {
+                setJWT();
+                setLoggedInUser();
+                console.log("passest set states")
+                //window.location.replace("/")
+             }
             console.log(res)
         } catch (error) {
-            
+            setErrorMsg(error)
         }
 
     }
