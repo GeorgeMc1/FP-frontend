@@ -1,10 +1,9 @@
 import { PageContainer } from "../css/common-styles"
 import React from 'react';
-import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
-import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 import styled from "styled-components";
+import InfoBottomSec from "../components/RecipeInfoPage/InfoBottomSec";
 
 const RecipeInfoPage = ({ data }) => {
     console.log("inside recipieinfopage");
@@ -23,6 +22,7 @@ const RecipeInfoPage = ({ data }) => {
     const timeToPlate = data.recipe.totalTime;
     const serves = data.recipe.yield;
     const mealType = data.recipe.mealType;
+    const recipeLink = data.recipe.url;
     //theres still more
 
     return (
@@ -35,13 +35,11 @@ const RecipeInfoPage = ({ data }) => {
                     cuisineType={cuisineType}
                     dishType={dishType}
                     mealType={mealType}
-                    serves={serves}>
+                    serves={serves}
+                    link={recipeLink}>
                 </RecipeInfoPageAction>
             </TopRow>
-
-            <IngredientList data={ingLines} cautions={cautions}></IngredientList>
-            
-            <NutritionalList data={digest}></NutritionalList>
+            <InfoBottomSec ingLines={ingLines} cautions={cautions} digest={digest}/>
         </PageContainer>
     );
 };

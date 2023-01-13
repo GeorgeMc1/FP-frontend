@@ -17,5 +17,11 @@ const InfoContainer = styled.div`
         display: flex;
         justify-content: center;
     }
+    &.recipeAction{
+        align-items: center;
+    }
+    .recipeLink{
+        color: black;
+    }
 `
 export default InfoContainer;
