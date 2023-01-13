@@ -30,6 +30,7 @@ function App() {
 
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
+		console.log(cookie);
 		if (cookie !== false) {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
@@ -39,6 +40,7 @@ function App() {
 		const user = await authCheck(cookie);
 		setUser(user);
 		setCookie(cookie);
+		setLoggedInUser(user);
 	};
 
 	// tests
@@ -75,7 +77,8 @@ function App() {
 					/>
 				) : null}
 
-				<Route path="/registerUser"
+				<Route
+					path="/registerUser"
 					element={
 						<RegisterPage
 							setJWT={setJWT}
@@ -83,18 +86,19 @@ function App() {
 						/>
 					}
 				/>
-
-				<Route
-					path="/UserProfile"
-					element={
-						<UserProfilePage
-							loggedInUser={loggedInUser}
-							setLoggedInUser={setLoggedInUser}
-							jwt={jwt}
-							setJWT={setJWT}
-						/>
-					}
-				/>
+				{cookie ? (
+					<Route
+						path="/UserProfile"
+						element={
+							<UserProfilePage
+								loggedInUser={loggedInUser}
+								setLoggedInUser={setLoggedInUser}
+								jwt={jwt}
+								setJWT={setJWT}
+							/>
+						}
+					/>
+				) : null}
 
 				<Route
 					path="/logout"
