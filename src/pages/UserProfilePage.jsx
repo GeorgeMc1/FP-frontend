@@ -6,7 +6,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     return (
         <PageContainer id="userProfilePage">
-            <ProfileCard loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} />
+            <ProfileCard loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT ={setJWT} />
         </PageContainer>
     );
 
