@@ -75,6 +75,7 @@ function App() {
 					/>
 				) : null}
 
+
 				<Route path="/SignUp"
 					element={
 						<RegisterPage
