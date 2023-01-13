@@ -24,10 +24,10 @@ function App() {
 	const [searchResults, setSearchResults] = useState();
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
-	// set state to update user and cookie
 
-	const [cookie, setCookie] = useState();
-	const [user, setUser] = useState();
+	// set state to update user and cookie
+	// const [cookie, setCookie] = useState();
+	// const [user, setUser] = useState();
 
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
@@ -37,17 +37,21 @@ function App() {
 		}
 	}, []);
 
+	// useEffect(() => {
+	// 	window.location.replace("/UserProfile");
+	// }, [forcelogin]);
+
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
-		setUser(user);
-		setCookie(cookie);
+		// setUser(user);
+		setJWT(cookie);
 		setLoggedInUser(user);
 	};
 
 	// tests
-	console.log("set user is:", user);
-	console.log("cookie is:", cookie);
-	console.log("jwt is:", jwt);
+	// console.log("set user is:", user);
+	// console.log("cookie is:", cookie);
+	// console.log("jwt is:", jwt);
 
 	return (
 		<BrowserRouter>
@@ -87,7 +91,7 @@ function App() {
 						/>
 					}
 				/>
-				{cookie ? (
+				{jwt ? (
 					<Route
 						path="/UserProfile"
 						element={
@@ -119,6 +123,7 @@ function App() {
 							setJWT={setJWT}
 							setter={setLoggedInUser}
 							action="login"
+							jwt={jwt}
 						/>
 					}
 				/>
