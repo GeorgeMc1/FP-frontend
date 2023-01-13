@@ -13,6 +13,7 @@ import RegisterPage from "./views/RegisterPage";
 import UserProfilePage from "./views/UserProfilePage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+// import { useNavigate } from "react-router-dom";
 
 // import cookie functions
 import { getCookie } from "./common";
@@ -30,6 +31,7 @@ function App() {
 
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
+		console.log(cookie);
 		if (cookie !== false) {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
@@ -39,6 +41,7 @@ function App() {
 		const user = await authCheck(cookie);
 		setUser(user);
 		setCookie(cookie);
+		setLoggedInUser(user);
 	};
 
 	// tests
@@ -57,7 +60,7 @@ function App() {
 				<Route path="/" element={<Homepage />} />
 
 				<Route
-					path="/SearchRecipes"
+					path="/searchRecipes"
 					element={
 						<RecipeSearchPage
 							searchResults={searchResults}
@@ -70,12 +73,13 @@ function App() {
 				/>
 				{recipe ? (
 					<Route
-						path="/ViewRecipie"
+						path="/viewRecipie"
 						element={<RecipeInfoPage data={recipe} />}
 					/>
 				) : null}
 
-				<Route path="/SignUp"
+				<Route
+					path="/registerUser"
 					element={
 						<RegisterPage
 							setJWT={setJWT}
