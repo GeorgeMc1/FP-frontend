@@ -17,6 +17,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
         window.location.replace('/login');
         return;
     }
+    
     const onSaveEdit = async (element) => {
         try {
             //format obj from element(user key) clicked using userEdits state value
