@@ -137,7 +137,6 @@ const RecipeSearchForm = ({ setSearchResults }) => {
                     <option value="south american">south american</option>
                     <option value="south east asian">south east asian</option>
                     <option value="world">world</option>
-                    <input type="submit" hidden />
                 </select>
                 <input type="submit" hidden />
                 <button type="submit" >Search Recipies</button>

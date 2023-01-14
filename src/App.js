@@ -72,6 +72,8 @@ function App() {
 							setRecipe={setRecipe}
 							galleryIndexMemory={galleryIndexMemory}
 							setIndexMemory={setIndexMemory}
+							loggedInUser={loggedInUser}
+							jwt={jwt}
 						/>
 					}
 				/>
