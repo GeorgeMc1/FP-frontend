@@ -20,7 +20,7 @@ const Homepage = () => {
                     <button className="btn-lg"><a className="homepageLink" href="/searchRecipes">Search recipe</a></button>
                 </div>
                 <div>
-                    <img className ="temp" src={homepage} width="100%" position="absolute" top="0"/>
+                    <img className ="temp" alt="temp" src={homepage} width="100%" position="absolute" top="0"/>
                 </div>
             </div>
         </nav>
