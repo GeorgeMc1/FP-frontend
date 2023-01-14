@@ -62,7 +62,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
             obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
-                "value": []
+                "value": newFavs
             }
         } else {
             //like
@@ -72,7 +72,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
             obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
-                "value": []
+                "value": newFavs
             }
 
         }
