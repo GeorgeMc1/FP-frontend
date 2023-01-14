@@ -1,0 +1,30 @@
+{
+    "firstname": "test2",
+    "lastname": "",
+    "username": "Test2",
+    "email": "test2@email.com",
+    "password": "Test123!",
+    "books": [
+        {
+            "bookName": "favourites",
+            "recipies": {
+                "selfurl": "link",
+                "recipieObj": "obj"
+            }
+        },
+        {
+            "bookName": "christmas ideas",
+            "recipies": {
+                "selfurl": "link",
+                "recipieObj": "obj"
+            }
+        },
+        {
+            "bookName": "mothers day",
+            "recipies": {
+                "selfurl": "link",
+                "recipieObj": "obj"
+            }
+        }
+    ]
+}
