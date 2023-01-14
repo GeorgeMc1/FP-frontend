@@ -1,123 +1,135 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 import { updateUser } from '../../utils';
 import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
 
+
+
+
+
 //https://www.npmjs.com/package/react-responsive-carousel
 
 const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setIndexMemory, loggedInUser }) => {
-    console.debug(searchResults)
-    console.debug(loggedInUser)
+
     const navigate = useNavigate();
 
-    const [isCurrentIndexLiked, setIsCurrentIndexLiked] = useState();
-    const [hitSelfs, setHitsSelfs] = useState();
+    const [searchResultHits] = useState(searchResults.hits);
 
-    let galleryIndex = galleryIndexMemory || 0
+    console.log(galleryIndexMemory)
 
-    useEffect(() => {
-        console.debug(loggedInUser)
-        setHitsSelfs(searchResults.hits.map((hit) => { return hit._links.self.href }))
-    }, [loggedInUser,searchResults]);
+    const [galleryIndex,setGalleryIndex] = useState(galleryIndexMemory || 0)
+    const [liked, setLiked] = useState(false)
 
-    const changeRecipe = (index) => {
+
+    const onSlideChange = (index) => {
         //store Carousel's current recipie index 
-        setRecipe(searchResults.hits[index]);
+        console.log(index, searchResultHits)
         //store current gallery slide in state for use outside Carousel
-        setIndexMemory(index);
-        
-        let match = loggedInUser.favRecipes.includes(hitSelfs[galleryIndex]);
-        //set a state to if current slide is favourited or not
-        setIsCurrentIndexLiked(match)
-  
+        setGalleryIndex(index)
+        setIndexMemory(index)
+        setLiked(checkIfFavourites())
     }
 
     const tapped = (index) => {
         console.debug("tapped", index)
-        console.debug(searchResults.hits[index])
-        setRecipe(searchResults.hits[index]);
-        setIndexMemory(index)
+        console.debug(searchResultHits[index])
+        setRecipe(searchResultHits[index]);
+        setIndexMemory(index);
         navigate("/viewRecipie", {
         });
     }
 
-    const onHandleFavs = async () => {
-        console.debug("before loggedInUser.favRecipes", loggedInUser.favRecipes)
-        console.debug("clicked recipes self", hitSelfs[galleryIndex])
-
+    const checkIfFavourites = () => {
         //match if logged in user favourites contains the recipie.self 
-        let match = loggedInUser.favRecipes.includes(hitSelfs[galleryIndex])
-        console.debug("found in user favs")
+        let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
+        console.log("match in favs =", match)
+        return match
+    }
 
+    const toggleFav = async () => {
+        let obj = {};
+        let newFavs = [];
+        console.log(galleryIndex);
+        let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
+        console.log("match in favs =", match)
         if (match) {
             //unlike
             console.debug("found in user favs - unfavouring")
-            loggedInUser.favRecipes = loggedInUser.favRecipes.filter(e => !e.includes(hitSelfs[galleryIndex]))
+            newFavs = loggedInUser.favRecipes.filter(e => !e.includes(searchResultHits[galleryIndex]._links.self.href))
             console.debug("num favs", loggedInUser.favRecipes.length)
-            setIsCurrentIndexLiked(false)
+            obj = {
+                "username": loggedInUser.username,
+                "key": "favRecipes",
+                "value": []
+            }
         } else {
             //like
             console.debug("not in user favs - favouring")
             console.debug("trying to favourite")
-            let newFavs = [...loggedInUser.favRecipes, hitSelfs[galleryIndex]]
-            let obj = {
+            newFavs = [...loggedInUser.favRecipes, searchResultHits[galleryIndex]._links.self.href]
+            obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
-                "value": newFavs
+                "value": []
             }
-            //todo error check update attempt
-            let res = await updateUser(obj, jwt)
-            loggedInUser.favRecipes = newFavs;
-            setIsCurrentIndexLiked(true)
-            console.debug(res)
+
         }
+        let res = await updateUser(obj, jwt)
+        console.log(newFavs)
+        if (res.success) {
+            console.log("insert")
+            loggedInUser.favRecipes = newFavs;
+        }
+        setLiked(!match)
     }
+//liked state needed to rerender 
+//can use in html isLiked but before slide change states not fixed so first 
+//side wont toggle on/off properly
+//easiest work around is as is
+//console.log here to use the state so netlfy stops crying
+    console.log("isliked", checkIfFavourites(),liked)
+    return (
+        <>
 
+            <div className="Carousel" >
+                <div className="favBox">
+                    <FavHeartIcon isLiked={checkIfFavourites()} toggleFav={toggleFav} />
+                    <div className="favTotal">
+                        <p >
+                            {galleryIndex}
+                        </p>
+                    </div >
 
-
-
-    return (//selectedItem
-        <div className="Carousel" >
-            <div className="favBox">
-                <div className="favHeart" onClick={onHandleFavs}>
-                    <FavHeartIcon isLiked={isCurrentIndexLiked} />
                 </div>
-                <div className="favTotal">
-                    <p >
-                        {galleryIndex}
-                    </p>
-                </div >
-                
-            </div>
-            <Carousel
-                selectedItem={galleryIndex}
-                // infiniteLoop={true}
-                useKeyboardArrows={true}
-                emulateTouch={true}
-                className='search-carousel'
-                onChange={changeRecipe}
-                onClickItem={tapped}
-                swipeable={true}
-            // autoPlay={true}
-            >
-                {
-                    searchResults.hits.map((result, index) => {
-                        let image = result.recipe.image
-                        let legend = result.recipe.label
-                        return (
-                            <div key={index}>
+                <Carousel
+                    selectedItem={galleryIndex}
+                    // infiniteLoop={true}
+                    useKeyboardArrows={true}
+                    emulateTouch={true}
+                    className='search-carousel'
+                    onChange={onSlideChange}
+                    onClickItem={tapped}
+                    swipeable={true}
+                // autoPlay={true}
+                >
+                    {
+                        searchResultHits.map((result, index) => {
+                            let image = result.recipe.image
+                            let legend = result.recipe.label
+                            return (
+                                <div key={index}>
 
-                                <img src={image} alt={legend} ></img>
-                                <p className="legend">{legend} 1</p>
-                            </div>
+                                    <img src={image} alt={legend} ></img>
+                                    <p className="legend">{legend} 1</p>
+                                </div>
+                            )
+                        }
                         )
                     }
-                    )
-                }
-            </Carousel>
-        </div>
+                </Carousel>
+            </div></>
     )
 
 };
