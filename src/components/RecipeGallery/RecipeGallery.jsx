@@ -22,6 +22,13 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     const [galleryIndex,setGalleryIndex] = useState(galleryIndexMemory || 0)
     const [liked, setLiked] = useState(false)
 
+    const [favs,setFavs] = useState();
+    if (loggedInUser.books.bookName === "favourites"){
+        //map and store links to array as simple links to fit curent code
+
+        //map and link hits to 
+
+    }
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
@@ -57,22 +64,40 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         if (match) {
             //unlike
             console.debug("found in user favs - unfavouring")
+          
             newFavs = loggedInUser.favRecipes.filter(e => !e.includes(searchResultHits[galleryIndex]._links.self.href))
             console.debug("num favs", loggedInUser.favRecipes.length)
             obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
-                "value": []
+                "value": newFavs
             }
         } else {
             //like
             console.debug("not in user favs - favouring")
             console.debug("trying to favourite")
             newFavs = [...loggedInUser.favRecipes, searchResultHits[galleryIndex]._links.self.href]
+            let oldRecPairs =[];
+            let link = searchResultHits[galleryIndex]._links.self.href
+            let recipieHit = searchResultHits[galleryIndex];
+            let bookname="favourites"
+            let  recPairs = [...oldRecPairs ,recipieHit]
+            let oldbooks = loggedInUser.books;
+            oldbooks.map((b)=>{
+                if (b.bookName===bookname) {
+                    console.log("hit book name")
+                }
+            })
+            let bookT= {bookName:"favourites",recipies:[recPairs]}
+            loggedInUser.books = [...loggedInUser.books, bookT]
+            console.log(loggedInUser,oldbooks)
+            
+            
+            
             obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
-                "value": []
+                "value": newFavs
             }
 
         }
