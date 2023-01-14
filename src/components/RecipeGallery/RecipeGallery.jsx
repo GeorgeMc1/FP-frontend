@@ -22,7 +22,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     const [galleryIndex,setGalleryIndex] = useState(galleryIndexMemory || 0)
     const [liked, setLiked] = useState(false)
 
-    const [favs,setFavs] = useState();
+   // const [favs,setFavs] = useState();
     if (loggedInUser.books.bookName === "favourites"){
         //map and store links to array as simple links to fit curent code
 
@@ -78,7 +78,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
             console.debug("trying to favourite")
             newFavs = [...loggedInUser.favRecipes, searchResultHits[galleryIndex]._links.self.href]
             let oldRecPairs =[];
-            let link = searchResultHits[galleryIndex]._links.self.href
+          //  let link = searchResultHits[galleryIndex]._links.self.href
             let recipieHit = searchResultHits[galleryIndex];
             let bookname="favourites"
             let  recPairs = [...oldRecPairs ,recipieHit]
@@ -87,6 +87,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 if (b.bookName===bookname) {
                     console.log("hit book name")
                 }
+                return true
             })
             let bookT= {bookName:"favourites",recipies:[recPairs]}
             loggedInUser.books = [...loggedInUser.books, bookT]
