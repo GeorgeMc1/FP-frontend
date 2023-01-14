@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
@@ -19,11 +19,11 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
 
     console.log(galleryIndexMemory)
 
-    const [galleryIndex,setGalleryIndex] = useState(galleryIndexMemory || 0)
+    const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
     const [liked, setLiked] = useState(false)
 
-   // const [favs,setFavs] = useState();
-    if (loggedInUser.books.bookName === "favourites"){
+    // const [favs,setFavs] = useState();
+    if (loggedInUser.books.bookName === "favourites") {
         //map and store links to array as simple links to fit curent code
 
         //map and link hits to 
@@ -55,16 +55,110 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         return match
     }
 
+    const replaceBook = async (currentUserBooksArrAy, bookName, bookToAdd) => {
+        for (let i = 0; i < currentUserBooksArrAy.length; i++) {
+            if (currentUserBooksArrAy[i].bookName === bookName) {
+                console.log("hit book name")
+                currentUserBooksArrAy[i] = bookToAdd
+                return true
+            }
+        }
+        return false;
+    }
+    const getBook = async (bookName) => {
+        for (let i = 0; i < loggedInUser.books.length; i++) {
+            if (loggedInUser.books[i].bookName === bookName) {
+                console.log("book found in user")
+                return loggedInUser.books[i]
+
+            }
+        }
+        //no book so return empty array or books if others
+        return false;
+    }
+
+
+    const toggleBookEntry = async () => {
+
+        let obj = {};
+        let bookname = "favourites33"
+        let galleryItemsRecipe = searchResultHits[galleryIndex];
+        let currentBook = await getBook(bookname);
+      
+        console.log(`
+        ************************************************************
+        *             start    toggleBookEntry                     *
+        ************************************************************\n`)
+        
+        //get current recipes
+        console.log(`using book ${bookname} \t galleryindex ${galleryIndex} - galleryItemsRecipe \n`, galleryItemsRecipe)
+        console.log(`loggedinuser`,loggedInUser)
+        console.log("current Book object found\n", currentBook);
+
+        if (currentBook) {
+
+            if (currentBook.recipes.includes(galleryItemsRecipe)) {
+                console.log("recipie was in book - removing recipe")
+                console.log(currentBook.recipes)
+                currentBook.recipes = currentBook.recipes.filter(e => {
+                    if (e == galleryItemsRecipe) {
+                        return
+                    }
+                    else {
+                        return galleryItemsRecipe
+                    }
+                })
+
+            } else {
+                console.log("recipie not in book -adding recipe")
+                currentBook.recipes = [...currentBook.recipes, galleryItemsRecipe]
+            }
+            console.log("book is now")
+            console.log(currentBook);
+            console.log(loggedInUser.books)
+            //book now rewritten so change it
+            obj = {
+                "username": loggedInUser.username,
+                "key": "books",
+                "value": loggedInUser.books
+            }
+
+        } else {
+            //book not created yet
+            console.log(`${bookname} not created yet - creating book\n`);
+            let bookToAdd = {
+                "bookName": bookname,
+                "recipes": [galleryItemsRecipe]
+            }
+            loggedInUser.books = [...loggedInUser.books, bookToAdd]
+            obj = {
+                "username": loggedInUser.username,
+                "key": "books",
+                "value": loggedInUser.books
+            }
+        }
+        let res = await updateUser(obj, jwt)
+        console.log(`
+        ************************************************************
+        *             end    toggleBookEntry                       *
+        ************************************************************\n`)
+    }
+
+
+
     const toggleFav = async () => {
         let obj = {};
         let newFavs = [];
-        console.log(galleryIndex);
+
+        toggleBookEntry()
+
+        //favourites
         let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
-        console.log("match in favs =", match)
+        console.log("match in favs?", match)
         if (match) {
             //unlike
             console.debug("found in user favs - unfavouring")
-          
+
             newFavs = loggedInUser.favRecipes.filter(e => !e.includes(searchResultHits[galleryIndex]._links.self.href))
             console.debug("num favs", loggedInUser.favRecipes.length)
             obj = {
@@ -72,29 +166,12 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 "key": "favRecipes",
                 "value": newFavs
             }
-        } else {
+        } else if (!match){
             //like
             console.debug("not in user favs - favouring")
             console.debug("trying to favourite")
             newFavs = [...loggedInUser.favRecipes, searchResultHits[galleryIndex]._links.self.href]
-            let oldRecPairs =[];
-          //  let link = searchResultHits[galleryIndex]._links.self.href
-            let recipieHit = searchResultHits[galleryIndex];
-            let bookname="favourites"
-            let  recPairs = [...oldRecPairs ,recipieHit]
-            let oldbooks = loggedInUser.books;
-            oldbooks.map((b)=>{
-                if (b.bookName===bookname) {
-                    console.log("hit book name")
-                }
-                return true
-            })
-            let bookT= {bookName:"favourites",recipies:[recPairs]}
-            loggedInUser.books = [...loggedInUser.books, bookT]
-            console.log(loggedInUser,oldbooks)
-            
-            
-            
+
             obj = {
                 "username": loggedInUser.username,
                 "key": "favRecipes",
@@ -109,13 +186,15 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
             loggedInUser.favRecipes = newFavs;
         }
         setLiked(!match)
+        console.log("************************************************************\n             end             \n************************************************************\n")
+
     }
-//liked state needed to rerender 
-//can use in html isLiked but before slide change states not fixed so first 
-//side wont toggle on/off properly
-//easiest work around is as is
-//console.log here to use the state so netlfy stops crying
-    console.log("isliked", checkIfFavourites(),liked)
+    //liked state needed to rerender 
+    //can use in html isLiked but before slide change states not fixed so first 
+    //side wont toggle on/off properly
+    //easiest work around is as is
+    //console.log here to use the state so netlfy stops crying
+    console.log("isliked", checkIfFavourites(), liked)
     return (
         <>
 
