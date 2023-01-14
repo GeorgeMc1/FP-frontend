@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,6 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         //store current gallery slide in state for use outside Carousel
         setGalleryIndex(index)
         setIndexMemory(index)
-        let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href);
         setLiked(checkIfFavourites())
     }
 
@@ -85,8 +84,12 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         }
         setLiked(!match)
     }
-
-    console.log("isliked", checkIfFavourites())
+//liked state needed to rerender 
+//can use in html isLiked but before slide change states not fixed so first 
+//side wont toggle on/off properly
+//easiest work around is as is
+//console.log here to use the state so netlfy stops crying
+    console.log("isliked", checkIfFavourites(),liked)
     return (
         <>
 
