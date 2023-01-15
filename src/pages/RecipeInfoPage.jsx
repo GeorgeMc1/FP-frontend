@@ -4,8 +4,22 @@ import IngredientList from "../components/RecipeInfoPage/IngredientList/Ingredie
 import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
+import FavHeartIcon from "../components/FavHeartIcon/FavHeartIcon";
+import { toggleFav } from "../common/toggleFav";
 
-const RecipeInfoPage = ({ data }) => {
+
+const RecipeInfoPage = ({ data,loggedInUser,jwt,setCurrentRecipeLiked, currentRecipeLiked}) => {
+
+    const checkIfFavourites = () => {
+        //match if logged in user favourites contains the recipie.self 
+        let match = loggedInUser.favRecipes.includes(data._links.self.href)
+        console.log("match in favs =", match)
+        return match
+    }
+
+ 
+
+
     console.log("inside recipieinfopage");
     console.debug(data);
     const images = data.recipe.images;
@@ -27,6 +41,14 @@ const RecipeInfoPage = ({ data }) => {
     return (
         <PageContainer id="recipeInfoPage">
             <h2>{data.recipe.label}</h2>
+            <FavHeartIcon 
+            isLiked={checkIfFavourites()} 
+            loggedInUser={loggedInUser} 
+            jwt={jwt} 
+            setCurrentRecipeLiked={setCurrentRecipeLiked} 
+            recipe={data} 
+            toggleFav={toggleFav}  />
+
             <RecipieImage data={images}></RecipieImage>
             <IngredientList data={ingLines} cautions={cautions}></IngredientList>
             <RecipeInfoPageAction

@@ -24,6 +24,7 @@ function App() {
 	const [searchResults, setSearchResults] = useState();
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
+	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
 
 	// set state to update user and cookie
 	// const [cookie, setCookie] = useState();
@@ -74,13 +75,21 @@ function App() {
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
 							jwt={jwt}
+							currentRecipeLiked={currentRecipeLiked}
+							 setCurrentRecipeLiked={setCurrentRecipeLiked}
 						/>
 					}
 				/>
 				{recipe ? (
 					<Route
 						path="/viewRecipie"
-						element={<RecipeInfoPage data={recipe} />}
+						element={<RecipeInfoPage
+							data={recipe}
+							jwt={jwt}
+							loggedInUser={loggedInUser}
+							currentRecipeLiked={currentRecipeLiked}
+							 setCurrentRecipeLiked={setCurrentRecipeLiked}
+						/>}
 					/>
 				) : null}
 

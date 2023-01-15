@@ -23,7 +23,7 @@ import { updateUser } from "../utils";
  * @param {any} jwt
  * @returns {booean}
  */
-export const toggleFav = async (allowToggleOff=true,loggedInUser,recipe,setLiked,jwt) => {
+export const toggleFav = async (allowToggleOff=true,loggedInUser,recipe,setCurrentRecipeLiked,jwt) => {
    
    try {
     let obj = {};
@@ -50,7 +50,7 @@ console.log("*******",allowToggleOff)
             "value": newFavs
         }
         response = await updateUser(obj, jwt)
-        setLiked(!match)
+        setCurrentRecipeLiked(!match)
     } else if (!match) {
         //like
         console.debug("not in user favs - favouring")
@@ -63,7 +63,7 @@ console.log("*******",allowToggleOff)
             "value": newFavs
         }
          response = await updateUser(obj, jwt)
-         setLiked(!match)
+         setCurrentRecipeLiked(!match)
     }
     
     
