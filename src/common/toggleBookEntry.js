@@ -1,16 +1,18 @@
 import { updateUser } from "../utils";
 import { toggleFav } from "./toggleFav";
-const getBook = async (bookName,loggedInUser) => {
-    for (let i = 0; i < loggedInUser.books.length; i++) {
-        if (loggedInUser.books[i].bookName === bookName) {
-            console.log("book found in user")
-            return loggedInUser.books[i]
+import {getBook} from "./getBook"
 
-        }
-    }
-    //no book so return empty array or books if others
-    return false;
-}
+// const getBook = async (bookName,loggedInUser) => {
+//     for (let i = 0; i < loggedInUser.books.length; i++) {
+//         if (loggedInUser.books[i].bookName === bookName) {
+//             console.log("book found in user")
+//             return loggedInUser.books[i]
+
+//         }
+//     }
+//     //no book so return empty array or books if others
+//     return false;
+// }
 
 export const toggleBookEntry = async (updateFav,loggedInUser,recipe,setCurrentRecipeLiked,jwt,cookBookName) => {
 

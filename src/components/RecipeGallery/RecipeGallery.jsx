@@ -23,12 +23,12 @@ const RecipeGallery = ({ jwt,
     const navigate = useNavigate();
 
     const [searchResultHits] = useState(searchResults.hits);
-    const [cookBookName]=useState("Xmas")
+    const [cookBookName]=useState("Valentine")
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
    // const [liked, setLiked] = useState(false)
-
+    console.log(searchResults,searchResultHits,galleryIndex  )
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
@@ -50,6 +50,8 @@ const RecipeGallery = ({ jwt,
 
     const checkIfFavourites = () => {
         //match if logged in user favourites contains the recipie.self 
+        console.log(`galleryIndex ${galleryIndex} searchresultshits `,searchResultHits)
+        if (galleryIndex >= searchResultHits.length) {setIndexMemory(0)}
         let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
         console.log("match in favs =", match)
         return match

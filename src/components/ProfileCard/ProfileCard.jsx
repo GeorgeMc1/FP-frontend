@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import { Container } from "../../css/common-styles.js";
 import cogImg from "../../assets/images/OptionsCog.png"
 import redCrossImg from "../../assets/images/redCross.png"
-import { updateUser,deleteUser } from "../../utils"
+import { updateUser, deleteUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
-
-const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
-
+import { getBook } from "../../common/getBook.js";
+import { useNavigate } from "react-router-dom";
+const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, setJWT }) => {
+    const navigate = useNavigate();
     const [updateKey, setUpdateKey] = useState();
     const [editing, setEditing] = useState();
     const [errMsg, setErrorMsg] = useState();
@@ -20,18 +21,18 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
     const onDeleteHandler = async (e) => {
         try {
-            let obj ={
-                username:loggedInUser.username
+            let obj = {
+                username: loggedInUser.username
             }
-            console.log("ondeletehandler",obj,jwt)
-            let res = await deleteUser(obj,jwt);
-            console.log("passed to here",res)
-             if (res.success) {
+            console.log("ondeletehandler", obj, jwt)
+            let res = await deleteUser(obj, jwt);
+            console.log("passed to here", res)
+            if (res.success) {
                 setJWT();
                 setLoggedInUser();
                 console.log("passest set states")
                 //window.location.replace("/")
-             }
+            }
             console.log(res)
         } catch (error) {
             setErrorMsg(error)
@@ -89,8 +90,19 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
         userEdits[element] = loggedInUser[element]
     }
 
+    const loadGalleryWith = async (e,loggedInUser) => {
+        let bookName =e.target.attributes.book.value
+        console.log(`bookName ${bookName}`, loggedInUser.books)
+        let currentBook = await getBook(bookName,loggedInUser)
+        let searchHits = { "hits":currentBook.recipes}
+        setSearchResults(searchHits)
+        console.log(searchHits)
+        navigate("/searchRecipes", {
+        });
+    }
+
     return (
-        <Container> 
+        <Container>
             {/* display any error messages form failed update using state variable */}
             <div className="error"> {errMsg}</div>
             <Container id="userProfileCard">
@@ -98,7 +110,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                     //map user objects
                     Object.keys(loggedInUser).map((element, index) => {
                         //ignore keys with starting _
-                        if (element.charAt(0) === "_" || element==="favRecipes" || element==="books") {
+                        if (element.charAt(0) === "_" || element === "favRecipes" || element === "books") {
                             return null
                         } else {
                             //if the currentent element being mapped is the same as the one saved by edit cogs onclick
@@ -157,16 +169,21 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                         }
                     })
                 }
-                <button onClick={(e)=>onDeleteHandler()}>Delete Account</button>
+                <button onClick={(e) => onDeleteHandler()}>Delete Account</button>
             </Container>
-           
+
             <Container>
                 <p>{loggedInUser.favRecipes?.length} favorites</p>
             </Container>
 
-            <Container>
+            <Container setSearchResults={setSearchResults}>
                 <b>books</b>
-                {loggedInUser?.books?.map((e,index)=>{return <p key={index}>{e.bookName}</p>})}
+                {loggedInUser?.books?.map((e, index) => {
+                    return(
+                    <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e,loggedInUser)}>{e.bookName}</p>
+                    )
+                })
+                }
             </Container>
         </Container>
     );

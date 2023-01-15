@@ -1,9 +1,9 @@
 
 
 import cookbookIcon from "../../assets/images/cookbookIcon.png"
-const CookBookIcon = ({ isLiked, setLiked,updateFav,toggleCookBookEntry,loggedInUser,jwt,recipe,cookBookName }) => {
+const CookBookIcon = ({ isLiked, setCurrentRecipeLiked,setLiked,updateFav,toggleCookBookEntry,loggedInUser,jwt,recipe,cookBookName }) => {
   return (
-      <div className="favHeart" onClick={()=>toggleCookBookEntry(updateFav, loggedInUser, recipe,setLiked,jwt,cookBookName)}>
+      <div className="favHeart" onClick={()=>toggleCookBookEntry(updateFav, loggedInUser, recipe,setCurrentRecipeLiked,jwt,cookBookName)}>
 
         {isLiked ?
           <img className="favHeartImg" alt="favouriting icon" src={cookbookIcon} />
