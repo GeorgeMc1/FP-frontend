@@ -17,9 +17,9 @@ export const NavLink = styled(Link)`
     color: #fff;
     display: flex;
     align-items: center;
-    text-decoration: none;
-   
+    text-decoration: none;  
     cursor: pointer;
+    
     transition: all 0.3s ease-in-out;
         &.active{
             color: #15cdfc;
@@ -30,6 +30,29 @@ export const NavLink = styled(Link)`
     }
 `
 
+export const NavIconLink = styled(Link)` 
+    width:120px;
+    background-color: none;
+    height:100%;
+    text-decoration: none;
+    text-align: center;  padding:0px;
+    display:inline-block;
+    img {
+        width:120px;
+        height:60px;
+        vertical-align: middle; 
+        height:100%
+        transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        display: inline-block;
+        
+        &:hover {
+     
+    transform: scale(1.4);
+        }
+    }
+
+`
 
 
 

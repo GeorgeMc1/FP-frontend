@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage";
+import HomepageScaff from "./pages/HomePageScaff";
 import LoginPage from "./pages/LoginPage";
 import { authCheck } from "./utils";
 import LogOutPage from "./pages/LogOutPage";
@@ -63,7 +64,7 @@ function App() {
 			/>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-
+				<Route path="/hpblocks" element={<HomepageScaff />} />
 				<Route
 					path="/searchRecipes"
 					element={

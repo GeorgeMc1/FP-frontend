@@ -5,8 +5,8 @@ export const FooterDiv = styled.nav`
     background: #000; 
     display: flex;
     justify-content: space-around;
-    position: fixed;
-    bottom:0;
+    
+   
     z-index: 10;
     width: 100%; /* Full width */
     color:#fff;

@@ -2,6 +2,7 @@
 import "../css/homepage.css"
 import { PageContainer } from "../css/common-styles"
 import homepage from "../assets/images/Home-Page_.png"
+
 const Homepage = () => {
 
 
@@ -22,7 +23,7 @@ const Homepage = () => {
                 </div>
             </div>
         </nav>
- 
+       
 
     </PageContainer>
 
