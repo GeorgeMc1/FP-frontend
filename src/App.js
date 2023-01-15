@@ -113,6 +113,7 @@ function App() {
 								setLoggedInUser={setLoggedInUser}
 								jwt={jwt}
 								setJWT={setJWT}
+								setSearchResults={setSearchResults}
 							/>
 						) : (
 							<Homepage />
