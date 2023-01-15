@@ -18,6 +18,7 @@ import Footer from "./components/Footer";
 
 // import cookie functions
 import { getCookie } from "./common";
+import PreFooter from "./components/PreFooter/PreFooter";
 
 function App() {
 	const [jwt, setJWT] = useState();
@@ -148,6 +149,7 @@ function App() {
 
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
+			<PreFooter />
 			<Footer />
 		</BrowserRouter>
 	);

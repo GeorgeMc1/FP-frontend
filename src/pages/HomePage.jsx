@@ -1,14 +1,14 @@
 
 import "../css/homepage.css"
 import { PageContainer } from "../css/common-styles"
-import homepage from "../assets/images/Home-Page_.png"
+// import homepage from "../assets/images/Home-Page_.png"
 
 const Homepage = () => {
 
 
     return (
     <PageContainer id="homepage">
-        <h2 className="">homepage</h2>
+       
         <nav className="navbar">
             <div className="outer">
                 <div className="btn-group">                    
@@ -18,9 +18,9 @@ const Homepage = () => {
                 <div className="inner">
                     <button className="btn-lg"><a className="homepageLink" href="/searchRecipes">Search recipe</a></button>
                 </div>
-                <div>
+                {/* <div>
                     <img className ="temp" alt="temp" src={homepage} width="100%" position="absolute" top="0"/>
-                </div>
+                </div> */}
             </div>
         </nav>
        

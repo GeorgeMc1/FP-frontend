@@ -1,18 +1,17 @@
 
 import "../css/homepage.css"
 import { PageContainer } from "../css/common-styles"
-
 import homepage from "../assets/images/Home-Page_scaf.png"
 import { useState } from "react";
 const HomepageScaff = () => {
-    const[togStatus,settogstatus] = useState(1);
+    const [togStatus, settogstatus] = useState(1);
     const ontoggle = () => {
-        
-      console.log(togStatus)  
+
+        console.log(togStatus)
         if (togStatus === 2) {
-            settogstatus( 1)
-        }else {
-            settogstatus(togStatus+1)
+            settogstatus(1)
+        } else {
+            settogstatus(togStatus + 1)
         }
         return
     }
@@ -20,108 +19,76 @@ const HomepageScaff = () => {
     return (
         <PageContainer id="homepage">
 
-     
-{/* add nothing above here */}      
-{togStatus===1 ? 
-            <div>
-                <img className="temp" alt="temp" src={homepage} width="100%" position="absolute" top="0" />
-            </div>
-            :
-            null}
 
-{togStatus===2 ?
-            <div id="demo">
-
-                <div className="level1">
-                    <div >
-                        <div>
-                            sign text
-                        </div>
-                        <div>
-                            sign up button
-                        </div>
-                    </div >
-                    <div >
-                        <div>
-                            sign text
-                        </div>
-                        <div>
-                            sign up button
-                        </div>
-                    </div>
+            {/* add nothing above here */}
+            {togStatus === 1 ?
+                <div>
+                    <img className="temp" alt="temp" src={homepage} width="100%" position="absolute" top="0" />
                 </div>
+                :
+                null}
 
-                <div className="level1">
-                    <p>most viewed</p>
-                </div>
+            {togStatus === 2 ?
+                <div id="demo">
 
-                <div className="level1">
-                    <div >
-                        <img alt="" />
+                    <div className="level1">
                         <div >
-                            text
-                        </div>
-                    </div>
-                    <div  >
-                        <img alt="" />
+                            <div>
+                                sign text
+                            </div>
+                            <div>
+                                sign up button
+                            </div>
+                        </div >
                         <div >
-                            text
+                            <div>
+                                sign text
+                            </div>
+                            <div>
+                                sign up button
+                            </div>
                         </div>
                     </div>
-                    <div  >
-                        <img alt="" />
+
+                    <div className="level1">
+                        <p>most viewed</p>
+                    </div>
+
+                    <div className="level1">
                         <div >
-                            text
-                        </div>
-                    </div>
-                </div>
-
-                <div className="level1">
-                    spacer
-                </div>
-
-                <div className="level1">
-                    <div >
-                        <img alt="" />
-                        <p> text</p>
-                        <button />
-                    </div>
-                    <div >
-                        <p> text</p>
-                        <p> text</p>
-                        <p> text</p>
-                        <p> text</p>
-                        <p> text</p>
-                    </div>
-                </div>
-                <div className="level1">
-                    <div >
-                        <p> </p>
-                        <div>
+                            <img alt="" />
                             <div >
-                                <img alt="" />
-                                <img alt="" />
-                                <img alt="" />
-                                <img alt="" />
+                                text
                             </div>
                         </div>
                         <div  >
+                            <img alt="" />
                             <div >
-                                <p>text</p>
+                                text
                             </div>
+                        </div>
+                        <div  >
+                            <img alt="" />
                             <div >
-                                <img alt="" />
+                                text
                             </div>
                         </div>
                     </div>
+
+                    
+
+
+
+
+
+                   
+
                 </div>
+                :
+                null}
 
-            </div>
-  :
-  null}
-
-{/* add nothing below here */}
-<button onClick={ontoggle} >toggle</button>
+            {/* add nothing below here */}
+            <button onClick={ontoggle} >toggle</button>
         </PageContainer>
 
     );

@@ -30,9 +30,10 @@ dd {
 	display: flex;
 	flex-direction: column;
 	padding: 5px 10px;
-	border: 1px solid black;
+	border: 1px solid #444;
 	border-radius: 10px;
 	margin-top: 10px;
+	
 }
 
 #loginPageForm input,
@@ -46,4 +47,6 @@ dd {
 	margin: 5px 0px;
 	border-radius: 5px;
 	background-color: whitesmoke;
+	
 }
+
