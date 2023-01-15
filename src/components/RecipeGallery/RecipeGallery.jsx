@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 import { updateUser } from '../../utils';
 import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
-
+import CookBookIcon from '../CookBookIcon/CookBookIcon';
 
 
 
@@ -16,19 +16,12 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     const navigate = useNavigate();
 
     const [searchResultHits] = useState(searchResults.hits);
-
+    const [cookBookName]=useState("DemoBook")
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
     const [liked, setLiked] = useState(false)
 
-    // const [favs,setFavs] = useState();
-    if (loggedInUser.books.bookName === "favourites") {
-        //map and store links to array as simple links to fit curent code
-
-        //map and link hits to 
-
-    }
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
@@ -55,16 +48,6 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         return match
     }
 
-    const replaceBook = async (currentUserBooksArrAy, bookName, bookToAdd) => {
-        for (let i = 0; i < currentUserBooksArrAy.length; i++) {
-            if (currentUserBooksArrAy[i].bookName === bookName) {
-                console.log("hit book name")
-                currentUserBooksArrAy[i] = bookToAdd
-                return true
-            }
-        }
-        return false;
-    }
     const getBook = async (bookName) => {
         for (let i = 0; i < loggedInUser.books.length; i++) {
             if (loggedInUser.books[i].bookName === bookName) {
@@ -77,22 +60,21 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         return false;
     }
 
-
     const toggleBookEntry = async () => {
 
         let obj = {};
-        let bookname = "favourites33"
+        let bookname = "demoBook"
         let galleryItemsRecipe = searchResultHits[galleryIndex];
         let currentBook = await getBook(bookname);
-      
+
         console.log(`
-        ************************************************************
-        *             start    toggleBookEntry                     *
-        ************************************************************\n`)
-        
+        ************************************************
+        *             start    toggleBookEntry         *
+        ************************************************\n`)
+
         //get current recipes
         console.log(`using book ${bookname} \t galleryindex ${galleryIndex} - galleryItemsRecipe \n`, galleryItemsRecipe)
-        console.log(`loggedinuser`,loggedInUser)
+        console.log(`loggedinuser`, loggedInUser)
         console.log("current Book object found\n", currentBook);
 
         if (currentBook) {
@@ -101,8 +83,8 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 console.log("recipie was in book - removing recipe")
                 console.log(currentBook.recipes)
                 currentBook.recipes = currentBook.recipes.filter(e => {
-                    if (e == galleryItemsRecipe) {
-                        return
+                    if (e === galleryItemsRecipe) {
+                        return false
                     }
                     else {
                         return galleryItemsRecipe
@@ -137,25 +119,33 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 "value": loggedInUser.books
             }
         }
+        await toggleFav(false)
         let res = await updateUser(obj, jwt)
+        console.log(res,loggedInUser)
+        let roughObjSize = JSON.stringify(loggedInUser).length;
+        console.log(roughObjSize)
         console.log(`
-        ************************************************************
-        *             end    toggleBookEntry                       *
-        ************************************************************\n`)
+        **********************************************
+        *             end    toggleBookEntry         *
+        **********************************************\n`)
     }
 
 
 
-    const toggleFav = async () => {
+    const toggleFav = async (allowToggleOff=true) => {
         let obj = {};
-        let newFavs = [];
-
-        toggleBookEntry()
+        let response;
+        let newFavs ;
+        console.log(`
+        **********************************
+        *    start    toggleFav          *
+        **********************************/n`)
+console.log("*******",allowToggleOff)
 
         //favourites
         let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
         console.log("match in favs?", match)
-        if (match) {
+        if (match && allowToggleOff) {
             //unlike
             console.debug("found in user favs - unfavouring")
 
@@ -166,7 +156,9 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 "key": "favRecipes",
                 "value": newFavs
             }
-        } else if (!match){
+            response = await updateUser(obj, jwt)
+            setLiked(!match)
+        } else if (!match) {
             //like
             console.debug("not in user favs - favouring")
             console.debug("trying to favourite")
@@ -177,16 +169,24 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                 "key": "favRecipes",
                 "value": newFavs
             }
-
+             response = await updateUser(obj, jwt)
+             setLiked(!match)
         }
-        let res = await updateUser(obj, jwt)
-        console.log(newFavs)
-        if (res.success) {
+        
+        
+        if (response?.success) {
+            console.log(newFavs)
             console.log("insert")
             loggedInUser.favRecipes = newFavs;
         }
-        setLiked(!match)
-        console.log("************************************************************\n             end             \n************************************************************\n")
+       
+        console.log(loggedInUser)
+        let roughObjSize = JSON.stringify(loggedInUser).length;
+        console.log(roughObjSize)
+        console.log(`
+        **********************************************
+        *             end                            *
+        **********************************************\n`)
 
     }
     //liked state needed to rerender 
@@ -194,20 +194,30 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    console.log("isliked", checkIfFavourites(), liked)
+    if (loggedInUser) console.log("isliked", checkIfFavourites(), liked)
     return (
         <>
 
             <div className="Carousel" >
-                <div className="favBox">
-                    <FavHeartIcon isLiked={checkIfFavourites()} toggleFav={toggleFav} />
-                    <div className="favTotal">
-                        <p >
-                            {galleryIndex}
-                        </p>
-                    </div >
 
-                </div>
+                {loggedInUser ?
+                    <div className="favBox">
+                        <FavHeartIcon isLiked={checkIfFavourites()} toggleFav={toggleFav} />
+
+                        <div className="favTotal">
+                            <p >
+                                {galleryIndex}
+                            </p>
+                        </div >
+                        <div className="cooKbook">
+                            <CookBookIcon isLiked={checkIfFavourites()} toggleCookBookEntry={toggleBookEntry} cookBookName={cookBookName}/>
+                        </div>
+                    </div>
+                    :
+                    <div className="favBox">
+                    </div>
+                }
+
                 <Carousel
                     selectedItem={galleryIndex}
                     // infiniteLoop={true}

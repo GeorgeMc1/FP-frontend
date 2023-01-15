@@ -98,7 +98,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                     //map user objects
                     Object.keys(loggedInUser).map((element, index) => {
                         //ignore keys with starting _
-                        if (element.charAt(0) === "_" || element==="favRecipes") {
+                        if (element.charAt(0) === "_" || element==="favRecipes" || element==="books") {
                             return null
                         } else {
                             //if the currentent element being mapped is the same as the one saved by edit cogs onclick
@@ -158,6 +158,15 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                     })
                 }
                 <button onClick={(e)=>onDeleteHandler()}>Delete Account</button>
+            </Container>
+           
+            <Container>
+                <p>{loggedInUser.favRecipes?.length} favorites</p>
+            </Container>
+
+            <Container>
+                <b>books</b>
+                {<p>{loggedInUser?.books?.map((e)=>{return <p>{e.bookName}</p>})}</p>}
             </Container>
         </Container>
     );
