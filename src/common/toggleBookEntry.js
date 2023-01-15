@@ -12,7 +12,7 @@ const getBook = async (bookName,loggedInUser) => {
     return false;
 }
 
-export const toggleBookEntry = async (updateFav,loggedInUser,recipe,setLiked,jwt,cookBookName) => {
+export const toggleBookEntry = async (updateFav,loggedInUser,recipe,setCurrentRecipeLiked,jwt,cookBookName) => {
 
     let obj = {};
     let bookname = cookBookName||"demoBook"
@@ -71,7 +71,7 @@ export const toggleBookEntry = async (updateFav,loggedInUser,recipe,setLiked,jwt
             "value": loggedInUser.books
         }
     }
-    await toggleFav(updateFav,loggedInUser,recipe,setLiked,jwt)
+    await toggleFav(updateFav,loggedInUser,recipe,setCurrentRecipeLiked,jwt)
     let res = await updateUser(obj, jwt)
     console.log(res,loggedInUser)
     let roughObjSize = JSON.stringify(loggedInUser).length;

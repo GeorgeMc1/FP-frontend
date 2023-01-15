@@ -11,7 +11,14 @@ import { toggleBookEntry } from '../../common/toggleBookEntry';
 
 //https://www.npmjs.com/package/react-responsive-carousel
 
-const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setIndexMemory, loggedInUser }) => {
+const RecipeGallery = ({ jwt, 
+    currentRecipeLiked,
+    setCurrentRecipeLiked, 
+    searchResults, 
+    setRecipe, 
+    galleryIndexMemory, 
+    setIndexMemory, 
+    loggedInUser }) => {
 
     const navigate = useNavigate();
 
@@ -20,7 +27,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
-    const [liked, setLiked] = useState(false)
+   // const [liked, setLiked] = useState(false)
 
 
     const onSlideChange = (index) => {
@@ -29,7 +36,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         //store current gallery slide in state for use outside Carousel
         setGalleryIndex(index)
         setIndexMemory(index)
-        setLiked(checkIfFavourites())
+        setCurrentRecipeLiked(checkIfFavourites())
     }
 
     const tapped = (index) => {
@@ -58,7 +65,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (loggedInUser) console.log("isliked", checkIfFavourites(), liked)
+    if (loggedInUser) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
     return (
         <>
 
@@ -66,7 +73,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
 
                 {loggedInUser ?
                     <div className="favBox">
-                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setLiked={setLiked}/>
+                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setCurrentRecipeLiked={setCurrentRecipeLiked}/>
 
                         <div className="favTotal">
                             <p >
@@ -74,7 +81,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
                             </p>
                         </div >
                         <div className="cooKbook">
-                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setLiked={setLiked} cookBookName={cookBookName}/>
+                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName}/>
                         </div>
                     </div>
                     :
