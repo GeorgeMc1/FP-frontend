@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
-import { updateUser } from '../../utils';
+
 import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 
-
-
+import { toggleFav } from '../../common/toggleFav';
+import { toggleBookEntry } from '../../common/toggleBookEntry';
 
 //https://www.npmjs.com/package/react-responsive-carousel
 
@@ -16,7 +16,7 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
     const navigate = useNavigate();
 
     const [searchResultHits] = useState(searchResults.hits);
-    const [cookBookName]=useState("DemoBook")
+    const [cookBookName]=useState("Xmas")
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
@@ -48,147 +48,11 @@ const RecipeGallery = ({ jwt, searchResults, setRecipe, galleryIndexMemory, setI
         return match
     }
 
-    const getBook = async (bookName) => {
-        for (let i = 0; i < loggedInUser.books.length; i++) {
-            if (loggedInUser.books[i].bookName === bookName) {
-                console.log("book found in user")
-                return loggedInUser.books[i]
+   
 
-            }
-        }
-        //no book so return empty array or books if others
-        return false;
-    }
-
-    const toggleBookEntry = async () => {
-
-        let obj = {};
-        let bookname = "demoBook"
-        let galleryItemsRecipe = searchResultHits[galleryIndex];
-        let currentBook = await getBook(bookname);
-
-        console.log(`
-        ************************************************
-        *             start    toggleBookEntry         *
-        ************************************************\n`)
-
-        //get current recipes
-        console.log(`using book ${bookname} \t galleryindex ${galleryIndex} - galleryItemsRecipe \n`, galleryItemsRecipe)
-        console.log(`loggedinuser`, loggedInUser)
-        console.log("current Book object found\n", currentBook);
-
-        if (currentBook) {
-
-            if (currentBook.recipes.includes(galleryItemsRecipe)) {
-                console.log("recipie was in book - removing recipe")
-                console.log(currentBook.recipes)
-                currentBook.recipes = currentBook.recipes.filter(e => {
-                    if (e === galleryItemsRecipe) {
-                        return false
-                    }
-                    else {
-                        return galleryItemsRecipe
-                    }
-                })
-
-            } else {
-                console.log("recipie not in book -adding recipe")
-                currentBook.recipes = [...currentBook.recipes, galleryItemsRecipe]
-            }
-            console.log("book is now")
-            console.log(currentBook);
-            console.log(loggedInUser.books)
-            //book now rewritten so change it
-            obj = {
-                "username": loggedInUser.username,
-                "key": "books",
-                "value": loggedInUser.books
-            }
-
-        } else {
-            //book not created yet
-            console.log(`${bookname} not created yet - creating book\n`);
-            let bookToAdd = {
-                "bookName": bookname,
-                "recipes": [galleryItemsRecipe]
-            }
-            loggedInUser.books = [...loggedInUser.books, bookToAdd]
-            obj = {
-                "username": loggedInUser.username,
-                "key": "books",
-                "value": loggedInUser.books
-            }
-        }
-        await toggleFav(false)
-        let res = await updateUser(obj, jwt)
-        console.log(res,loggedInUser)
-        let roughObjSize = JSON.stringify(loggedInUser).length;
-        console.log(roughObjSize)
-        console.log(`
-        **********************************************
-        *             end    toggleBookEntry         *
-        **********************************************\n`)
-    }
+    
 
 
-
-    const toggleFav = async (allowToggleOff=true) => {
-        let obj = {};
-        let response;
-        let newFavs ;
-        console.log(`
-        **********************************
-        *    start    toggleFav          *
-        **********************************/n`)
-console.log("*******",allowToggleOff)
-
-        //favourites
-        let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
-        console.log("match in favs?", match)
-        if (match && allowToggleOff) {
-            //unlike
-            console.debug("found in user favs - unfavouring")
-
-            newFavs = loggedInUser.favRecipes.filter(e => !e.includes(searchResultHits[galleryIndex]._links.self.href))
-            console.debug("num favs", loggedInUser.favRecipes.length)
-            obj = {
-                "username": loggedInUser.username,
-                "key": "favRecipes",
-                "value": newFavs
-            }
-            response = await updateUser(obj, jwt)
-            setLiked(!match)
-        } else if (!match) {
-            //like
-            console.debug("not in user favs - favouring")
-            console.debug("trying to favourite")
-            newFavs = [...loggedInUser.favRecipes, searchResultHits[galleryIndex]._links.self.href]
-
-            obj = {
-                "username": loggedInUser.username,
-                "key": "favRecipes",
-                "value": newFavs
-            }
-             response = await updateUser(obj, jwt)
-             setLiked(!match)
-        }
-        
-        
-        if (response?.success) {
-            console.log(newFavs)
-            console.log("insert")
-            loggedInUser.favRecipes = newFavs;
-        }
-       
-        console.log(loggedInUser)
-        let roughObjSize = JSON.stringify(loggedInUser).length;
-        console.log(roughObjSize)
-        console.log(`
-        **********************************************
-        *             end                            *
-        **********************************************\n`)
-
-    }
     //liked state needed to rerender 
     //can use in html isLiked but before slide change states not fixed so first 
     //side wont toggle on/off properly
@@ -202,7 +66,7 @@ console.log("*******",allowToggleOff)
 
                 {loggedInUser ?
                     <div className="favBox">
-                        <FavHeartIcon isLiked={checkIfFavourites()} toggleFav={toggleFav} />
+                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setLiked={setLiked}/>
 
                         <div className="favTotal">
                             <p >
@@ -210,7 +74,7 @@ console.log("*******",allowToggleOff)
                             </p>
                         </div >
                         <div className="cooKbook">
-                            <CookBookIcon isLiked={checkIfFavourites()} toggleCookBookEntry={toggleBookEntry} cookBookName={cookBookName}/>
+                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setLiked={setLiked} cookBookName={cookBookName}/>
                         </div>
                     </div>
                     :

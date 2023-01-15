@@ -166,7 +166,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
 
             <Container>
                 <b>books</b>
-                {<p>{loggedInUser?.books?.map((e)=>{return <p>{e.bookName}</p>})}</p>}
+                {loggedInUser?.books?.map((e,index)=>{return <p key={index}>{e.bookName}</p>})}
             </Container>
         </Container>
     );
