@@ -1,0 +1,163 @@
+.banner {
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.banner img {
+    width: 100%;
+    max-height: 150px;
+    ;
+}
+
+.avatarOverlay {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    z-index: 10;
+    width: 20%;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.profileCard {
+    flex: 0 0 50%;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.profileCard button {
+    width: 100%;
+    border-radius: 0px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 50%;
+}
+
+#userProfileCard {
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 100%;
+
+}
+
+.FlexRowTwo {
+    display: flex;
+    flex-direction: row;
+}
+
+.favs {
+    flex: 0 1 50%;
+}
+
+#userProfileCard {
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 100%
+}
+
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 40px;
+}
+
+.cardRow p,
+.cardRow input {
+    flex: 1 1 35%;
+    padding: 5px 15px;
+    text-align: left;
+    min-width: 100px;
+}
+
+.cardRow p:first-child {
+    flex: 0 1 30%;
+    padding: 5px 15px;
+    text-align: left;
+}
+
+.cardRow img {
+    padding: 0 5px;
+    max-width: 100%;
+    max-height: 100%;
+cursor: pointer;
+
+}
+
+#userProfileCard button {
+    margin: 20px 0;
+    align-self: center;
+   
+}
+
+.deleteButton {
+    color: red;
+    background-color: none;
+    text-align: left;
+    font-size: 0.8em;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.center,
+.actions {
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    align-content: center;
+}
+
+.favsContainer {
+    flex: 1 1 50%;
+    min-height: 300px;
+    background-color: rgb(238, 176, 176);
+}
+.favList {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    max-height:50vh;
+}
+.onefavContainer {
+    background-color: aqua;
+    margin:10px;
+    cursor: pointer;
+    width:100px;
+    height:150px;
+}
+.bookShelf {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 300px;
+    background-color: rgb(176, 238, 213);
+}
+.bookShelfTitle {
+    margin:auto;
+    padding:8px 24px;
+    margin-top:20px;
+}
+.book {
+    width: 100px;
+    height: 150px;
+    background-color: blue;
+    margin:10px;
+    cursor: pointer;
+
+}
