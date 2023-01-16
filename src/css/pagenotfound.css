@@ -8,14 +8,14 @@
 	margin-top: 100px;
 }
 
-h3,
+/* h3,
 h4 {
 	font-family: "Libre Baskerville", serif;
 	font-weight: bold;
 	font-size: 25px;
 	display: flex;
 	justify-content: center;
-}
+} */
 
 .width {
 	flex-direction: column;
