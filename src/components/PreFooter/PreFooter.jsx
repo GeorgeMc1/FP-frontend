@@ -1,6 +1,6 @@
 import React from "react";
 import { PreFooterContainer } from "./PreFooter.styles";
-import ImageStrapLine from "./ImageStrapLine";
+// import ImageStrapLine from "./ImageStrapLine";
 import PreFooterLeft from "./PreFooterLeft";
 import PreFooterRight from "./PreFooterRight";
 import SocialsStrap from "./SocialsStrap";
@@ -12,7 +12,7 @@ const PreFooter = () => {
     return (
 
         <PreFooterContainer>
-            <ImageStrapLine />
+            {/* <ImageStrapLine /> */}
             <div id="column">
                 <PreFooterLeft />
                 <PreFooterRight />
