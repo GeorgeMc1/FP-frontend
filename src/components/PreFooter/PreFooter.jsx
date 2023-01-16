@@ -21,4 +21,4 @@ const PreFooter = () => {
         </PreFooterContainer>)
 }
 
-export default PreFooter;
+export default PreFooter
