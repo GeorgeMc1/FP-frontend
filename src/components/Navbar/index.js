@@ -1,19 +1,17 @@
 import React from "react";
-import { Nav, NavLink ,NavIconLink} from "./NavbarElements";
+import { Nav, NavLink, NavIconLink } from "./NavbarElements";
 import logo from "../../assets/images/logo.png";
 import "../../css/navBar.css";
 
 const Navbar = ({ loggedInUser, setter, recipe }) => {
-  return (
-    <Nav>
-      <NavIconLink to='/'>
-            <img alt="logo" src={logo} />
-          </NavIconLink>
-      <NavLink to='/hpblocks'>
-        <h1>demo</h1>
-      </NavLink>
+	return (
+		<Nav>
+			<NavIconLink to='/'>
+				<img alt="logo" src={logo} />
+			</NavIconLink>
 
-			<NavLink to="/SearchRecipes">Search Recipes</NavLink>
+
+			<NavLink to="/SearchRecipes">Search</NavLink>
 
 			{recipe ? <NavLink to="/ViewRecipie">View Recipie</NavLink> : null}
 

@@ -16,6 +16,11 @@
 		rgb(0 0 0 / 9%) 0px -3px 5px;
 }
 
+.message {
+	text-align: center;
+	margin: 0;
+}
+
 #signupContainer img {
 	width: 30%;
 }

@@ -55,10 +55,12 @@ const BottomSecContainer = styled.div`
     }
     .info{
         width: 100%;
+        height: 335px;
+        overflow-y: auto;
         .input{
             margin: 5px;
             width: calc(100% - 10px);
-            min-height: 200px;
+            height: 90%;
             resize: none;
         }
     }

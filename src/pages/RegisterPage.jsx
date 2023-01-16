@@ -55,7 +55,7 @@ const RegisterPage = ({ setJWT, setter }) => {
     return (
         <PageContainer id="registerPage">
             <div className="error"> {errMsg}</div>
-            <h6>Welcome to FoodBoard! Please fill the form to create your account</h6>
+            <h6 className="message">Welcome to FoodBoard! Please fill the form to create your account</h6>
             <div id="signupContainer">
                 <img src={image} alt="signup"/>
                 <form id="registerPageForm" onSubmit={submitHandler}>

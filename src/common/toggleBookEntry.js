@@ -5,7 +5,7 @@ import { getBook } from "./getBook"
 export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName) => {
     if (loggedInUser) {
         let obj = {};
-        let bookname = cookBookName || "demoBook"
+        let bookname = cookBookName || "xmas"
         let galleryItemsRecipe = recipe;
         let currentBook = await getBook(bookname, loggedInUser);
 

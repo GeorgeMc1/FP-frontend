@@ -156,12 +156,10 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                         }
                     })
                 }
-                <button onClick={(e) => onDeleteHandler()}>Delete Account</button>
+                <div className="deleteButton" onClick={(e) => onDeleteHandler()}>Delete Account</div>
             </Container>
 
-            <Container>
-                <p>{loggedInUser.favRecipes?.length} favorites</p>
-            </Container>
+           
 
         </Container>
     );

@@ -5,7 +5,6 @@ const NutritionalList = ({ data }) => {
     console.debug(data)
     return (
         <InfoContainer>
-            <h2>Nutritional List</h2>
             <div id="nutrition">
                 <ul>
                     {data.map((item, i) => {

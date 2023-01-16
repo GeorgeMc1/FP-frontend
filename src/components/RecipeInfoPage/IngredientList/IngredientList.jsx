@@ -20,7 +20,6 @@ const IngredientList = ({ data, cautions }) => {
             :
                 null
             }
-            <h2>Ingredients</h2>
             <ul>
                 {data.map((item, i) => {
                     return(

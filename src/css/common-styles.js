@@ -11,18 +11,12 @@ export const FlexContainerColumn = styled.div`
 export const PageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
 	width: 100%;
 	margin: 0 auto;
 	margin-top: 50px;
-
 	h2 {
 		text-align: center;
-	}
-
-	h6 {
-		margin: 0;
 	}
 `;
 
