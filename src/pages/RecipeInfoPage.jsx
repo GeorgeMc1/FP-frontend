@@ -1,9 +1,9 @@
 import { PageContainer } from "../css/common-styles"
 import React from 'react';
-import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
-import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
+import styled from "styled-components";
+import InfoBottomSec from "../components/RecipeInfoPage/InfoBottomSec";
 
 const RecipeInfoPage = ({ data }) => {
     console.log("inside recipieinfopage");
@@ -22,22 +22,30 @@ const RecipeInfoPage = ({ data }) => {
     const timeToPlate = data.recipe.totalTime;
     const serves = data.recipe.yield;
     const mealType = data.recipe.mealType;
+    const recipeLink = data.recipe.url;
     //theres still more
 
     return (
         <PageContainer id="recipeInfoPage">
             <h2>{data.recipe.label}</h2>
-            <RecipieImage data={images}></RecipieImage>
-            <IngredientList data={ingLines} cautions={cautions}></IngredientList>
-            <RecipeInfoPageAction
-                timeToPlate={timeToPlate}
-                cuisineType={cuisineType}
-                dishType={dishType}
-                mealType={mealType}
-                serves={serves}>
-            </RecipeInfoPageAction>
-            <NutritionalList data={digest}></NutritionalList>
+            <TopRow>
+                <RecipieImage data={images}></RecipieImage>
+                <RecipeInfoPageAction
+                    timeToPlate={timeToPlate}
+                    cuisineType={cuisineType}
+                    dishType={dishType}
+                    mealType={mealType}
+                    serves={serves}
+                    link={recipeLink}>
+                </RecipeInfoPageAction>
+            </TopRow>
+            <InfoBottomSec ingLines={ingLines} cautions={cautions} digest={digest}/>
         </PageContainer>
     );
 };
+
+const TopRow = styled.div`
+    display: flex;
+    justify-content: center;
+`
 export default RecipeInfoPage;
