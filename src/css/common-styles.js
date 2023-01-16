@@ -14,8 +14,7 @@ export const PageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	max-width: 1000px;
-	width:90%;
+	width:100%;
 	margin: 0 auto;
 	margin-top:50px;
 
