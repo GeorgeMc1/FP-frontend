@@ -22,8 +22,8 @@ dd {
 	margin: 0;
 }
 
-#loginPageForm,
-#recipe-search {
+#recipe-search,
+#registerPageForm {
 	background-color: wheat;
 	width: 100%;
 	display: flex;
