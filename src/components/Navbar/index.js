@@ -1,6 +1,6 @@
 import React from "react";
-import { Nav, NavLink } from "./NavbarElements";
-import Logo from "../../assets/images/logo.png";
+import { Nav, NavLink ,NavIconLink} from "./NavbarElements";
+import logo from "../../assets/images/logo.png";
 import "../../css/navBar.css";
 
 const Navbar = ({ loggedInUser, setter, recipe }) => {
