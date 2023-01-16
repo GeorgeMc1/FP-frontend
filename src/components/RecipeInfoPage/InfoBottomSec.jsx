@@ -60,7 +60,7 @@ const BottomSecContainer = styled.div`
         .input{
             margin: 5px;
             width: calc(100% - 10px);
-            min-height: 200px;
+            height: 90%;
             resize: none;
         }
     }
