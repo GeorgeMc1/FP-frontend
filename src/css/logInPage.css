@@ -53,6 +53,7 @@
 	max-width: 300px;
 	text-align: center;
 	font-size: 1rem;
+	margin: 0 auto;
 }
 
 #loginPageForm {
