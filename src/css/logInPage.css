@@ -78,3 +78,9 @@
 	/* border: 1px solid #90c3a3; */
 	border-radius: 3px;
 }
+
+@media (max-width: 600px) {
+	#loginImage{
+		display: none;
+	}
+}

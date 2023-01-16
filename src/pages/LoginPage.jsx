@@ -23,7 +23,7 @@ const LoginPage = ({ setJWT, action, setter, jwt, setforcelogin }) => {
     return (
         <PageContainer id="loginContainer">
             <div id="loginPage">
-                <img src={image} alt="login"/>
+                <img src={image} alt="login" id="loginImage"/>
                 <div id="formContainer">
                     <h3 id="loginHeader">Please Enter Your Username and Password to Login to Your FoodBoard</h3>
                     <form id="loginPageForm" onSubmit={submitHandler}>
