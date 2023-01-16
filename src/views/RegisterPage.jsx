@@ -1,4 +1,4 @@
-
+import "../css/registerpage.css"
 import { PageContainer } from "../css/common-styles";
 import "../css/common.css"
 import { useState } from "react";
@@ -101,7 +101,7 @@ const RegisterPage = () => {
                     }} type="password" required />
 
 
-                    <button type="submit" >Create</button>
+                    <button class="button" type="submit" >Create</button>
                 </form>
             </>
         </PageContainer>
