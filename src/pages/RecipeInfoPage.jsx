@@ -1,23 +1,25 @@
 import { PageContainer } from "../css/common-styles"
 import React from 'react';
-import IngredientList from "../components/RecipeInfoPage/IngredientList/IngredientList";
-import NutritionalList from "../components/RecipeInfoPage/NutritionalList/NutritionalList";
 import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 import FavHeartIcon from "../components/FavHeartIcon/FavHeartIcon";
 import { toggleFav } from "../common/toggleFav";
-
+import styled from "styled-components";
+import InfoBottomSec from "../components/RecipeInfoPage/InfoBottomSec";
 
 const RecipeInfoPage = ({ data,loggedInUser,jwt,setCurrentRecipeLiked, currentRecipeLiked}) => {
 
     const checkIfFavourites = () => {
+        if (loggedInUser){
         //match if logged in user favourites contains the recipie.self 
         let match = loggedInUser.favRecipes.includes(data._links.self.href)
         console.log("match in favs =", match)
         return match
+        }
     }
 
  
+
 
 
     console.log("inside recipieinfopage");
@@ -36,6 +38,7 @@ const RecipeInfoPage = ({ data,loggedInUser,jwt,setCurrentRecipeLiked, currentRe
     const timeToPlate = data.recipe.totalTime;
     const serves = data.recipe.yield;
     const mealType = data.recipe.mealType;
+    const recipeLink = data.recipe.url;
     //theres still more
 
     return (
@@ -59,7 +62,24 @@ const RecipeInfoPage = ({ data,loggedInUser,jwt,setCurrentRecipeLiked, currentRe
                 serves={serves}>
             </RecipeInfoPageAction>
             <NutritionalList data={digest}></NutritionalList>
+            <TopRow>
+                <RecipieImage data={images}></RecipieImage>
+                <RecipeInfoPageAction
+                    timeToPlate={timeToPlate}
+                    cuisineType={cuisineType}
+                    dishType={dishType}
+                    mealType={mealType}
+                    serves={serves}
+                    link={recipeLink}>
+                </RecipeInfoPageAction>
+            </TopRow>
+            <InfoBottomSec ingLines={ingLines} cautions={cautions} digest={digest}/>
         </PageContainer>
     );
 };
+
+const TopRow = styled.div`
+    display: flex;
+    justify-content: center;
+`
 export default RecipeInfoPage;

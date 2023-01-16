@@ -1,6 +1,8 @@
-import React from 'react'
-import { Nav, NavLink ,NavIconLink} from './NavbarElements';
-import logo from "../../assets/images/logo.png"
+import React from "react";
+import { Nav, NavLink } from "./NavbarElements";
+import Logo from "../../assets/images/logo.png";
+import "../../css/navBar.css";
+
 const Navbar = ({ loggedInUser, setter, recipe }) => {
   return (
     <Nav>
@@ -11,33 +13,27 @@ const Navbar = ({ loggedInUser, setter, recipe }) => {
         <h1>demo</h1>
       </NavLink>
 
-      <NavLink to='/SearchRecipes' >Search Recipes</NavLink>
+			<NavLink to="/SearchRecipes">Search Recipes</NavLink>
 
-      {
-        recipe
-          ?
-          <NavLink to='/ViewRecipie' >View Recipie</NavLink>
-          :
-          null
-      }
+			{recipe ? <NavLink to="/ViewRecipie">View Recipie</NavLink> : null}
 
-      {
-        loggedInUser
-          ?
-          <>
-            <NavLink to='/UserProfile' >UserProfile</NavLink>
-            <NavLink to='/logout' action="logout" >Logout</NavLink>
-          </>
-          :
-          <>
-          <NavLink to='/SignUp' >Sign Up</NavLink>
-          <NavLink to='/login' action="login">Login</NavLink>
-          
-          </>
-      }
-
-    </Nav>
-  );
+			{loggedInUser ? (
+				<>
+					<NavLink to="/UserProfile">UserProfile</NavLink>
+					<NavLink to="/logout" action="logout">
+						Logout
+					</NavLink>
+				</>
+			) : (
+				<>
+					<NavLink to="/SignUp">Sign Up</NavLink>
+					<NavLink to="/login" action="login">
+						Login
+					</NavLink>
+				</>
+			)}
+		</Nav>
+	);
 };
 
 export default Navbar;
