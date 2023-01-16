@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage";
+import HomepageScaff from "./pages/HomePageScaff";
 import LoginPage from "./pages/LoginPage";
 import { authCheck } from "./utils";
 import LogOutPage from "./pages/LogOutPage";
@@ -17,6 +18,7 @@ import Footer from "./components/Footer";
 
 // import cookie functions
 import { getCookie } from "./common";
+import PreFooter from "./components/PreFooter/PreFooter";
 
 function App() {
 	const [jwt, setJWT] = useState();
@@ -24,6 +26,7 @@ function App() {
 	const [searchResults, setSearchResults] = useState();
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
+	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
 
 	// set state to update user and cookie
 	// const [cookie, setCookie] = useState();
@@ -62,7 +65,7 @@ function App() {
 			/>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-
+				<Route path="/hpblocks" element={<HomepageScaff />} />
 				<Route
 					path="/searchRecipes"
 					element={
@@ -74,13 +77,21 @@ function App() {
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
 							jwt={jwt}
+							currentRecipeLiked={currentRecipeLiked}
+							 setCurrentRecipeLiked={setCurrentRecipeLiked}
 						/>
 					}
 				/>
 				{recipe ? (
 					<Route
 						path="/viewRecipie"
-						element={<RecipeInfoPage data={recipe} />}
+						element={<RecipeInfoPage
+							data={recipe}
+							jwt={jwt}
+							loggedInUser={loggedInUser}
+							currentRecipeLiked={currentRecipeLiked}
+							 setCurrentRecipeLiked={setCurrentRecipeLiked}
+						/>}
 					/>
 				) : null}
 
@@ -104,6 +115,7 @@ function App() {
 								setLoggedInUser={setLoggedInUser}
 								jwt={jwt}
 								setJWT={setJWT}
+								setSearchResults={setSearchResults}
 							/>
 						) : (
 							<Homepage />
@@ -137,6 +149,7 @@ function App() {
 
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
+			<PreFooter />
 			<Footer />
 		</BrowserRouter>
 	);

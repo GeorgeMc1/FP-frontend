@@ -1,10 +1,11 @@
 body {
 	font-family: "Libre Baskerville", serif;
-	background-color: aquamarine;
+	background-color: #F1f9F8;
 	margin-bottom: 100px;
+	min-height:150vh;
 }
 button {
-	background-color: rgb(18, 122, 187);
+	background-color:#C2FBD7;
 	border: 2px solid whitesmoke;
 	padding: 5px;
 	text-align: center;
@@ -37,10 +38,30 @@ button {
 	color: aliceblue;
 }
 
-
+#homepage {
+	margin:70px auto;
+}
 .temp {
 	position:absolute;
 	top:0;
 	left:0;
 	z-index:-10
+}
+
+.temp {
+	position:absolute;
+	top:60px;
+	left:0;
+	z-index:-10
+}
+
+#demo {
+	border:1px solid red;
+	padding:2px;
+	
+}
+.level1 {
+	background:rgb(157, 235, 157);
+	border:1px dashed red;
+	margin:4px;
 }

@@ -5,19 +5,26 @@ import ResultsCounter from "../components/ResultCounter/ResultCounter";
 import { PageContainer, ContainerFlexedColumn, GalleryContainer } from "../css/common-styles";
 import "../css/recipeSearchPage.css"
 
-const RecipeSearchPage = ({ jwt,searchResults, setSearchResults, setRecipe, setIndexMemory, galleryIndexMemory,loggedInUser }) => {
-
+const RecipeSearchPage = ({ currentRecipeLiked, setCurrentRecipeLiked, jwt, searchResults, setSearchResults, setRecipe, setIndexMemory, galleryIndexMemory, loggedInUser }) => {
+console.log(setCurrentRecipeLiked)
     return (
         <PageContainer className="RecipeSearchPage">
             {!searchResults ?
                 <ContainerFlexedColumn>
-                    <RecipeSearchForm setSearchResults={setSearchResults} loggedInUser={loggedInUser}/>
+                    <RecipeSearchForm setSearchResults={setSearchResults} loggedInUser={loggedInUser} />
                     <ResultsCounter count={searchResults?.count || null}></ResultsCounter>
                 </ContainerFlexedColumn> :
                 <ContainerFlexedColumn>
                     <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
                     <GalleryContainer>
-                        <RecipeGallery jwt={jwt} searchResults={searchResults} setRecipe={setRecipe} setIndexMemory={setIndexMemory} galleryIndexMemory={galleryIndexMemory} loggedInUser={loggedInUser}></RecipeGallery>
+                        <RecipeGallery jwt={jwt}
+                            currentRecipeLiked={currentRecipeLiked}
+                            setCurrentRecipeLiked={setCurrentRecipeLiked}
+                            searchResults={searchResults}
+                            setRecipe={setRecipe}
+                            setIndexMemory={setIndexMemory}
+                            galleryIndexMemory={galleryIndexMemory}
+                            loggedInUser={loggedInUser}></RecipeGallery>
                     </GalleryContainer>
                 </ContainerFlexedColumn>
             }
