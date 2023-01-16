@@ -1,6 +1,7 @@
 
 import { PageContainer } from "../css/common-styles";
 import "../css/common.css"
+import "../css/registerPage.css"
 import { useState } from "react";
 import { createUser } from "../../src/utils"
 import { useNavigate } from "react-router-dom";
