@@ -29,15 +29,14 @@ const RecipeInfoPage = ({ data }) => {
         <PageContainer id="recipeInfoPage">
             <h2>{data.recipe.label}</h2>
             <TopRow>
-                <RecipieImage data={images}></RecipieImage>
+                <RecipieImage data={images}/>
                 <RecipeInfoPageAction
                     timeToPlate={timeToPlate}
                     cuisineType={cuisineType}
                     dishType={dishType}
                     mealType={mealType}
                     serves={serves}
-                    link={recipeLink}>
-                </RecipeInfoPageAction>
+                    link={recipeLink}/>
             </TopRow>
             <InfoBottomSec ingLines={ingLines} cautions={cautions} digest={digest}/>
         </PageContainer>
