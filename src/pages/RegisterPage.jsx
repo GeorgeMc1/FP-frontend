@@ -1,10 +1,13 @@
 
 import { PageContainer } from "../css/common-styles";
 import "../css/common.css"
+import "../css/registerPage.css"
 import { useState } from "react";
 import { createUser } from "../../src/utils"
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../utils";
+import image from "../assets/images/form-img.png";
+
 
 const RegisterPage = ({ setJWT, setter }) => {
 
@@ -51,59 +54,62 @@ const RegisterPage = ({ setJWT, setter }) => {
 
     return (
         <PageContainer id="registerPage">
-            <h2>Register</h2>
             <div className="error"> {errMsg}</div>
-            <form id="registerPageForm" onSubmit={submitHandler}>
-                <label>First Name</label>
-                <input
-                    onChange={(event) => {
-                        setObj(obj => (
-                            {
-                                ...obj,
-                                "firstname": event.target.value
-                            }
-                        ))
-                    }} type="text" required />
-                <label>Surname</label>
-                <input
-                    onChange={(event) => {
-                        setObj(obj => (
-                            {
-                                ...obj,
-                                "lastname": event.target.value
-                            }
-                        ))
-                    }} type="text" />
-                <label>username</label>
-                <input
-                    onChange={(event) => {
-                        setObj(obj => (
-                            {
-                                ...obj,
-                                "username": event.target.value
-                            }
-                        ))
-                    }} type="text" required />
-                <label>Email</label>
-                <input onChange={(event) => {
-                    setObj(obj => (
-                        {
-                            ...obj,
-                            "email": event.target.value
-                        }
-                    ))
-                }} type="text" required />
-                <label>password</label>
-                <input onChange={(event) => {
-                    setObj(obj => (
-                        {
-                            ...obj,
-                            "password": event.target.value
-                        }
-                    ))
-                }} type="password" required />
-                <button type="submit" >Create</button>
-            </form>
+            <h3 className="message">Welcome to FoodBoard! Please fill the form to create your account</h3>
+            <div id="signupContainer">
+                <img src={image} alt="signup"/>
+                <form id="registerPageForm" onSubmit={submitHandler}>
+                        <label>First Name</label>
+                        <input
+                            onChange={(event) => {
+                                setObj(obj => (
+                                    {
+                                        ...obj,
+                                        "firstname": event.target.value
+                                    }
+                                ))
+                            }} type="text" required />
+                        <label>Surname</label>
+                        <input
+                            onChange={(event) => {
+                                setObj(obj => (
+                                    {
+                                        ...obj,
+                                        "lastname": event.target.value
+                                    }
+                                ))
+                            }} type="text" />
+                        <label>username</label>
+                        <input
+                            onChange={(event) => {
+                                setObj(obj => (
+                                    {
+                                        ...obj,
+                                        "username": event.target.value
+                                    }
+                                ))
+                            }} type="text" required />
+                        <label>Email</label>
+                        <input onChange={(event) => {
+                            setObj(obj => (
+                                {
+                                    ...obj,
+                                    "email": event.target.value
+                                }
+                            ))
+                        }} type="text" required />
+                        <label>password</label>
+                        <input onChange={(event) => {
+                            setObj(obj => (
+                                {
+                                    ...obj,
+                                    "password": event.target.value
+                                }
+                            ))
+                        }} type="password" required />
+                        <button className="signUp-btn" type="submit" >Create</button>
+                </form>
+            </div>
         </PageContainer>
     );
 };
