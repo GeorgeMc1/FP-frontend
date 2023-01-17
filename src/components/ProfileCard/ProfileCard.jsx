@@ -122,7 +122,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             // else display edit cog icons
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
@@ -147,7 +147,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             //else display editcog icon
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
