@@ -9,6 +9,7 @@ import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import { toggleFav } from '../../common/toggleFav';
 import { toggleBookEntry } from '../../common/toggleBookEntry';
 import BookChanger from '../BookChanger/BookChanger';
+import FavBookBar from '../FavBookBar/FavBookBar';
 
 //https://www.npmjs.com/package/react-responsive-carousel
 
@@ -68,24 +69,37 @@ const RecipeGallery = ({ jwt,
             <div className="Carousel" >
 
                 {loggedInUser ?
-                    <div className="favBox">
-                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
-                        <div className="favTotal">
-                            <p >
-                                {galleryIndex}
-                            </p>
-                        </div >
-                        <div className="cooKbook">
-                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
-                        </div>
-                        <div className="bookchanger" >
+                    // <div className="favBox">
+                    //     <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
+                    //     <div className="favTotal">
+                    //         <p >
+                    //             {galleryIndex}
+                    //         </p>
+                    //     </div >
+                    //     <div className="cooKbook">
+                    //         <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
+                    //     </div>
+                    //     <div className="bookchanger" >
 
-                            <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
-                        </div>
-                    </div>
+                    //         <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
+                    //     </div>
+                    // </div>
+                    <FavBookBar 
+                    loggedInUser={loggedInUser}
+                    galleryIndex={galleryIndex}  
+                    setSearchResults={setSearchResults} 
+                    setIndexMemory={setIndexMemory}
+                    jwt={jwt}
+                    searchResults={searchResults}
+                    setCurrentRecipeLiked={setCurrentRecipeLiked}
+                    setCookBookName={setCookBookName} 
+                    cookBookName={cookBookName} 
+                    />
                     :
                     <div className="favBox">
+
                     </div>
+
                 }
 
                 <Carousel
