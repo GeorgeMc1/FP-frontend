@@ -47,7 +47,9 @@ export const updateUser = async (obj, token) => {
 				body: JSON.stringify(obj)
 			}
 		);
-		return await response.json();
+		let data = await response.json();
+		console.log(data);
+		return data;
 	} catch (error) {
 		console.log(error);
 	}

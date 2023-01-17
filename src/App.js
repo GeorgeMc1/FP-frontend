@@ -28,6 +28,8 @@ function App() {
 	const [galleryIndexMemory, setIndexMemory] = useState();
 	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
 	const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
+	const [isRecipeFaved, setIsRecipeFaved] = useState(false);
+	const [isRecipeInCurrentBook, setIsRecipeInCurrentBook] = useState(false);
 	// set state to update user and cookie
 	// const [cookie, setCookie] = useState();
 	// const [user, setUser] = useState();
@@ -78,9 +80,14 @@ function App() {
 							loggedInUser={loggedInUser}
 							jwt={jwt}
 							currentRecipeLiked={currentRecipeLiked}
-							 setCurrentRecipeLiked={setCurrentRecipeLiked}
-							 cookBookName={cookBookName}
-							 setCookBookName={setCookBookName}
+							setCurrentRecipeLiked={setCurrentRecipeLiked}
+							cookBookName={cookBookName}
+							setCookBookName={setCookBookName}
+							isRecipeFaved={isRecipeFaved}
+							setIsRecipeFaved={setIsRecipeFaved}
+							isRecipeInCurrentBook={isRecipeInCurrentBook}
+							setIsRecipeInCurrentBook={setIsRecipeInCurrentBook}
+							recipe={recipe}
 						/>
 					}
 				/>
@@ -97,11 +104,14 @@ function App() {
                 			setCurrentRecipeLiked={setCurrentRecipeLiked}
                 			setCookBookName={setCookBookName}
                 			cookBookName={cookBookName}
+							isRecipeFaved={isRecipeFaved}
+							setIsRecipeFaved={setIsRecipeFaved}
+							isRecipeInCurrentBook={isRecipeInCurrentBook}
+							setIsRecipeInCurrentBook={setIsRecipeInCurrentBook}
+							recipe={recipe}
 						/>}
 					/>
 				) : null}
-
-
 				<Route
 					path="/SignUp"
 					element={

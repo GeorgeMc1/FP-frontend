@@ -16,7 +16,12 @@ const RecipeInfoPage = ({
     searchResults,
     setCurrentRecipeLiked,
     setCookBookName,
-    cookBookName
+    cookBookName,
+    isRecipeFaved,
+    setIsRecipeFaved,
+    isRecipeInCurrentBook,
+    setIsRecipeInCurrentBook,
+    recipe
 }) => {
     console.log("inside recipieinfopage");
     console.debug(data);
@@ -48,10 +53,15 @@ const RecipeInfoPage = ({
                         setSearchResults={setSearchResults}
                         setIndexMemory={setIndexMemory}
                         jwt={jwt}
-                        searchResults={searchResults}
+                        searchResults={data}
                         setCurrentRecipeLiked={setCurrentRecipeLiked}
                         setCookBookName={setCookBookName}
-                        cookBookName={cookBookName}/>
+                        cookBookName={cookBookName}
+                        isRecipeFaved={isRecipeFaved}
+						setIsRecipeFaved={setIsRecipeFaved}
+						isRecipeInCurrentBook={isRecipeInCurrentBook}
+						setIsRecipeInCurrentBook={setIsRecipeInCurrentBook}
+                        recipe={recipe}/>
                     <RecipieImage data={images}/>
                 </div>
                 <RecipeInfoPageAction

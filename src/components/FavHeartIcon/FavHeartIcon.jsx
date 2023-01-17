@@ -1,8 +1,5 @@
-
 import heart from "../../assets/images/heartFilled.png"
 import heartOutline from "../../assets/images/heartOutlineTran.png"
-
-
 /**
  * 描述
  * @date 2023-01-15
@@ -14,10 +11,20 @@ import heartOutline from "../../assets/images/heartOutlineTran.png"
  * @param {any} toggleFav}
  * @returns {any}
  */
-const FavHeartIcon = ({ isLiked, loggedInUser,jwt,setCurrentRecipeLiked,recipe, toggleFav }) => {
+const FavHeartIcon = ({
+  isLiked,
+  loggedInUser,
+  jwt,
+  setCurrentRecipeLiked,
+  recipe,
+  toggleFav,
+  isRecipeFaved,
+  setIsRecipeFaved,
+  isRecipeInCurrentBook,
+  setIsRecipeInCurrentBook
+}) => {
   return (
-      <div className="favHeart" onClick={()=>toggleFav(true,loggedInUser,recipe,setCurrentRecipeLiked,jwt)}>
-
+      <div className="favHeart" onClick={()=>toggleFav(true,loggedInUser,recipe,setIsRecipeFaved,jwt)}>
         {isLiked ?
           <img className="favHeartImg" alt="favouriting icon" src={heart} />
           :

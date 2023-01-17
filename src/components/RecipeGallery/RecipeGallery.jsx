@@ -17,8 +17,12 @@ const RecipeGallery = ({ jwt,
     setIndexMemory,
     cookBookName,
     setCookBookName,
-    loggedInUser }) => {
-
+    loggedInUser,
+    isRecipeFaved,
+    setIsRecipeFaved,
+    isRecipeInCurrentBook,
+    setIsRecipeInCurrentBook
+}) => {
     const navigate = useNavigate();
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
 
@@ -56,46 +60,30 @@ const RecipeGallery = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (loggedInUser) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
+    if (loggedInUser) console.log("isliked", isRecipeFaved)
     return (
         <>
-
             <div className="Carousel" >
-
                 {loggedInUser ?
-                    // <div className="favBox">
-                    //     <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
-                    //     <div className="favTotal">
-                    //         <p >
-                    //             {galleryIndex}
-                    //         </p>
-                    //     </div >
-                    //     <div className="cooKbook">
-                    //         <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
-                    //     </div>
-                    //     <div className="bookchanger" >
-
-                    //         <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
-                    //     </div>
-                    // </div>
-                    <FavBookBar 
-                    loggedInUser={loggedInUser}
-                    galleryIndex={galleryIndex}  
-                    setSearchResults={setSearchResults} 
-                    setIndexMemory={setIndexMemory}
-                    jwt={jwt}
-                    searchResults={searchResults}
-                    setCurrentRecipeLiked={setCurrentRecipeLiked}
-                    setCookBookName={setCookBookName} 
-                    cookBookName={cookBookName} 
-                    />
+                    <FavBookBar
+                        loggedInUser={loggedInUser}
+                        galleryIndex={galleryIndex}
+                        setSearchResults={setSearchResults}
+                        setIndexMemory={setIndexMemory}
+                        jwt={jwt}
+                        searchResults={searchResults}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}
+                        isRecipeFaved={isRecipeFaved}
+						setIsRecipeFaved={setIsRecipeFaved}
+						isRecipeInCurrentBook={isRecipeInCurrentBook}
+						setIsRecipeInCurrentBook={setIsRecipeInCurrentBook}/>
                     :
                     <div className="favBox">
 
                     </div>
-
                 }
-
                 <Carousel
                     selectedItem={galleryIndex >= searchResults?.hits.length ? galleryIndex : 0}
                     // infiniteLoop={true}

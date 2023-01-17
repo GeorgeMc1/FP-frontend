@@ -29,60 +29,35 @@ export const toggleFav = async (allowToggleOff = true, loggedInUser, recipe, set
             let obj = {};
             let response;
             let newFavs;
-            console.log(`
-    **********************************
-    *    start    toggleFav          *
-    **********************************/n`)
-            console.log("*******", allowToggleOff)
-
             //favourites
             let match = loggedInUser.favRecipes.includes(recipe._links.self.href)
-            console.log("match in favs?", match)
             if (match && allowToggleOff) {
                 //unlike
-                console.debug("found in user favs - unfavouring")
-
                 newFavs = loggedInUser.favRecipes.filter(e => !e.includes(recipe._links.self.href))
-                console.debug("num favs", loggedInUser.favRecipes.length)
                 obj = {
                     "username": loggedInUser.username,
                     "key": "favRecipes",
                     "value": newFavs
                 }
                 response = await updateUser(obj, jwt)
-                setCurrentRecipeLiked(!match)
+                setCurrentRecipeLiked(false)
             } else if (!match) {
                 //like
-                console.debug("not in user favs - favouring")
-                console.debug("trying to favourite")
                 newFavs = [...loggedInUser.favRecipes, recipe._links.self.href]
-
                 obj = {
                     "username": loggedInUser.username,
                     "key": "favRecipes",
                     "value": newFavs
                 }
                 response = await updateUser(obj, jwt)
-                setCurrentRecipeLiked(!match)
+                setCurrentRecipeLiked(true)
+                console.log("*recipe liked*")
             }
-
-
             if (response?.success) {
-                console.log(newFavs)
-                console.log("insert")
                 loggedInUser.favRecipes = newFavs;
             }
-
-            console.log(loggedInUser)
-            let roughObjSize = JSON.stringify(loggedInUser).length;
-            console.log(roughObjSize)
-            console.log(`
-    **********************************************
-    *             end                            *
-    **********************************************\n`)
             return true
         } catch (e) {
-            console.log(e);
             return false;
         }
     }

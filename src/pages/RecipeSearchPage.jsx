@@ -15,8 +15,11 @@ const RecipeSearchPage = ({
     galleryIndexMemory, 
     loggedInUser, 
     cookBookName, 
-    setCookBookName
-
+    setCookBookName,
+    isRecipeFaved,
+    setIsRecipeFaved,
+    isRecipeInCurrentBook,
+    setIsRecipeInCurrentBook
 }) => {
     return (
         <PageContainer className="RecipeSearchPage">
@@ -39,8 +42,10 @@ const RecipeSearchPage = ({
                             loggedInUser={loggedInUser}
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
-                            
-                            ></RecipeGallery>
+                            isRecipeFaved={isRecipeFaved}
+							setIsRecipeFaved={setIsRecipeFaved}
+							isRecipeInCurrentBook={isRecipeInCurrentBook}
+							setIsRecipeInCurrentBook={setIsRecipeInCurrentBook}/>
                     </GalleryContainer>
                 </ContainerFlexedColumn>
             }
