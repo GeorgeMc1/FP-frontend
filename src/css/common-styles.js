@@ -18,6 +18,12 @@ export const PageContainer = styled.div`
 
 	h2 {
 		text-align: center;
+		
+	}
+	&#recipeInfoPage{
+		h2{
+			margin-bottom: 10px;
+		}
 	}
 `;
 

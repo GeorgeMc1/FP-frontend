@@ -15,7 +15,7 @@ const InfoBottomSec = ({ingLines, cautions, digest}) => {
                 <h3 className={nutrition ? "selected" : ""} onClick={() => {setNutrition(true); setIngredients(false); setNotes(false)}}>Nutritinal Info</h3>
                 <h3 className={notes ? "selected" : ""} onClick={() => {setNotes(true); setIngredients(false); setNutrition(false)}}>Notes</h3>
             </div>
-            <div className="info selected">
+            <div className="info">
                 {ingredients ?
                     <IngredientList data={ingLines} cautions={cautions}/>
                 : nutrition ?
@@ -51,16 +51,18 @@ const BottomSecContainer = styled.div`
         font-family: Poppins, sans-serif;
     }
     .selected{
-        background-color: white;
+        background-color: rgb(194, 251, 215);
     }
     .info{
         width: 100%;
-        height: 335px;
+        height: 355px;
         overflow-y: auto;
+        border-radius: 10px;
+        border: 10px solid rgb(194, 251, 215);
         .input{
             margin: 5px;
             width: calc(100% - 10px);
-            height: 90%;
+            height: 95%;
             resize: none;
         }
     }
