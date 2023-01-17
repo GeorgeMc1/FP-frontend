@@ -5,17 +5,19 @@ import ResultsCounter from "../components/ResultCounter/ResultCounter";
 import { PageContainer, ContainerFlexedColumn, GalleryContainer } from "../css/common-styles";
 import "../css/recipeSearchPage.css"
 
-const RecipeSearchPage = ({ 
-    currentRecipeLiked, 
-    setCurrentRecipeLiked, 
-    jwt, searchResults, 
-    setSearchResults, 
-    setRecipe, 
-    setIndexMemory, 
-    galleryIndexMemory, 
-    loggedInUser, 
-    cookBookName, 
-    setCookBookName
+const RecipeSearchPage = ({
+    currentRecipeLiked,
+    setCurrentRecipeLiked,
+    jwt, searchResults,
+    setSearchResults,
+    setRecipe,
+    setIndexMemory,
+    galleryIndexMemory,
+    loggedInUser,
+    cookBookName,
+    setCookBookName,
+    favList,
+    setFavList
 
 }) => {
     return (
@@ -39,8 +41,10 @@ const RecipeSearchPage = ({
                             loggedInUser={loggedInUser}
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
-                            
-                            ></RecipeGallery>
+                            favList={favList}
+							setFavList={setFavList}
+
+                        ></RecipeGallery>
                     </GalleryContainer>
                 </ContainerFlexedColumn>
             }

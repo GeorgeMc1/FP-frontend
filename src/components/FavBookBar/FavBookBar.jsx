@@ -6,49 +6,85 @@ import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
 
 const FavBookBar = ({
-     loggedInUser,
-     galleryIndex, 
+    loggedInUser,
+    galleryIndex,
     searchResults,
     setIndexMemory,
-    jwt,
-setSearchResults,
-
-
-setCurrentRecipeLiked,
-setCookBookName,
-cookBookName
-    
+    jwt, 
+    setSearchResults,
+    setCurrentRecipeLiked,
+    setCookBookName,
+    cookBookName,
+    favList,
+    setFavList,
+    //only sent from recipeinfopage
+    recipeObj
 }) => {
     const checkIfFavourites = () => {
-        if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0) }
-        if (loggedInUser && searchResults?.hits.length > 0) {
-            //match if logged in user favourites contains the recipie.self   
-            let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
+        if (!loggedInUser) { return false }
+        if (recipeObj) {
+         //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
+            let match = loggedInUser?.favRecipes.includes(recipeObj._links.self.href)
+           // console.log(match)
             return match
+        } else {
+           // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
+            if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); galleryIndex = 0 }
+
+            if (loggedInUser) {
+                //match if logged in user favourites contains the recipie.self   
+                let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
+                return match
+            }
         }
     }
     return (
         <>
-        {loggedInUser ?
-                    <div className="favBox">
-                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
-                        <div className="favTotal">
-                            <p >
-                                {galleryIndex}
-                            </p>
-                        </div >
-                        <div className="cooKbook">
-                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
-                        </div>
-                        <div className="bookchanger" >
+            {loggedInUser ?
+                <div className="favBox">
+                    <FavHeartIcon
+                        favList={favList}
+                        setFavList={setFavList}
+                        isLiked={checkIfFavourites()}
+                        loggedInUser={loggedInUser}
+                        toggleFav={toggleFav}
+                        recipe={
+                            recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                        }
+                        jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
+                    <div className="favTotal">
+                        <p >
+                            {galleryIndex}
+                        </p>
+                    </div >
+                    <div className="cooKbook">
+                        <CookBookIcon
+                            favList={favList}
+                            setFavList={setFavList}
+                            isLiked={checkIfFavourites()}
+                            updateFav={false}
+                            loggedInUser={loggedInUser}
+                            toggleCookBookEntry={toggleBookEntry}
+                            recipe={
+                                recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                            }
+                            jwt={jwt}
+                            setCurrentRecipeLiked={setCurrentRecipeLiked}
+                            cookBookName={cookBookName} />
+                    </div>
+                    <div className="bookchanger" >
 
-                            <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
-                        </div>
+                        <BookChanger
+                            setSearchResults={setSearchResults}
+                            setCookBookName={setCookBookName}
+                            cookBookName={cookBookName}
+                            loggedInUser={loggedInUser} />
                     </div>
-                    :
-                    <div className="favBox">
-                    </div>
-                }
+                </div>
+                :
+                <div className="favBox">
+                </div>
+            }
         </>
     )
 }
