@@ -1,31 +1,84 @@
 
 import "../css/homepage.css"
 import { PageContainer } from "../css/common-styles"
+import picture1 from "../assets/images/food.jpg"
 // import homepage from "../assets/images/Home-Page_.png"
 
 const Homepage = () => {
 
 
     return (
-    <PageContainer id="homepage">
-       
-        <nav className="navbar">
-            <div className="outer">
-                <div className="btn-group">                    
-                    <button className="btn-lg"><a className="homepageLink" href="/Login">Log in</a></button>
-                    <button className="btn-lg"><a className="homepageLink" href="/registerUser">Register</a></button>                
-                </div>
-                <div className="inner">
-                    <button className="btn-lg"><a className="homepageLink" href="/searchRecipes">Search recipe</a></button>
-                </div>
-                {/* <div>
-                    <img className ="temp" alt="temp" src={homepage} width="100%" position="absolute" top="0"/>
-                </div> */}
-            </div>
-        </nav>
-       
+        <PageContainer id="homepage">
 
-    </PageContainer>
+
+            <div id="demo">
+
+                <div className="signtext">
+                    <div className="btntext">
+                        <div className="">
+                            <p className="text">
+                                DON'T HAVE AN ACCOUNT YET? CLICK HERE AND START YOUR COOKING
+                                ADVENTURE WITH FOODBOARD
+                            </p>
+                        </div>
+                        <div className="topbtn">
+                            <button>
+                                SIGN UP
+                            </button>
+                        </div>
+                    </div >
+                    <div className="btntext">
+                        <div>
+                            <p className="text">
+                                OR CLICK HERE TO LOG IN
+                            </p>
+                        </div>
+                        <div className="topbtn">
+                            <button>
+                                LOG IN
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="level1">
+                    <p>most viewed recipes</p>
+                </div>
+
+                <div className="level2">
+                    <div >
+                        <img src={picture1} width="250px" alt="" />
+                        <div >
+                            text
+                        </div>
+                    </div>
+                    <div  >
+                        <img src={picture1} width="250px" alt="" />
+                        <div >
+                            text
+                        </div>
+                    </div>
+                    <div  >
+                        <img src={picture1} width="250px" alt="" />
+                        <div >
+                            text
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </PageContainer>
 
     );
 };
