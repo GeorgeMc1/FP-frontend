@@ -5,7 +5,7 @@ const RecipeImageContainer = styled.div`
     justify-content: center;
     align-items: center;
     img{
-        max-width: 250px;
+        border-radius: 10px;
     }
 `
 export default RecipeImageContainer;
