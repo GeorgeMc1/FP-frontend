@@ -49,18 +49,16 @@ const RecipeGallery = ({ jwt,
     }
 
     const checkIfFavourites = () => {
-        try {
-            if (loggedInUser) {
+        
+            if (loggedInUser && searchResultHits.length >0 ) {
                 //match if logged in user favourites contains the recipie.self 
                 console.log(`galleryIndex ${galleryIndex} searchresultshits `, searchResultHits)
                 if (galleryIndex >= searchResultHits.length) { setIndexMemory(0) }
-                let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
+                let match = loggedInUser?.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
                 console.log("match in favs =", match)
                 return match
             }
-        } catch (e) {
-            console.log("book likely empty", e, loggedInUser);
-        }
+        
 
     }
 
@@ -74,7 +72,7 @@ const RecipeGallery = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (loggedInUser) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
+    if (loggedInUser ) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
     return (
         <>
 
