@@ -56,9 +56,10 @@ const RecipeGallery = ({ jwt,
 
         if (loggedInUser && searchResults.hits.length > 0) {
             //match if logged in user favourites contains the recipie.self 
-            console.log(`galleryIndex ${galleryIndex} searchresultshits `, searchResults.hits)
+            
             if (galleryIndex >= searchResults.hits.length) { setIndexMemory(0) }
-            let match = loggedInUser?.favRecipes.includes(searchResults.hits[galleryIndex]._links.self.href)
+            console.log(`galleryIndex ${galleryIndex} searchresultshits `, searchResults.hits)
+            let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
             console.log("match in favs =", match)
             return match
         }
