@@ -12,16 +12,11 @@ box-shadow: rgba(0, 0, 0, 0.29) 0px 10px 20px, rgba(0, 0, 0, 0.33) 0px 8px 8px, 
     flex-direction:row;
     width:100%;
     margin:auto ;
-
-    // justify-self: center;
-    //align-self:center;
-    // justify-items: center;
     align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px -5px 5px -5px;
 
 
-    // border:1px dashed black; 
-
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 600px) {
     flex-direction:column;
   }
 }

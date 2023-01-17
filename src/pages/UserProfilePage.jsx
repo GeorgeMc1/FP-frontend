@@ -1,23 +1,70 @@
-import { PageContainer, Container } from "../css/common-styles"
-import React from "react";
+import { PageContainer } from "../css/common-styles"
+import React, { useState } from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard.jsx"
 import { getBook } from "../common/getBook";
 import { useNavigate } from "react-router-dom";
 import bannerImg from "../assets/images/profile.banner.png"
-
+import bookRed from "../assets/images/bookRed.png"
 import avatarImg from "../assets/images/profile.png"
 import "../css/userProfile.css"
+import { getRecipiesFromApi } from "../utils";
+
+
 const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     const navigate = useNavigate();
+
+    //  const [favSet, setFavImageSet] = useState([]);
+    const [allFavsData, setAllFavsData] = useState([])
+    const [savedData, setSavedData] = useState(false);
+
+
+    let allFavsImages = null
     const loadGalleryWith = async (e, loggedInUser) => {
-        let bookName = e.target.attributes.book.value
-        console.log(`bookName ${bookName}`, loggedInUser.books)
-        let currentBook = await getBook(bookName, loggedInUser)
-        let searchHits = { "hits": currentBook.recipes }
-        setSearchResults(searchHits)
-        console.log(searchHits)
+        try {
+            let bookName = e.target.attributes.book.value
+            console.log(`bookName ${bookName}`, loggedInUser.books)
+            let currentBook = await getBook(bookName, loggedInUser)
+            let searchHits = { "hits": currentBook.recipes }
+            setSearchResults(searchHits)
+            console.log(searchHits)
+            navigate("/searchRecipes", {
+            });
+        } catch (e) { console.log(e) }
+    }
+    const onSearchClick = (e) => {
         navigate("/searchRecipes", {
         });
+    }
+
+    const populateImageArray = async () => {
+        let tempArr = [];
+        if (loggedInUser) {
+            console.log("length of favs", loggedInUser?.favRecipes?.length)
+            for (let i = 0; i < loggedInUser?.favRecipes?.length; i++) {
+                try {
+
+                    let response = await getRecipiesFromApi(loggedInUser.favRecipes[i]);
+                    //console.log("***", response.recipe.image)
+                    tempArr = [...tempArr, response]
+                    // allFavsImages.push(response.recipe.image)
+                } catch (error) {
+                    console.log(error)
+                }
+                if (!savedData) {
+                    console.log("set state data");
+                    setAllFavsData(tempArr)
+                    setSavedData(true);
+                    //setFavImageSet(allFavsImages)
+                }
+            }
+            console.log(allFavsData, allFavsImages)
+
+        }
+    }
+    console.log(loggedInUser)
+    if (!savedData) {
+        console.log("call populate array")
+        populateImageArray();
     }
     return (
         <PageContainer id="userProfilePage">
@@ -26,56 +73,64 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
             </div>
             <img className="avatarOverlay" src={avatarImg} alt="avatar" />
             <div className="FlexRowTwo">
-
-
-                <div className="profile">
+                <div className="profileContainer">
                     <div className="profileCard">
-                        <button >EDIT YOUR DETAILS HERE</button>
+                        <div className="profileTitle" >
+                            <p >EDIT YOUR DETAILS HERE</p>
+                        </div>
                         <ProfileCard setSearchResults={setSearchResults} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT={setJWT} />
                     </div>
                     <div className="actions">
-                        <button className="center">CLICK HERE TO SEARCH RECIPES</button>
+                        <button onClick={(e) => { onSearchClick(e) }}>CLICK HERE TO SEARCH RECIPES</button>
                     </div>
                 </div>
                 <div className="favsContainer">
+                    <div className="favsTitle">
+                        <p>Your Favorites</p>
+                    </div>
+                    <div className="favList" >
+                        {/* map function to get image per fav in array */}
+                        {
+                            allFavsData.map((e, index) => {
 
-
-                    <Container>
-                        <div className="favsTitle">
-                            <p>Your Favorites</p>
-                        </div>
-                        <div className="favList" >
-                            {/* map function to get image per fav in array */}
-                            {loggedInUser.favRecipes?.map((e) => {
                                 return (
 
-                                    <div className="onefavContainer">
-                                        <p>img</p>
-                                        <img src="" alt="" />
+                                    <div key={index} className="onefavContainer tooltip">
+                                        <img className="profileFavImage" src={e?.recipe?.image} alt="" />
+                                        <span className="tooltiptext">{e?.recipe?.label}</span>
+                                        <div className="infoTab">info
+
+                                        </div>
                                     </div>
                                 )
-                            })}
-                        </div>
-                    </Container>
+                            })
 
-
+                        }
+                    </div>
                 </div>
             </div>
-            <div className="bookShelfTitle">
-                <b>books</b>
-            </div>
-            <Container className="bookShelf" setSearchResults={setSearchResults}>
+            <div className="bookShelfContainer">
+                <div className="bookShelfTitle">
+                    <p>Books</p>
+                </div>
+                <div className="bookShelf" setSearchResults={setSearchResults}>
 
-                {loggedInUser?.books?.map((e, index) => {
-                    return (
-                        <div className="book" >
-                            {/* make absolut to move over books div */}
-                            <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p>
-                        </div>
-                    )
-                })
-                }
-            </Container>
+                    {loggedInUser?.books?.map((e, index) => {
+                        return (
+                            <div className="book" key={index}>
+                                {/* make absolut to move over books div */}
+
+                                <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p>
+
+                                <img className="bookImg" book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)} src={bookRed}  >
+
+                                </img>
+                            </div>
+                        )
+                    })
+                    }
+                </div>
+            </div>
 
         </PageContainer >
     );
