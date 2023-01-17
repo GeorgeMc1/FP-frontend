@@ -15,7 +15,9 @@ const RecipeSearchPage = ({
     galleryIndexMemory, 
     loggedInUser, 
     cookBookName, 
-    setCookBookName
+    setCookBookName,
+    currentRecipeInCurrentBook,
+    setCurrentRecipeInCurrentBook
 
 }) => {
     return (
@@ -39,6 +41,8 @@ const RecipeSearchPage = ({
                             loggedInUser={loggedInUser}
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
+							currentRecipeInCurrentBook={currentRecipeInCurrentBook}
+							setCurrentRecipeInCurrentBook={setCurrentRecipeInCurrentBook}
                             
                             ></RecipeGallery>
                     </GalleryContainer>

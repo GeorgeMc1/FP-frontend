@@ -12,11 +12,11 @@ const FavBookBar = ({
     setIndexMemory,
     jwt,
 setSearchResults,
-
-
 setCurrentRecipeLiked,
 setCookBookName,
-cookBookName
+cookBookName,
+currentRecipeInCurrentBook,
+setCurrentRecipeInCurrentBook
     
 }) => {
     const checkIfFavourites = () => {

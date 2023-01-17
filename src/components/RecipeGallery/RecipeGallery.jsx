@@ -17,7 +17,10 @@ const RecipeGallery = ({ jwt,
     setIndexMemory,
     cookBookName,
     setCookBookName,
-    loggedInUser }) => {
+    loggedInUser,
+    currentRecipeInCurrentBook,
+    setCurrentRecipeInCurrentBook
+}) => {
 
     const navigate = useNavigate();
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
@@ -78,16 +81,18 @@ const RecipeGallery = ({ jwt,
                     //         <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
                     //     </div>
                     // </div>
-                    <FavBookBar 
-                    loggedInUser={loggedInUser}
-                    galleryIndex={galleryIndex}  
-                    setSearchResults={setSearchResults} 
-                    setIndexMemory={setIndexMemory}
-                    jwt={jwt}
-                    searchResults={searchResults}
-                    setCurrentRecipeLiked={setCurrentRecipeLiked}
-                    setCookBookName={setCookBookName} 
-                    cookBookName={cookBookName} 
+                    <FavBookBar
+                        loggedInUser={loggedInUser}
+                        galleryIndex={galleryIndex}
+                        setSearchResults={setSearchResults}
+                        setIndexMemory={setIndexMemory}
+                        jwt={jwt}
+                        searchResults={searchResults}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}
+                        currentRecipeInCurrentBook={currentRecipeInCurrentBook}
+                        setCurrentRecipeInCurrentBook={setCurrentRecipeInCurrentBook}
                     />
                     :
                     <div className="favBox">
