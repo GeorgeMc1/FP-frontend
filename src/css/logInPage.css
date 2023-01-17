@@ -41,12 +41,14 @@
 	max-width: 1000px;
 	min-width: 600px;
 	margin: 20px auto;
-	border: 1px solid black;
+	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
 }
 
 #formContainer{
 	width: 100%;
-	margin: 5px;
+	margin: 0 22px;
 }
 
 #loginHeader{
