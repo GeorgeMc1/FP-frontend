@@ -11,24 +11,24 @@ import { toggleBookEntry } from '../../common/toggleBookEntry';
 
 //https://www.npmjs.com/package/react-responsive-carousel
 
-const RecipeGallery = ({ jwt, 
+const RecipeGallery = ({ jwt,
     currentRecipeLiked,
-    setCurrentRecipeLiked, 
-    searchResults, 
-    setRecipe, 
-    galleryIndexMemory, 
-    setIndexMemory, 
+    setCurrentRecipeLiked,
+    searchResults,
+    setRecipe,
+    galleryIndexMemory,
+    setIndexMemory,
     loggedInUser }) => {
 
     const navigate = useNavigate();
 
     const [searchResultHits] = useState(searchResults.hits);
-    const [cookBookName]=useState("Winter")
+    const [cookBookName] = useState("so taxt doen't need slanting")
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
-   // const [liked, setLiked] = useState(false)
-    console.log(searchResults,searchResultHits,galleryIndex  )
+    // const [liked, setLiked] = useState(false)
+    console.log(searchResults, searchResultHits, galleryIndex)
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
@@ -49,19 +49,22 @@ const RecipeGallery = ({ jwt,
     }
 
     const checkIfFavourites = () => {
-    if (loggedInUser){
-        //match if logged in user favourites contains the recipie.self 
-        console.log(`galleryIndex ${galleryIndex} searchresultshits `,searchResultHits)
-        if (galleryIndex >= searchResultHits.length) {setIndexMemory(0)}
-        let match = loggedInUser.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
-        console.log("match in favs =", match)
-        return match
-    }
+        
+            if (loggedInUser && searchResultHits.length >0 ) {
+                //match if logged in user favourites contains the recipie.self 
+                console.log(`galleryIndex ${galleryIndex} searchresultshits `, searchResultHits)
+                if (galleryIndex >= searchResultHits.length) { setIndexMemory(0) }
+                let match = loggedInUser?.favRecipes.includes(searchResultHits[galleryIndex]._links.self.href)
+                console.log("match in favs =", match)
+                return match
+            }
+        
+
     }
 
-   
 
-    
+
+
 
 
     //liked state needed to rerender 
@@ -69,7 +72,7 @@ const RecipeGallery = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (loggedInUser) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
+    if (loggedInUser ) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
     return (
         <>
 
@@ -77,7 +80,7 @@ const RecipeGallery = ({ jwt,
 
                 {loggedInUser ?
                     <div className="favBox">
-                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setCurrentRecipeLiked={setCurrentRecipeLiked}/>
+                        <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResultHits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
 
                         <div className="favTotal">
                             <p >
@@ -85,7 +88,7 @@ const RecipeGallery = ({ jwt,
                             </p>
                         </div >
                         <div className="cooKbook">
-                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResultHits[galleryIndex]} jwt={jwt}  setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName}/>
+                            <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResultHits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
                         </div>
                     </div>
                     :

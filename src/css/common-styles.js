@@ -16,7 +16,7 @@ export const PageContainer = styled.div`
 	justify-content: center;
 	width:100%;
 	margin: 0 auto;
-	margin-top:50px;
+	
 
 	h2{
 		text-align: center;
