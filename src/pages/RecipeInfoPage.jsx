@@ -4,8 +4,20 @@ import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 import styled from "styled-components";
 import InfoBottomSec from "../components/RecipeInfoPage/InfoBottomSec";
+import FavBookBar from "../components/FavBookBar/FavBookBar";
 
-const RecipeInfoPage = ({ data }) => {
+const RecipeInfoPage = ({
+    data,
+    loggedInUser,
+    galleryIndex,
+    setSearchResults,
+    setIndexMemory,
+    jwt,
+    searchResults,
+    setCurrentRecipeLiked,
+    setCookBookName,
+    cookBookName
+}) => {
     console.log("inside recipieinfopage");
     console.debug(data);
     const images = data.recipe.images;
@@ -29,7 +41,19 @@ const RecipeInfoPage = ({ data }) => {
         <PageContainer id="recipeInfoPage">
             <h2>{data.recipe.label}</h2>
             <TopRow>
-                <RecipieImage data={images}/>
+                <div>
+                    <FavBookBar
+                        loggedInUser={loggedInUser}
+                        galleryIndex={galleryIndex}
+                        setSearchResults={setSearchResults}
+                        setIndexMemory={setIndexMemory}
+                        jwt={jwt}
+                        searchResults={searchResults}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}/>
+                    <RecipieImage data={images}/>
+                </div>
                 <RecipeInfoPageAction
                     timeToPlate={timeToPlate}
                     cuisineType={cuisineType}
