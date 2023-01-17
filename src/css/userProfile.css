@@ -19,7 +19,9 @@
     flex: 1 1 30%;
     margin-left: 5%;
     background-color: rgb(241, 249, 248);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+    rgb(0 0 0 / 9%) 0px -3px 5px;
 }
 @media screen and (max-width: 600px) {
     .profileContainer {
@@ -153,7 +155,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     max-height: 60vh;
     /* max-width: 800px; */
@@ -162,8 +164,9 @@
     /* direction: rtl; */
     margin: 0px;
     padding: 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+    rgb(0 0 0 / 9%) 0px -3px 5px;}
 
 .onefavContainer {
     background-color: #222;
@@ -233,12 +236,14 @@
     flex-wrap: wrap;
     min-height: 300px;
     background-color: rgb(225, 246, 243);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+    box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+    rgb(0 0 0 / 9%) 0px -3px 5px;}
 
 .book {
     width: 196px;
     height: 216px;
+    /* margin: auto; */
     cursor: pointer;
     position: relative;
 
