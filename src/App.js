@@ -89,12 +89,14 @@ function App() {
 						path="/viewRecipie"
 						element={<RecipeInfoPage
 							data={recipe}
-							jwt={jwt}
 							loggedInUser={loggedInUser}
-							currentRecipeLiked={currentRecipeLiked}
-							 setCurrentRecipeLiked={setCurrentRecipeLiked}
-							 cookBookName={cookBookName}
-							 setCookBookName={setCookBookName}
+                			setSearchResults={setSearchResults}
+                			setIndexMemory={setIndexMemory}
+                			jwt={jwt}
+                			searchResults={searchResults}
+                			setCurrentRecipeLiked={setCurrentRecipeLiked}
+                			setCookBookName={setCookBookName}
+                			cookBookName={cookBookName}
 						/>}
 					/>
 				) : null}
