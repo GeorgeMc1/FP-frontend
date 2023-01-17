@@ -25,14 +25,9 @@ const RecipeGallery = ({ jwt,
     loggedInUser }) => {
 
     const navigate = useNavigate();
-
-    // const [searchResults.hits] = useState(searchResults.hits);
-    //const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
-    console.log(galleryIndexMemory)
-
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
-    // const [liked, setLiked] = useState(false)
-    console.log(searchResults, searchResults.hits, galleryIndex)
+
+    console.log(searchResults, galleryIndex)
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
@@ -53,24 +48,13 @@ const RecipeGallery = ({ jwt,
     }
 
     const checkIfFavourites = () => {
-
+        if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0) }
         if (loggedInUser && searchResults.hits.length > 0) {
-            //match if logged in user favourites contains the recipie.self 
-            
-            if (galleryIndex >= searchResults.hits.length) { setIndexMemory(0) }
-            console.log(`galleryIndex ${galleryIndex} searchresultshits `, searchResults.hits)
+            //match if logged in user favourites contains the recipie.self   
             let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
-            console.log("match in favs =", match)
             return match
         }
-
-
     }
-
-
-
-
-
 
     //liked state needed to rerender 
     //can use in html isLiked but before slide change states not fixed so first 
@@ -95,8 +79,8 @@ const RecipeGallery = ({ jwt,
                             <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
                         </div>
                         <div className="bookchanger" >
-                            
-                            <BookChanger setSearchResults={setSearchResults}setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser}/>
+
+                            <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
                         </div>
                     </div>
                     :
@@ -105,7 +89,7 @@ const RecipeGallery = ({ jwt,
                 }
 
                 <Carousel
-                    selectedItem={galleryIndex}
+                    selectedItem={galleryIndex >= searchResults?.hits.length ? galleryIndex : 0}
                     // infiniteLoop={true}
                     useKeyboardArrows={true}
                     emulateTouch={true}
