@@ -1,18 +1,13 @@
-
 import "../css/homepage.css"
 import { PageContainer } from "../css/common-styles"
 import picture1 from "../assets/images/food.jpg"
+import { NavLink } from "react-router-dom";
 // import homepage from "../assets/images/Home-Page_.png"
 
 const Homepage = () => {
-
-
     return (
         <PageContainer id="homepage">
-
-
             <div id="demo">
-
                 <div className="signtext">
                     <div className="btntext">
                         <div className="">
@@ -22,9 +17,9 @@ const Homepage = () => {
                             </p>
                         </div>
                         <div className="topbtn">
-                            <button>
+                            <NavLink className="button" to="/SignUp">
                                 SIGN UP
-                            </button>
+                            </NavLink>
                         </div>
                     </div >
                     <div className="btntext">
@@ -34,17 +29,15 @@ const Homepage = () => {
                             </p>
                         </div>
                         <div className="topbtn">
-                            <button>
+                            <NavLink className="button" to="/Login">
                                 LOG IN
-                            </button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
-
                 <div className="level1">
                     <p>most viewed recipes</p>
                 </div>
-
                 <div className="level2">
                     <div >
                         <img src={picture1} width="250px" alt="" />
@@ -65,21 +58,8 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
             </div>
-
-
-
         </PageContainer>
-
     );
 };
 export default Homepage;
