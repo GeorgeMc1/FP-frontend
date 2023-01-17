@@ -20,12 +20,14 @@ const RecipeGallery = ({ jwt,
     setRecipe,
     galleryIndexMemory,
     setIndexMemory,
+    cookBookName,
+    setCookBookName,
     loggedInUser }) => {
 
     const navigate = useNavigate();
 
     // const [searchResults.hits] = useState(searchResults.hits);
-    const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
+    //const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
     console.log(galleryIndexMemory)
 
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)

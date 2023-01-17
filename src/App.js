@@ -27,7 +27,7 @@ function App() {
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
 	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
-
+	const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
 	// set state to update user and cookie
 	// const [cookie, setCookie] = useState();
 	// const [user, setUser] = useState();
@@ -79,6 +79,8 @@ function App() {
 							jwt={jwt}
 							currentRecipeLiked={currentRecipeLiked}
 							 setCurrentRecipeLiked={setCurrentRecipeLiked}
+							 cookBookName={cookBookName}
+							 setCookBookName={setCookBookName}
 						/>
 					}
 				/>
@@ -91,6 +93,8 @@ function App() {
 							loggedInUser={loggedInUser}
 							currentRecipeLiked={currentRecipeLiked}
 							 setCurrentRecipeLiked={setCurrentRecipeLiked}
+							 cookBookName={cookBookName}
+							 setCookBookName={setCookBookName}
 						/>}
 					/>
 				) : null}
@@ -116,6 +120,8 @@ function App() {
 								jwt={jwt}
 								setJWT={setJWT}
 								setSearchResults={setSearchResults}
+								cookBookName={cookBookName}
+							 setCookBookName={setCookBookName}
 							/>
 						) : (
 							<Homepage />
