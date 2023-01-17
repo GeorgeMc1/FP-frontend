@@ -122,7 +122,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             // else display edit cog icons
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
@@ -147,7 +147,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             //else display editcog icon
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
@@ -156,12 +156,10 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                         }
                     })
                 }
-                <button onClick={(e) => onDeleteHandler()}>Delete Account</button>
+                <div className="deleteButton" onClick={(e) => onDeleteHandler()}>Delete Account</div>
             </Container>
 
-            <Container>
-                <p>{loggedInUser.favRecipes?.length} favorites</p>
-            </Container>
+           
 
         </Container>
     );

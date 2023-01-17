@@ -22,9 +22,7 @@ dd {
 	margin: 0;
 }
 
-#loginPageForm,
-#recipe-search,
-#registerPageForm {
+#recipe-search {
 	background-color: wheat;
 	width: 100%;
 	display: flex;
@@ -33,12 +31,10 @@ dd {
 	border: 1px solid #444;
 	border-radius: 10px;
 	margin-top: 10px;
-	
 }
 
 #loginPageForm input,
 #loginPageForm select,
-#registerPageForm input,
 #registerPageForm select,
 #recipe-search input,
 #recipe-search select {
@@ -47,6 +43,4 @@ dd {
 	margin: 5px 0px;
 	border-radius: 5px;
 	background-color: whitesmoke;
-	
 }
-

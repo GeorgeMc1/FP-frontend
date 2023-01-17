@@ -3,23 +3,31 @@ import { NavLink as Link } from "react-router-dom";
 
 
 export const Nav = styled.nav`
-    background: #000; 
+    background: #fff;
     display: flex;
     justify-content: space-around;
-    position: fixed;
-    top:0;
     z-index: 10;
     width: 100%; /* Full width */
-    box-shadow: rgba(0, 0, 0, 0.29) 0px 10px 20px, rgba(0, 0, 0, 0.33) 0px 8px 8px, rgba(0, 0, 0, 0.53) 0px 3px 3px;
-`
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    `
 
 export const NavLink = styled(Link)`
-    color: #fff;
+    color: #333;
     display: flex;
     align-items: center;
     text-decoration: none;  
+    font-size: 1.7em;
+
     cursor: pointer;
-    
+    //  border-left:1px dashed black;
+    //  border-right:1px dashed black;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    background-color:#f1f9f8;
+    margin:0 1px;
+    flex:1 1 100%;
+    justify-content: center;
     transition: all 0.3s ease-in-out;
         &.active{
             color: #15cdfc;
@@ -27,28 +35,34 @@ export const NavLink = styled(Link)`
     &:hover{
         color: #15cdfc;
         transition: all 0.3s ease-in-out;
+        background-color:#c2fbd7;
     }
 `
 
 export const NavIconLink = styled(Link)` 
-    width:120px;
-    background-color: none;
+flex:1 1 100%;
+background-color:#f1f9f8;
     height:100%;
     text-decoration: none;
     text-align: center;  padding:0px;
     display:inline-block;
+    flex:1 1 100%;
+    &:hover {
+           
+        // background-color:#c2fbd7;
+    }
     img {
-        width:120px;
-        height:60px;
+        width:180px;
+        height:80px;
         vertical-align: middle; 
-        height:100%
-        transition: all 0.3s ease-in-out;
+      
         transition: all 0.3s ease-in-out;
         display: inline-block;
         
         &:hover {
-     
-    transform: scale(1.4);
+            transition: all 0.3s ease-in-out;
+            display: inline-block;
+            width:100%;
         }
     }
 

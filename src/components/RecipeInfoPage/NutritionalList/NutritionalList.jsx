@@ -5,7 +5,6 @@ const NutritionalList = ({ data }) => {
     console.debug(data)
     return (
         <InfoContainer>
-            <h2>Nutritional List</h2>
             <div id="nutrition">
                 <ul>
                     {data.map((item, i) => {
@@ -15,7 +14,7 @@ const NutritionalList = ({ data }) => {
                                 total = total.toFixed(2);
                             }
                             return(
-                                <li key={i}>{item.label}: {total}{item.unit}</li>
+                                <li key={i}><div>{item.label}: {total}{item.unit}</div></li>
                             )
                         } else {
                             return null;
@@ -30,7 +29,7 @@ const NutritionalList = ({ data }) => {
                                 total = total.toFixed(2);
                             }
                             return(
-                                <li key={i}>{item.label}: {total}{item.unit}</li>
+                                <li key={i}><div>{item.label}: {total}{item.unit}</div></li>
                             )
                         } else {
                             return null;

@@ -3,7 +3,44 @@
 * {
 	font-family: Poppins, sans-serif;
 }
-.login-btn {
+
+#signupContainer {
+	background-color: #f1f9f8;
+	margin: 1rem auto 7rem;
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	/* border: 1px solid; */
+	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+		rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+		rgb(0 0 0 / 9%) 0px -3px 5px;
+}
+
+.message {
+	text-align: center;
+	margin: 0;
+}
+
+#signupContainer img {
+	width: 30%;
+}
+
+#registerPageForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin-left: 22px;
+	width: 65%;
+}
+
+#registerPageForm input {
+	border-radius: 3px;
+	height: 35px;
+	background-color: #f5f5f5;
+	border: 1px solid #545454;
+}
+
+.signUp-btn {
 	background-color: #c2fbd7;
 	border-radius: 100px;
 	padding: 7px 20px;
@@ -23,66 +60,13 @@
 	color: green;
 	cursor: pointer;
 	width: 100%;
+	margin-top: 6px;
 }
 
-.login-btn:hover {
+.signUp-btn:hover {
 	box-shadow: rgba(44, 187, 99, 0.35) 0 -25px 18px -14px inset,
 		rgba(44, 187, 99, 0.25) 0 1px 2px, rgba(44, 187, 99, 0.25) 0 2px 4px,
 		rgba(44, 187, 99, 0.25) 0 4px 8px, rgba(44, 187, 99, 0.25) 0 8px 16px,
 		rgba(44, 187, 99, 0.25) 0 16px 32px;
 	transform: scale(1.05) rotate(-1deg);
-}
-
-#loginPage{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	max-width: 1000px;
-	min-width: 600px;
-	margin: 20px auto;
-	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
-        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
-        rgb(0 0 0 / 9%) 0px -3px 5px;
-}
-
-#formContainer{
-	width: 100%;
-	margin: 0 22px;
-}
-
-#loginHeader{
-	max-width: 300px;
-	text-align: center;
-	font-size: 1rem;
-	margin: 0 auto;
-}
-
-#loginPageForm {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	min-height: 300px;
-	justify-content: space-evenly;
-	/* border: 4px solid #6d7c6c; */
-}
-
-#loginPageForm label {
-	display: flex;
-	flex-direction: column;
-}
-
-#loginPageForm label span{
-	margin-bottom: 10px;
-}
-
-#loginPageForm label input {
-	/* border: 1px solid #90c3a3; */
-	border-radius: 3px;
-}
-
-@media (max-width: 600px) {
-	#loginImage{
-		display: none;
-	}
 }
