@@ -6,10 +6,8 @@ import redCrossImg from "../../assets/images/redCross.png"
 import { updateUser, deleteUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
 import "../../css/profilePage.css"
-import { getBook } from "../../common/getBook.js";
-import { useNavigate } from "react-router-dom";
 const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, setJWT }) => {
-    const navigate = useNavigate();
+   
     const [updateKey, setUpdateKey] = useState();
     const [editing, setEditing] = useState();
     const [errMsg, setErrorMsg] = useState();
@@ -90,17 +88,6 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
         userEdits[element] = loggedInUser[element]
     }
 
-    const loadGalleryWith = async (e,loggedInUser) => {
-        let bookName =e.target.attributes.book.value
-        console.log(`bookName ${bookName}`, loggedInUser.books)
-        let currentBook = await getBook(bookName,loggedInUser)
-        let searchHits = { "hits":currentBook.recipes}
-        setSearchResults(searchHits)
-        console.log(searchHits)
-        navigate("/searchRecipes", {
-        });
-    }
-
     return (
         <Container>
             {/* display any error messages form failed update using state variable */}
@@ -135,7 +122,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             // else display edit cog icons
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
@@ -160,7 +147,7 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                                             :
                                             //else display editcog icon
                                             <div id="icons">
-                                                <img src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
                                             </div>
                                         }
                                     </div>
@@ -169,22 +156,11 @@ const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, 
                         }
                     })
                 }
-                <button onClick={(e) => onDeleteHandler()}>Delete Account</button>
+                <div className="deleteButton" onClick={(e) => onDeleteHandler()}>Delete Account</div>
             </Container>
 
-            <Container>
-                <p>{loggedInUser.favRecipes?.length} favorites</p>
-            </Container>
+           
 
-            <Container setSearchResults={setSearchResults}>
-                <b>books</b>
-                {loggedInUser?.books?.map((e, index) => {
-                    return(
-                    <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e,loggedInUser)}>{e.bookName}</p>
-                    )
-                })
-                }
-            </Container>
         </Container>
     );
 };
