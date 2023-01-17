@@ -3,12 +3,6 @@ import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 
-import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
-import CookBookIcon from '../CookBookIcon/CookBookIcon';
-
-import { toggleFav } from '../../common/toggleFav';
-import { toggleBookEntry } from '../../common/toggleBookEntry';
-import BookChanger from '../BookChanger/BookChanger';
 import FavBookBar from '../FavBookBar/FavBookBar';
 
 //https://www.npmjs.com/package/react-responsive-carousel
