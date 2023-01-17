@@ -27,21 +27,23 @@ function App() {
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
 	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
-	const [cookBookName,setCookBookName] = useState("Default")
-	const [currentRecipeInCurrentBook, setCurrentInCurrentBook] =useState();
-const [favList,setFavList] = useState();
+	const [cookBookName, setCookBookName] = useState("Default")
+	const [currentRecipeInCurrentBook, setCurrentInCurrentBook] = useState();
+	const [favList, setFavList] = useState();
+	const [isInBook, setIsInBook] = useState();
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
 		if (cookie !== false) {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
 	}, []);
+	
 
-	useEffect(()=> {console.log("recipe chaged",recipe)},[recipe])
+	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
-		// setUser(user);
+
 		setJWT(cookie);
 		setLoggedInUser(user);
 	};
@@ -62,20 +64,21 @@ const [favList,setFavList] = useState();
 						<RecipeSearchPage
 							searchResults={searchResults}
 							setSearchResults={setSearchResults}
-							setRecipe={setRecipe}
+
 							galleryIndexMemory={galleryIndexMemory}
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
 							jwt={jwt}
-							recipe={recipe}
+							recipe={recipe} setRecipe={setRecipe}
 							currentRecipeLiked={currentRecipeLiked}
 							setCurrentRecipeLiked={setCurrentRecipeLiked}
 							cookBookName={cookBookName}
 							setCookBookName={setCookBookName}
-							currentRecipeInCurrentBook={currentRecipeInCurrentBook} 
+							currentRecipeInCurrentBook={currentRecipeInCurrentBook}
 							setCurrentInCurrentBook={setCurrentInCurrentBook}
 							favList={favList}
 							setFavList={setFavList}
+							isInBook={isInBook} setIsInBook={setIsInBook}
 
 						/>
 					}
@@ -86,18 +89,20 @@ const [favList,setFavList] = useState();
 						element={<RecipeInfoPage
 							data={recipe}
 							loggedInUser={loggedInUser}
-                			setSearchResults={setSearchResults}
-                			setIndexMemory={setIndexMemory}
-                			jwt={jwt}
+							setSearchResults={setSearchResults}
+							setIndexMemory={setIndexMemory}
+							jwt={jwt}
 							recipe={recipe}
-                			searchResults={searchResults}
-                			setCurrentRecipeLiked={setCurrentRecipeLiked}
-                			setCookBookName={setCookBookName}
-                			cookBookName={cookBookName}
-							currentRecipeInCurrentBook={currentRecipeInCurrentBook} 
+							searchResults={searchResults}
+							setCurrentRecipeLiked={setCurrentRecipeLiked}
+							setCookBookName={setCookBookName}
+							cookBookName={cookBookName}
+							currentRecipeInCurrentBook={currentRecipeInCurrentBook}
 							setCurrentInCurrentBook={setCurrentInCurrentBook}
 							favList={favList}
 							setFavList={setFavList}
+
+							isInBook={isInBook} setIsInBook={setIsInBook}
 						/>}
 					/>
 				) : null}
@@ -124,7 +129,7 @@ const [favList,setFavList] = useState();
 								setJWT={setJWT}
 								setSearchResults={setSearchResults}
 								cookBookName={cookBookName}
-							 setCookBookName={setCookBookName}
+								setCookBookName={setCookBookName}
 							/>
 						) : (
 							<Homepage />

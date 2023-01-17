@@ -10,25 +10,26 @@ const FavBookBar = ({
     galleryIndex,
     searchResults,
     setIndexMemory,
-    jwt, 
+    jwt,
     setSearchResults,
     setCurrentRecipeLiked,
     setCookBookName,
     cookBookName,
     favList,
-    setFavList,
+    setFavList, setIsInBook,
+    isInBook,
     //only sent from recipeinfopage
     recipeObj
 }) => {
     const checkIfFavourites = () => {
         if (!loggedInUser) { return false }
         if (recipeObj) {
-         //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
+            //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
             let match = loggedInUser?.favRecipes.includes(recipeObj._links.self.href)
-           // console.log(match)
+            // console.log(match)
             return match
         } else {
-           // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
+            // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
             if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); galleryIndex = 0 }
 
             if (loggedInUser) {
@@ -38,6 +39,34 @@ const FavBookBar = ({
             }
         }
     }
+
+    const checkIfInCurrentBook =  () => {
+        console.log("****",cookBookName)
+
+        let currentBook;
+        let match;
+        for (let i = 0; i < loggedInUser.books.length; i++) {
+            if (loggedInUser.books[i].bookName === cookBookName) {
+                console.log("book found in user")
+                currentBook = loggedInUser.books[i]
+
+            }
+        }
+
+        console.log(currentBook)
+        if (recipeObj) {
+            match = currentBook.recipes.includes(recipeObj)
+            console.log("rvp...",currentBook,recipeObj)
+        }
+        else {
+            match = currentBook.recipes.includes(searchResults?.hits[galleryIndex])
+            console.log("rsg...")
+        }
+        console.log(match)
+        return match;
+    }
+
+
     return (
         <>
             {loggedInUser ?
@@ -51,17 +80,25 @@ const FavBookBar = ({
                         recipe={
                             recipeObj ? recipeObj : searchResults.hits[galleryIndex]
                         }
-                        jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
+                        jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        setIsInBook={setIsInBook}
+                        isInBook={isInBook} />
+
+                    {/* 
                     <div className="favTotal">
                         <p >
                             {galleryIndex}
                         </p>
-                    </div >
+                    </div > */}
+
+
                     <div className="cooKbook">
                         <CookBookIcon
                             favList={favList}
                             setFavList={setFavList}
                             isLiked={checkIfFavourites()}
+                            setIsInBook={setIsInBook}
+                            isInBook={checkIfInCurrentBook()}
                             updateFav={false}
                             loggedInUser={loggedInUser}
                             toggleCookBookEntry={toggleBookEntry}

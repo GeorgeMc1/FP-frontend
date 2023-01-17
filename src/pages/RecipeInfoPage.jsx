@@ -19,11 +19,13 @@ const RecipeInfoPage = ({
     cookBookName,
     favList,
     setFavList,
-    recipe
+    recipe,
+    isInBook,
+    setIsInBook
 }) => {
     console.log("inside recipieinfopage");
     console.debug(data);
-    console.log(searchResults,galleryIndex)
+    console.log(searchResults, galleryIndex)
     const images = data.recipe.images;
     // const ingredients = data.recipe.ingredients;
     // const totalDaily = data.recipe.totalDaily;
@@ -55,10 +57,12 @@ const RecipeInfoPage = ({
                         searchResults={searchResults}
                         setCurrentRecipeLiked={setCurrentRecipeLiked}
                         setCookBookName={setCookBookName}
-                        cookBookName={cookBookName} 
+                        cookBookName={cookBookName}
                         favList={favList}
-						setFavList={setFavList}
-                        recipeObj={data}/>
+                        setFavList={setFavList}
+                        isInBook={isInBook}
+                        setIsInBook={setIsInBook}
+                        recipeObj={data} />
                     <RecipieImage data={images} />
                 </div>
                 <RecipeInfoPageAction

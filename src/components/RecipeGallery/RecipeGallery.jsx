@@ -16,7 +16,8 @@ const RecipeGallery = ({ jwt,
     currentRecipeInCurrentBook, setCurrentInCurrentBook,
     loggedInUser,
     favList,
-    setFavList
+    setFavList,
+    isInBook,setIsInBook
 }) => {
 
     const navigate = useNavigate();
@@ -76,6 +77,8 @@ const RecipeGallery = ({ jwt,
                         setCurrentInCurrentBook={setCurrentInCurrentBook}
                         favList={favList}
                         setFavList={setFavList}
+                        isInBook={isInBook}
+                         setIsInBook={setIsInBook}
                     />
                     :
                     <div className="favBox">

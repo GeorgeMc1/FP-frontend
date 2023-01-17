@@ -2,9 +2,11 @@ import { updateUser } from "../utils";
 import { toggleFav } from "./toggleFav";
 import { getBook } from "./getBook"
 
-export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList) => {
+export const toggleBookEntry = async (updateFav,isInBook,setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList) => {
     try{
     
+        
+							
     if (loggedInUser) {
         let obj = {};
         let bookname = cookBookName || "default"
@@ -30,6 +32,7 @@ export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurren
                 "value": loggedInUser.books
             }
             toggleFavOn = true
+            setIsInBook(true);
         }
 
         //if the books already written
@@ -38,7 +41,7 @@ export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurren
             if (currentBook.recipes.includes(galleryItemsRecipe)) {
                 //if so remove it
                 console.log("recipie was in book - removing recipe from book")
-                currentBook.recipes = currentBook.recipes.filter(e => {
+                currentBook.recipes = await currentBook.recipes.filter(e => {
                     if (e === galleryItemsRecipe) {
                         return false
                     }
@@ -46,14 +49,16 @@ export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurren
                         return galleryItemsRecipe
                     }
                 })
+                setIsInBook(false)
 
-
+console.log(currentBook)
             }
             //if NOT in book - add it
             else {
                 console.log("recipie not in book -adding recipe")
                 currentBook.recipes = [...currentBook.recipes, galleryItemsRecipe]
                 toggleFavOn = true
+                setIsInBook(true)
             }
 
             //book now rewritten so change it
@@ -62,6 +67,7 @@ export const toggleBookEntry = async (updateFav, loggedInUser, recipe, setCurren
                 "key": "books",
                 "value": loggedInUser.books
             }
+            console.log(obj)
 
         }
         

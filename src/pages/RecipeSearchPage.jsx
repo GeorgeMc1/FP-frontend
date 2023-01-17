@@ -17,7 +17,9 @@ const RecipeSearchPage = ({
     cookBookName,
     setCookBookName,
     favList,
-    setFavList
+    setFavList,
+    
+    isInBook,setIsInBook
 
 }) => {
     return (
@@ -43,6 +45,8 @@ const RecipeSearchPage = ({
                             setCookBookName={setCookBookName}
                             favList={favList}
 							setFavList={setFavList}
+                            
+							isInBook={isInBook} setIsInBook={setIsInBook}
 
                         ></RecipeGallery>
                     </GalleryContainer>
