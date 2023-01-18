@@ -29,6 +29,7 @@
   }
   .navigation-menu ul {
     display: flex;
+    flex-wrap: nowrap;
     padding: 0;
     height:100%;
     
@@ -38,8 +39,7 @@
     list-style-type: none;
     margin: 20px 0;
     height:60px;
-    line-height: 60px;;
-     padding:0px 20px; 
+    line-height: 60px;
   }
  
 
