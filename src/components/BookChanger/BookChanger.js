@@ -26,25 +26,7 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
             });
         }
     }
-    // const loadGalleryWith = async (e, loggedInUser) => {
-    //     try {
-    //         let bookName = e.target.attributes.book.value
-    //         console.log(`bookName ${bookName}`, loggedInUser.books)
-    //         let currentBook = await getBook(bookName, loggedInUser)
-    //         let searchHits = { "hits": currentBook.recipes }
-    //         setSearchResults(searchHits)
-    //         console.log(searchHits)
-    //         navigate("/searchRecipes", {
-    //         });
-    //     } catch (e) { console.log(e) }
-    // }
-    // const onSearchClick = (e) => {
-    //     navigate("/searchRecipes", {
-    //     });
-    // }
-
-
-
+ 
     // Close the dropdown menu if the user clicks outside of it
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {

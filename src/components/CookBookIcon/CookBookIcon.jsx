@@ -1,18 +1,24 @@
 
-
-import cookbookIcon from "../../assets/images/cookbookIcon.png"
-const CookBookIcon = ({ isLiked, setCurrentRecipeLiked,setLiked,updateFav,toggleCookBookEntry,loggedInUser,jwt,recipe,cookBookName }) => {
+import bookOFF from "../../assets/images/cookbookIconOff.png"
+import bookON from "../../assets/images/cookbookIcon.png"
+const CookBookIcon = ({ favList,
+  setFavList,  isInBook,setIsInBook, setCurrentRecipeLiked,  updateFav, toggleCookBookEntry, loggedInUser, jwt, recipe, cookBookName }) => {
+   
+  console.log(isInBook,setIsInBook)
   return (
-      <div className="favHeart" onClick={()=>toggleCookBookEntry(updateFav, loggedInUser, recipe,setCurrentRecipeLiked,jwt,cookBookName)}>
+    
+    <div className="favHeart" onClick={() => toggleCookBookEntry(updateFav,isInBook,setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList)}>
 
-        {isLiked ?
-          <img className="favHeartImg" alt="favouriting icon" src={cookbookIcon} />
-         :
-         <img className="favHeartImg" alt="favouriting icon" src={cookbookIcon} />
+      {isInBook ?
+        <img className="favHeartImg" alt="favouriting icon" src={bookON} />
+        :
+        <img className="favHeartImg" alt="favouriting icon" src={bookOFF} />
 
-        }
-      </div>
+      }
+    </div>
   )
 }
+
+
 
 export default CookBookIcon
