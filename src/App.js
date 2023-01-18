@@ -84,7 +84,7 @@ function App() {
 				/>
 				{recipe ? (
 					<Route
-						path="/viewRecipie"
+						path="/viewRecipe"
 						element={<RecipeInfoPage
 							data={recipe}
 							loggedInUser={loggedInUser}
@@ -128,6 +128,7 @@ function App() {
 								setSearchResults={setSearchResults}
 								cookBookName={cookBookName}
 								setCookBookName={setCookBookName}
+								setRecipe={setRecipe}
 							/>
 						) : (
 							<Homepage />

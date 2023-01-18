@@ -221,8 +221,8 @@
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    min-height: 40vh;
-    max-height:40vh;
+    min-height: 50vh;
+    max-height:50vh;
     
     background-color: rgb(225, 246, 243);
   
