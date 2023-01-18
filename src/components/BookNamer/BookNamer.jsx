@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./bookNamerStyles.css"
 import cogIcon from "../../assets/images/OptionsCog.png"
 
@@ -23,6 +23,7 @@ export const BookNamer = ({
     const submitHandler = (e) => {
         e.preventDefault();
         console.log(newBookName, loggedInUser.books);
+
         let isBookWritten = false;
 
 
@@ -32,27 +33,30 @@ export const BookNamer = ({
                 isBookWritten = loggedInUser.books[i].recipies;
             }
 
-            if (!isBookWritten)
-                try {
-                    let temp;
-                    if (loggedInUser.books) {
-                        console.log("has books")
-                        temp = [...loggedInUser.books, { "bookName": newBookName }]
-                        console.log(temp)
-                    } else {
-                        console.log("no book")
-                        temp = [{ "bookName": newBookName }]
-                        console.log(temp)
-                    }
-                    console.log("book not found in user")
+
+        }
+        if (!isBookWritten)
+            try {
+                let temp;
+                if (loggedInUser?.books?.length > 0) {
+                    console.log("has books")
                     temp = [...loggedInUser.books, { "bookName": newBookName }]
                     console.log(temp)
-                } catch (error) {
-                    console.log(error)
+                } else {
+                    console.log("no book")
+                    temp = [{ "bookName": newBookName }]
+                    console.log(temp)
                 }
-        }
+                console.log("book not found in user")
+
+                console.log(temp)
+            } catch (error) {
+                console.log(error)
+            }
+        setCookBookName(newBookName)
+
     }
-    setCookBookName(newBookName)
+
     //set recipe and hits to book
     //navigate to self?
 
