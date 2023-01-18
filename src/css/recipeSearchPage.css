@@ -92,7 +92,7 @@
 
 .yourBooksContainer {
 	background-color: #bef9d4;
-	min-height: 500px;
+	max-height: 500px;
 	font-size: 1.2rem;
 	width: 30%;
 	display: flex;
