@@ -13,7 +13,7 @@ const Navbar = ({ loggedInUser,  recipe }) => {
 
 			<NavLink to="/SearchRecipes">Search</NavLink>
 
-			{recipe ? <NavLink to="/ViewRecipie">View Recipie</NavLink> : null}
+			{recipe ? <NavLink to="/ViewRecipe">View Recipie</NavLink> : null}
 
 			{loggedInUser ? (
 				<>

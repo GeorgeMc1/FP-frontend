@@ -41,7 +41,7 @@ export default function NavMenu({ loggedInUser, recipe }) {
           <li> <a href="/SearchRecipes">Search</a>  </li>
           {recipe ? 
             <li>
-              <a href="/ViewRecipie">View Recipie</a>
+              <a href="/ViewRecipe">View Recipie</a>
             </li>
             
           : null}
