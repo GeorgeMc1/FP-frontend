@@ -126,7 +126,7 @@ navigate("/viewRecipe")
 
                         return (
                             <div className="book" key={index}>
-                                <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p>
+                         <button className="noButtonShow"   >    <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p></button>  
                                 <img
                                     className="bookImg"
                                     book={e.bookName}

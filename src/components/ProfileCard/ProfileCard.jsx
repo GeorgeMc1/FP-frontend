@@ -119,13 +119,13 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                                             ?
                                             //display save and cancel icons
                                             <div id="icons">
-                                                <img src={SaveImg} alt="save edit" onClick={(e) => { onSaveEdit(element) }} />
-                                                <img src={redCrossImg} alt="cancel edit cog" onClick={(e) => { onCancelEdit(element) }} />
+                                            <button className="noButtonShow" type="submit">  <img src={SaveImg} alt="save edit" onClick={(e) => { onSaveEdit(element) }} /></button>  
+                                            <button className="noButtonShow"type="submit">  <img src={redCrossImg} alt="cancel edit cog" onClick={(e) => { onCancelEdit(element) }} /></button>
                                             </div>
                                             :
                                             // else display edit cog icons
                                             <div id="icons">
-                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                            <button className="noButtonShow" type="submit">  <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} /></button>
                                             </div>
                                         }
                                     </div>
@@ -150,7 +150,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                                             :
                                             //else display editcog icon
                                             <div id="icons">
-                                                <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} />
+                                            <button className="noButtonShow" type="submit"> <img id="cogIcon" src={cogImg} alt="editCog" onClick={(e) => { onCogClick(element) }} /></button>
                                             </div>
                                         }
                                     </div>

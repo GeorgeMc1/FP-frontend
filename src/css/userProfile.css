@@ -20,16 +20,12 @@
 	position: relative;
 	color: #fff;
 	text-align: center;
-	
-	
 	background: linear-gradient(0deg, rgb(193, 231, 225), rgb(225, 246, 243));
 }
 .shadow:before,
 .shadow:after {
 	content: "";
 	position: absolute;
-	/* top: -2px;
-	left: -2px; */
 	background: var(--gradient-shadow);
 	background-size: 200%;
 	width: calc(100% + 4px);
@@ -59,7 +55,6 @@
     width: 100%;
     max-height: 150px;
     position: relative;
-    margin-bottom: 20px;
 }
 
 .avatarOverlay {
@@ -78,6 +73,7 @@
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;
+        max-width: 400px;
 }
 
 @media screen and (max-width: 600px) {
@@ -88,7 +84,6 @@
 
 .profileCard {
     flex: 0 0 50%;
-    /* margin: auto; */
     text-align: center;
     width: 100%;
     
@@ -178,7 +173,21 @@
     background-color: rgb(194, 251, 215);
     cursor: pointer;
 }
+.noButtonShow {
+    background-color: inherit;
+    margin:0px;
+    padding:0px;
+    border:none;
+}
+.noButtonShow:focus img {
+   
+    transform: rotate(360deg);}
 
+ .noButtonShow:focus  p  {
+   font-size: 1.1em;
+    color:red;
+   
+}
 .profileCard input , .cardRow p { 
     border-radius:15px;
     margin: 0px auto;  
@@ -204,12 +213,15 @@ border-bottom-left-radius: 0px;
 .favsContainer {
     flex: 1 1 50%;
     background-color: none;
-    padding-left: 5%;
-    padding-right: 5%;
-
-
+    margin-left: 5%;
+    margin-right: 5%;
 }
-
+@media screen and (min-width: 600px) {
+    .favsContainer {
+         margin-left: 3%;
+        /* margin-right: 3%; */ 
+    }
+}
 .favsTitle,
 .bookShelfTitle {
     width: max-content;
@@ -244,8 +256,7 @@ border-bottom-left-radius: 0px;
 }
 
 .favList {
-    border: 2px solid rgb(70, 66, 66, 0.2);
-    flex: 1 1 20%;
+    /* border: 2px solid rgb(70, 66, 66, 0.2); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -254,10 +265,10 @@ border-bottom-left-radius: 0px;
     min-height: 50vh;
     max-height:50vh;
     
-    background-color: rgb(225, 246, 243);
+    background-color: rgb(225, 249, 245);
   
-    margin: 0px;
-    padding: 15px;
+    padding: 10px;
+    border:3px inset rgb(194, 251, 215);
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;
