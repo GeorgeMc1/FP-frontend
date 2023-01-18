@@ -15,8 +15,7 @@ export const NavLink = styled(Link)`
     color: #333;
     display: flex;
     align-items: center;
-    text-decoration: none;  
-    font-size: 1.7em;
+    text-decoration: none;
 
     cursor: pointer;
     //  border-left:1px dashed black;
@@ -35,7 +34,7 @@ export const NavLink = styled(Link)`
     &:hover{
         color: #15cdfc;
         transition: all 0.3s ease-in-out;
-        background-color:#c2fbd7;
+        background: linear-gradient(0deg, rgb(194, 251, 215), rgb(231, 253, 239), rgb(230, 241, 236));
     }
 `
 
