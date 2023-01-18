@@ -49,7 +49,6 @@ const FavBookBar = ({
             if (loggedInUser.books[i].bookName === cookBookName) {
                 console.log("book found in user")
                 currentBook = loggedInUser.books[i]
-
             }
         }
 
