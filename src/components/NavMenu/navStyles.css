@@ -42,9 +42,7 @@
     line-height: 60px;;
      padding:0px 20px; 
   }
-  .navigation-menu ul li a:{
-    color: #15cdfc;
-  }
+ 
 
   .navigation-menu li:hover {
     color: #15cdfc;

@@ -1,7 +1,6 @@
 import { PageContainer } from "../css/common-styles"
 import React, { useState } from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard.jsx"
-import { getBook } from "../common/getBook";
 import { useNavigate } from "react-router-dom";
 import bannerImg from "../assets/images/profile.banner.png"
 import bookRed from "../assets/images/redBook.png";
@@ -24,7 +23,15 @@ const UserProfilePage = ({ setSearchResults,setRecipe, loggedInUser, setLoggedIn
         try {
             let bookName = e.target.attributes.book.value
             console.log(`bookName ${bookName}`, loggedInUser.books)
-            let currentBook = await getBook(bookName, loggedInUser)
+            // let currentBook = await getBook(bookName, loggedInUser)
+            let currentBook ;
+            for (let i = 0; i < loggedInUser?.books?.length; i++) {
+                if (loggedInUser.books[i].bookName === bookName) {
+                    console.log("book found in user")
+                    currentBook = loggedInUser.books[i];
+                }}
+    
+
             let searchHits = { "hits": currentBook.recipes }
             setSearchResults(searchHits)
             console.log(searchHits)
@@ -87,7 +94,7 @@ navigate("/viewRecipe")
                         <div className="profileTitle" >
                             <p >EDIT YOUR DETAILS HERE</p>
                         </div>
-                        <ProfileCard setSearchResults={setSearchResults} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT={setJWT} />
+                        <ProfileCard  loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT={setJWT} />
                     </div>
                     <div className="actions">
                         <button onClick={(e) => { onSearchClick(e) }}>CLICK HERE TO SEARCH RECIPES</button>
@@ -104,8 +111,8 @@ navigate("/viewRecipe")
 
                                 return (
 
-                                    <div key={index} className="onefavContainer tooltip">
-                                        <img className="profileFavImage" onClick={(e)=>{favClick(e,elm)}}src={elm?.recipe?.image} alt={elm?.recipe?.label} />
+                                    <div key={index} className="onefavContainer tooltip" onClick={(e)=>{favClick(e,elm)}}>
+                                        <img className="profileFavImage" src={elm?.recipe?.image} alt={elm?.recipe?.label} />
                                         <span className="tooltiptext">{elm?.recipe?.label}</span>
                                         <div className="infoTab">info
                                         </div>
@@ -121,7 +128,7 @@ navigate("/viewRecipe")
                 <div className="bookShelfTitle">
                     <p>Books</p>
                 </div>
-                <div className="bookShelf shadow" setSearchResults={setSearchResults}>
+                <div className="bookShelf shadow" >
                     {loggedInUser?.books?.map((e, index) => {
 
                         return (
