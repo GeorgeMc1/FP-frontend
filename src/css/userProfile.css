@@ -1,8 +1,60 @@
+:root {
+	--gradient-shadow: linear-gradient(
+		45deg,
+		rgb(193, 231, 225),
+		rgb(192, 249, 240),
+		rgb(189, 213, 210),
+		rgb(187, 244, 236),
+		rgb(165, 235, 225),
+		rgb(168, 209, 203),
+		rgb(193, 231, 225),
+		rgb(170, 224, 216),
+		rgb(181, 241, 232),
+		rgb(193, 231, 225)
+	);
+}
+.shadow {
+	display: flex;
+	/* justify-content: center; */
+	/* align-items: center; */
+	position: relative;
+	color: #fff;
+	text-align: center;
+	background: linear-gradient(0deg, rgb(193, 231, 225), rgb(225, 246, 243));
+}
+.shadow:before,
+.shadow:after {
+	content: "";
+	position: absolute;
+	background: var(--gradient-shadow);
+	background-size: 200%;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	z-index: -1;
+	animation: animate 20s linear infinite;
+}
+
+.shadow:after {
+	filter: blur(20px);
+}
+
+@keyframes animate {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 300% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+
 .banner img {
     width: 100%;
     max-height: 150px;
     position: relative;
-    margin-bottom:20px;
 }
 
 .avatarOverlay {
@@ -17,35 +69,39 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 30%;
-    margin-left: 5%;
-    background-color: rgb(241, 249, 248);
+    margin-left: 5%;min-width:300px;
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
-    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
-    rgb(0 0 0 / 9%) 0px -3px 5px;
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
+        max-width: 400px;
 }
+
 @media screen and (max-width: 600px) {
     .profileContainer {
-    margin-right:5%;
+        margin-right: 5%;
     }
-  }
+}
+
 .profileCard {
     flex: 0 0 50%;
-    /* margin: auto; */
     text-align: center;
     width: 100%;
+    
 }
 
 /* top section : 2 divs width css */
 .FlexRowTwo {
     display: flex;
     flex-direction: row;
-  
+
 }
+
 @media screen and (max-width: 600px) {
     .FlexRowTwo {
-    flex-direction:column;
+        flex-direction: column;
     }
-  }
+}
+
 /* left panel */
 .profileTitle p {
     margin-bottom: 20px;
@@ -63,7 +119,7 @@
     flex-direction: column;
     margin-top: 20px;
     border-radius: 10px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .cardRow {
@@ -117,56 +173,106 @@
     background-color: rgb(194, 251, 215);
     cursor: pointer;
 }
+.noButtonShow {
+    background-color: inherit;
+    margin:0px;
+    padding:0px;
+    border:none;
+}
+.noButtonShow:focus img {
+   
+    transform: rotate(360deg);}
+
+ .noButtonShow:focus  p  {
+   font-size: 1.1em;
+    color:red;
+   
+}
+.profileCard input , .cardRow p { 
+    border-radius:15px;
+    margin: 0px auto;  
+}
+
+.cardRow {
+    display:flex;
+    flex-direction: row;
+  
+}
+.cardRow p { 
+border:1px solid rgb(51, 51, 51,0.3); 
+border-left:none;
+border-top-left-radius: 0;
+border-bottom-left-radius: 0px;
+}
+.cardRow p:first-child {
+    border:1px solid rgb(51, 51, 51,0.3);
+    border-radius: 5px;
+    background-color: rgb(194, 251, 215);
+}
 
 .favsContainer {
     flex: 1 1 50%;
     background-color: none;
-    padding-left: 5%;
-    padding-right: 5%;
-   
-    
+    margin-left: 5%;
+    margin-right: 5%;
 }
-
+@media screen and (min-width: 600px) {
+    .favsContainer {
+         margin-left: 3%;
+        /* margin-right: 3%; */ 
+    }
+}
 .favsTitle,
 .bookShelfTitle {
     width: max-content;
     padding: 10px 35px;
     margin-bottom: 20px;
-    background-color: rgb(225, 246, 243);
+    background: linear-gradient(0deg, rgb(194, 251, 215),rgb(231, 253, 239),
+     rgb(230, 241, 236)   );
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
+
 @media screen and (max-width: 600px) {
     .favsTitle {
-    margin-top:20px;;
+        margin-top: 20px;
+        ;
     }
-  }
+}
+
 .favsTitle p,
 .bookShelfTitle p {
     font-size: 1.3em;
     font-weight: 600;
     color: rgb(249, 182, 132);
-    
+
+}
+@media screen and (max-width: 500px) {
+    .favsTitle ,
+    .bookShelfTitle  {
+        text-align: center;
+        width:100%;
+        
+    }
 }
 
-
 .favList {
-    border: 2px solid rgb(70, 66, 66, 0.2);
-    flex: 1 1 20%;
+    /* border: 2px solid rgb(70, 66, 66, 0.2); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 60vh;
-    /* max-width: 800px; */
-    background-color: rgb(225, 246, 243);
-    /* justify-content: space-around; */
-    /* direction: rtl; */
-    margin: 0px;
-    padding: 5px;
+    min-height: 50vh;
+    max-height:50vh;
+    
+    background-color: rgb(225, 249, 245);
+  
+    padding: 10px;
+    border:3px inset rgb(194, 251, 215);
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
-    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
-    rgb(0 0 0 / 9%) 0px -3px 5px;}
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
+}
 
 .onefavContainer {
     background-color: #222;
@@ -174,14 +280,14 @@
     margin: 10px;
     cursor: pointer;
     flex: 1 1 30%;
-    height: auto;
-    max-width: 200px;
-    ;
-
+    max-width: auto;
+    max-height: auto;
+    transition: transform 5.7s ease-in-out;
 }
 
 .profileFavImage {
     width: 100%;
+    height:80%
 }
 
 .tooltip {
@@ -201,7 +307,7 @@
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
-
+    
     visibility: hidden;
     transition: visibility .5s, max-height .5s;
     max-height: 0;
@@ -217,51 +323,78 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
     transition: all 0.7s ease-in-out;
-    max-height: 200px;
+    max-height: 200px; 
 }
 
 .tooltip:hover .infoTab {
     visibility: hidden;
+    transition: all 0.1s ease-in-out;
+    color:#333;
 }
-
+.infoTab {
+    transition: all 0.7s ease-in;
+    visibility: visible;
+    /* height:110px; */
+}
+.infoTab:hover {
+    visibility: hidden;
+    transition:  visibility .5s, max-height .5s color #333;
+    max-height: 0;
+}
 .bookShelfContainer {
     width: 90%;
     margin: auto;
     margin-top: 20px;
+   
 }
 
 .bookShelf {
     display: flex;
+    height:max-content;
     flex-direction: row;
     flex-wrap: wrap;
-    min-height: 300px;
     background-color: rgb(225, 246, 243);
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
-    rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
-    rgb(0 0 0 / 9%) 0px -3px 5px;}
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
+ border-style: ridge;
+ border-right:ridge;
+ border-width: 30px;; transform:   rotateX(10deg);
+}
 
 .book {
-    width: 196px;
-    height: 216px;
-    /* margin: auto; */
+    height:200px;
+    padding:10px 10px 0px 10px;
     cursor: pointer;
     position: relative;
+    margin:20px 0px 0px 0px;
+    transition: transform .7s ease-in-out;
+}
 
+.book:hover {
+  
+    transform: scale(1.1);
+}
+.book:first-child {
+    margin-left:20px;;
 }
 
 .book p {
     position: absolute;
-    top: 20%;
-    width: 10%;
     z-index: 10;
-    left: 50%;
-    transform: rotate(-10deg);
+    top:35%;
+    left: 10%;
+    width:100px;
+    margin:5px 10px;  color:black;
+    background:rgb(238, 238, 238,0.8);
+    padding:2px 12px;
+    border-radius: 15px;
 }
 
 .bookImg {
-    position: absolute;
-    top: 0px;
-   
+    /* position: absolute; */
+    /* top: 0px; */
+    height:100%;
 }
 
 #cogIcon {
@@ -272,4 +405,28 @@
     transform: rotate(360deg);
     /* transform: scale(3); */
 
+}
+
+@media screen and (max-width: 500px) {
+    .book {
+          position:relative;
+        align-content: center;
+        justify-content: center;
+        margin-bottom: 30px;;
+       
+    }
+    .bookShelf { display:flex;
+    flex-direction: column;
+
+}
+    .book:first-child {
+        margin-left:20px;;
+    }
+    .book p {
+        position: absolute;
+        z-index: 10;
+        top:30%;
+        left: 25%;
+        
+    }
 }

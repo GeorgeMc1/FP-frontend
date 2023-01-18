@@ -44,3 +44,25 @@ dd {
 	border-radius: 5px;
 	background-color: whitesmoke;
 }
+
+.socials {
+	display:flex;
+	flex-direction: row;
+	padding:5px;
+	justify-content: flex-start;
+
+	
+}
+.socials p {
+	margin-left:50px;
+}
+.socials * {
+	/* max-height: 55px; */
+	/* max-width: 55px; */
+	margin:10px;
+	
+}
+#v_center_text  { 
+justify-content: center;
+height: 64px;
+line-height: 64px; /* same as height! */}

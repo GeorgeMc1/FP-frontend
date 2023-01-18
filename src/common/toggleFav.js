@@ -1,47 +1,24 @@
 import { updateUser } from "../utils";
 
-
-
-/**
- *  
- * @description checks current users favourites
- * if recipie exists removes it
- * if not adds it
- * updates backend accordingling
- * 
- * toggles the ability to unlike on or off
- * @param {any} allowToggleOff=true
- * 
- * @param {any} loggedInUser
- * @param {any} recipe
- * 
- * set a components state (you need to define this in component)
- * setting this will rerender the component with correct status
- * @param {any} setLiked
- * 
- * cookie token
- * @param {any} jwt
- * @returns {booean}
- */
-export const toggleFav = async (allowToggleOff = true, loggedInUser, recipe, setCurrentRecipeLiked, jwt) => {
+export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurrentRecipeLiked, jwt, setFavList, favList) => {
     if (loggedInUser) {
         try {
             let obj = {};
             let response;
             let newFavs;
-            console.log(`
-    **********************************
-    *    start    toggleFav          *
-    **********************************/n`)
-            console.log("*******", allowToggleOff)
+            
+            if (!allowToggleFavs) {return}
+            console.log("fav toggle",allowToggleFavs,recipe)
 
-            //favourites
+            //does users favs contain the recipie
             let match = loggedInUser.favRecipes.includes(recipe._links.self.href)
-            console.log("match in favs?", match)
-            if (match && allowToggleOff) {
+         
+            let isFaved;
+            //if so unlike it
+            if (match && allowToggleFavs) {
                 //unlike
                 console.debug("found in user favs - unfavouring")
-
+                //remove recipe from favs
                 newFavs = loggedInUser.favRecipes.filter(e => !e.includes(recipe._links.self.href))
                 console.debug("num favs", loggedInUser.favRecipes.length)
                 obj = {
@@ -49,10 +26,16 @@ export const toggleFav = async (allowToggleOff = true, loggedInUser, recipe, set
                     "key": "favRecipes",
                     "value": newFavs
                 }
+                isFaved = false;
                 response = await updateUser(obj, jwt)
-                setCurrentRecipeLiked(!match)
-            } else if (!match) {
-                //like
+                console.log(response)
+                setCurrentRecipeLiked(isFaved)
+                setFavList(response.value)
+                loggedInUser.favRecipes = newFavs;
+                console.log("favouties length", newFavs.length)
+
+            } else if (!match ) {
+                //like it
                 console.debug("not in user favs - favouring")
                 console.debug("trying to favourite")
                 newFavs = [...loggedInUser.favRecipes, recipe._links.self.href]
@@ -62,24 +45,15 @@ export const toggleFav = async (allowToggleOff = true, loggedInUser, recipe, set
                     "key": "favRecipes",
                     "value": newFavs
                 }
+                isFaved = true
                 response = await updateUser(obj, jwt)
-                setCurrentRecipeLiked(!match)
-            }
-
-
-            if (response?.success) {
-                console.log(newFavs)
-                console.log("insert")
+                
+                setCurrentRecipeLiked(isFaved)
+                setFavList(response.value)
                 loggedInUser.favRecipes = newFavs;
+                console.log("favouties length", newFavs.length)
             }
 
-            console.log(loggedInUser)
-            let roughObjSize = JSON.stringify(loggedInUser).length;
-            console.log(roughObjSize)
-            console.log(`
-    **********************************************
-    *             end                            *
-    **********************************************\n`)
             return true
         } catch (e) {
             console.log(e);

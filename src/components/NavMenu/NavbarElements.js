@@ -42,7 +42,7 @@ export const NavLink = styled(Link)`
 export const NavIconLink = styled(Link)` 
 flex:1 1 100%;
 background-color:#f1f9f8;
-    height:100%;
+    height:80%;
     text-decoration: none;
     text-align: center;  padding:0px;
     display:inline-block;
@@ -53,16 +53,16 @@ background-color:#f1f9f8;
     }
     img {
         width:180px;
-        height:80px;
+        height:60px;
         vertical-align: middle; 
       
         transition: all 0.3s ease-in-out;
         display: inline-block;
         
         &:hover {
-            transition: all 0.3s ease-in-out;
+            /* transition: all 0.3s ease-in-out;
             display: inline-block;
-            width:100%;
+            width:100%; */
         }
     }
 

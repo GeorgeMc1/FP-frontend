@@ -8,25 +8,25 @@ import FavBookBar from '../FavBookBar/FavBookBar';
 //https://www.npmjs.com/package/react-responsive-carousel
 
 const RecipeGallery = ({ jwt,
-    currentRecipeLiked,
-    setCurrentRecipeLiked,
-    searchResults,
-    setSearchResults,
-    setRecipe,
-    galleryIndexMemory,
-    setIndexMemory,
-    cookBookName,
-    setCookBookName,
-    loggedInUser }) => {
+    currentRecipeLiked, setCurrentRecipeLiked,
+    searchResults, setSearchResults,
+    setRecipe, recipe,
+    galleryIndexMemory, setIndexMemory,
+    cookBookName, setCookBookName,
+    currentRecipeInCurrentBook, setCurrentInCurrentBook,
+    loggedInUser,
+    favList,
+    setFavList,
+    isInBook,setIsInBook
+}) => {
 
     const navigate = useNavigate();
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
 
-    console.log(searchResults, galleryIndex)
+    console.log("entering gallery searchresults / index = ", searchResults, galleryIndex)
 
     const onSlideChange = (index) => {
         //store Carousel's current recipie index 
-        console.log(index, searchResults.hits)
         //store current gallery slide in state for use outside Carousel
         setGalleryIndex(index)
         setIndexMemory(index)
@@ -34,11 +34,9 @@ const RecipeGallery = ({ jwt,
     }
 
     const tapped = (index) => {
-        console.debug("tapped", index)
-        console.debug(searchResults.hits[index])
         setRecipe(searchResults.hits[index]);
         setIndexMemory(index);
-        navigate("/viewRecipie", {
+        navigate("/viewRecipe", {
         });
     }
 
@@ -56,38 +54,31 @@ const RecipeGallery = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (loggedInUser) console.log("isliked", checkIfFavourites(), currentRecipeLiked)
+    if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); }
+  
     return (
         <>
 
             <div className="Carousel" >
-
                 {loggedInUser ?
-                    // <div className="favBox">
-                    //     <FavHeartIcon isLiked={checkIfFavourites()} loggedInUser={loggedInUser} toggleFav={toggleFav} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} />
-                    //     <div className="favTotal">
-                    //         <p >
-                    //             {galleryIndex}
-                    //         </p>
-                    //     </div >
-                    //     <div className="cooKbook">
-                    //         <CookBookIcon isLiked={checkIfFavourites()} updateFav={false} loggedInUser={loggedInUser} toggleCookBookEntry={toggleBookEntry} recipe={searchResults.hits[galleryIndex]} jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked} cookBookName={cookBookName} />
-                    //     </div>
-                    //     <div className="bookchanger" >
 
-                    //         <BookChanger setSearchResults={setSearchResults} setCookBookName={setCookBookName} cookBookName={cookBookName} loggedInUser={loggedInUser} />
-                    //     </div>
-                    // </div>
-                    <FavBookBar 
-                    loggedInUser={loggedInUser}
-                    galleryIndex={galleryIndex}  
-                    setSearchResults={setSearchResults} 
-                    setIndexMemory={setIndexMemory}
-                    jwt={jwt}
-                    searchResults={searchResults}
-                    setCurrentRecipeLiked={setCurrentRecipeLiked}
-                    setCookBookName={setCookBookName} 
-                    cookBookName={cookBookName} 
+                    <FavBookBar
+                        loggedInUser={loggedInUser}
+                        galleryIndex={galleryIndex}
+                        setSearchResults={setSearchResults}
+                        setIndexMemory={setIndexMemory}
+                        jwt={jwt}
+                        recipe={recipe}
+                        searchResults={searchResults}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}
+                        currentRecipeInCurrentBook={currentRecipeInCurrentBook}
+                        setCurrentInCurrentBook={setCurrentInCurrentBook}
+                        favList={favList}
+                        setFavList={setFavList}
+                        isInBook={isInBook}
+                         setIsInBook={setIsInBook}
                     />
                     :
                     <div className="favBox">

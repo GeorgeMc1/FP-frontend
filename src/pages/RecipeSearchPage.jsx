@@ -7,17 +7,21 @@ import "../css/recipeSearchPage.css"
 import RecentSearch from "../components/RecentSearch"
 import UsersBooks from "../components/UsersBooks";
 
-const RecipeSearchPage = ({ 
-    currentRecipeLiked, 
-    setCurrentRecipeLiked, 
-    jwt, searchResults, 
-    setSearchResults, 
-    setRecipe, 
-    setIndexMemory, 
-    galleryIndexMemory, 
-    loggedInUser, 
-    cookBookName, 
-    setCookBookName
+const RecipeSearchPage = ({
+    currentRecipeLiked,
+    setCurrentRecipeLiked,
+    jwt, searchResults,
+    setSearchResults,
+    setRecipe,
+    setIndexMemory,
+    galleryIndexMemory,
+    loggedInUser,
+    cookBookName,
+    setCookBookName,
+    favList,
+    setFavList,
+    
+    isInBook,setIsInBook
 
 }) => {
     return (
@@ -45,8 +49,12 @@ const RecipeSearchPage = ({
                             loggedInUser={loggedInUser}
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
+                            favList={favList}
+							setFavList={setFavList}
                             
-                            ></RecipeGallery>
+							isInBook={isInBook} setIsInBook={setIsInBook}
+
+                        ></RecipeGallery>
                     </GalleryContainer>
                 </ContainerFlexedColumn>
             }

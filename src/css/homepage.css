@@ -3,14 +3,16 @@ body {
 	background-color: #F1f9F8;
 	
 }
-button {
+.button {
 	background-color:#C2FBD7;
 	border: 2px solid whitesmoke;
-	padding: 5px;
+	color: green;
+	/* margin-top: 25px; */
+	padding: 25px;
+	width: 300px;
 	text-align: center;
-	display: inline-block;
-	font-size: 25px;
-	border-radius: 20px;
+	font-size: 15px;
+	border-radius: 5px;
 }
 
 .btn-group {
@@ -57,10 +59,49 @@ button {
 #demo {
 	border:1px solid red;
 	padding:2px;
+}
+
+.signtext {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 	
 }
+
+.btntext {
+	height: 175px;
+	display:flex;
+	flex-direction: column;
+	margin-left: 15px;
+	margin-right: 15px;
+	justify-content: space-between;
+}
+
+.text {
+	/* height: 150px; */
+	max-width: 300px;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	
+}
+
+.topbtn {
+	display: flex;
+	justify-content: center;
+}
+
 .level1 {
 	background:rgb(157, 235, 157);
 	border:1px dashed red;
 	margin:4px;
+}
+
+.level2 {
+	border:1px dashed red;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
 }
