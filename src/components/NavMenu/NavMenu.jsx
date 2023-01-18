@@ -8,13 +8,12 @@ export default function NavMenu({ loggedInUser, recipe }) {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
   return (
     <nav className="navigation">
-      <a href="/"
-        className="brand-name">
+      
 
 
-        <NavIconLink to='/'>
+        <NavIconLink  className="brand-name" to='/'>
           <img alt="logo" src={logo} />
-        </NavIconLink></a>
+        </NavIconLink>
       <button className="hamburger"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);

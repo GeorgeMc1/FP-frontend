@@ -4,7 +4,7 @@ import { toggleBookEntry } from '../../common/toggleBookEntry';
 import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
-
+import { BookNamer } from "../BookNamer/BookNamer";
 const FavBookBar = ({
     loggedInUser,
     galleryIndex,
@@ -61,7 +61,7 @@ const FavBookBar = ({
             match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
             console.log("rsg...")
         }
-        console.log(match)
+        console.log(match || false)
         return match;
     }
 
@@ -91,7 +91,7 @@ const FavBookBar = ({
                     </div > */}
 
 
-                    <div className="cooKbook">
+                    <div className="cookbook">
                         <CookBookIcon
                             favList={favList}
                             setFavList={setFavList}
@@ -116,6 +116,8 @@ const FavBookBar = ({
                             cookBookName={cookBookName}
                             loggedInUser={loggedInUser} />
                     </div>
+
+                    <BookNamer loggedInUser={loggedInUser} setSearchResults={setSearchResults} setCookBookName={setCookBookName}/>
                 </div>
                 :
                 <div className="favBox">

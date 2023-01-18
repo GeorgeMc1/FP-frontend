@@ -38,7 +38,7 @@ export const toggleBookEntry = async (updateFav,isInBook,setIsInBook, loggedInUs
         //if the books already written
         if (currentBook) {
             //does it include the recipe
-            if (currentBook.recipes.includes(galleryItemsRecipe)) {
+            if (currentBook?.recipes?.includes(galleryItemsRecipe)) {
                 //if so remove it
                 console.log("recipie was in book - removing recipe from book")
                 currentBook.recipes = await currentBook.recipes.filter(e => {
@@ -56,7 +56,11 @@ console.log(currentBook)
             //if NOT in book - add it
             else {
                 console.log("recipie not in book -adding recipe")
-                currentBook.recipes = [...currentBook.recipes, galleryItemsRecipe]
+                if (currentBook.recipes) {
+                currentBook.recipes = [...currentBook.recipes, galleryItemsRecipe]}
+                else {
+                    currentBook.recipes = [galleryItemsRecipe]
+                }
                 toggleFavOn = true
                 setIsInBook(true)
             }
