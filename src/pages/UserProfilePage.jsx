@@ -104,8 +104,8 @@ navigate("/viewRecipe")
 
                                 return (
 
-                                    <div key={index} className="onefavContainer tooltip">
-                                        <img className="profileFavImage" onClick={(e)=>{favClick(e,elm)}}src={elm?.recipe?.image} alt={elm?.recipe?.label} />
+                                    <div key={index} className="onefavContainer tooltip" onClick={(e)=>{favClick(e,elm)}}>
+                                        <img className="profileFavImage" src={elm?.recipe?.image} alt={elm?.recipe?.label} />
                                         <span className="tooltiptext">{elm?.recipe?.label}</span>
                                         <div className="infoTab">info
                                         </div>
