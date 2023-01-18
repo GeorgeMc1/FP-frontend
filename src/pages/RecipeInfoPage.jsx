@@ -41,6 +41,7 @@ const RecipeInfoPage = ({
     const serves = data.recipe.yield;
     const mealType = data.recipe.mealType;
     const recipeLink = data.recipe.url;
+    const selfLink = data._links.self.href;
     //theres still more
 
     return (
@@ -63,7 +64,7 @@ const RecipeInfoPage = ({
                         isInBook={isInBook}
                         setIsInBook={setIsInBook}
                         recipeObj={data} />
-                    <RecipieImage data={images} />
+                    <RecipieImage data={images} selfLink={selfLink} />
                 </div>
                 <RecipeInfoPageAction
                     timeToPlate={timeToPlate}
