@@ -2,26 +2,31 @@ import { useState } from "react";
 import IngredientList from "./IngredientList/IngredientList";
 import NutritionalList from "./NutritionalList/NutritionalList";
 import styled from "styled-components";
+import CautionList from "./CautionList/CautionList";
 
 const InfoBottomSec = ({ingLines, cautions, digest}) => {
-    const [ingredients, setIngredients] = useState(true);
+    const [ingredients, setIngredients] = useState(cautions.length > 0 ? false : true);
     const [nutrition, setNutrition] = useState(false);
     const [notes, setNotes] = useState(false);
+    const [caution, setCaution] = useState(true);
 
     return(
         <BottomSecContainer>
             <div className="tabs">
-                <h3 className={ingredients ? "selected" : ""} onClick={() => {setIngredients(true); setNutrition(false); setNotes(false)}}>Ingredients</h3>
-                <h3 className={nutrition ? "selected" : ""} onClick={() => {setNutrition(true); setIngredients(false); setNotes(false)}}>Nutritinal Info</h3>
-                <h3 className={notes ? "selected" : ""} onClick={() => {setNotes(true); setIngredients(false); setNutrition(false)}}>Notes</h3>
+                {cautions.length > 0 ? <h3 className={caution ? "selected" : ""} onClick={() => {setCaution(true); setIngredients(false); setNutrition(false); setNotes(false)}}>Cautions</h3> : null}
+                <h3 className={ingredients ? "selected" : ""} onClick={() => {setIngredients(true); setNutrition(false); setNotes(false); setCaution(false)}}>Ingredients</h3>
+                <h3 className={nutrition ? "selected" : ""} onClick={() => {setNutrition(true); setIngredients(false); setNotes(false); setCaution(false)}}>Nutritinal Info</h3>
+                <h3 className={notes ? "selected" : ""} onClick={() => {setNotes(true); setIngredients(false); setNutrition(false); setCaution(false)}}>Notes</h3>
             </div>
             <div className="info">
                 {ingredients ?
-                    <IngredientList data={ingLines} cautions={cautions}/>
+                    <IngredientList data={ingLines}/>
                 : nutrition ?
                     <NutritionalList data={digest}/>
                 : notes ?
                     <textarea className="input"></textarea>
+                : caution ?
+                    <CautionList cautions={cautions}/>
                 : null
                 }
             </div>
@@ -35,7 +40,7 @@ const BottomSecContainer = styled.div`
     align-items: center;
     max-width: 800px;
     width: 100%;
-    margin: 10px auto;
+    margin: 20px auto;
 
     .tabs{
         display: flex;
