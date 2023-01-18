@@ -42,9 +42,7 @@ export const NavLink = styled(Link)`
 export const NavIconLink = styled(Link)` 
 flex:1 1 100%;
 background-color:#f1f9f8;
-    height:80%;
     text-decoration: none;
-    text-align: center;  padding:0px;
     display:inline-block;
     flex:1 1 100%;
     &:hover {
