@@ -1,6 +1,7 @@
 
 .navigation * {
   z-index: 200;;
+  
 }
 
 .navigation {
@@ -10,13 +11,17 @@
   align-items: center;
   position: relative;
   padding: 0.5rem 0rem;
-  background-color: #fff;
-  color: black;
-  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+  background-color: #f1f9f8;
+  color: #333;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.navigation * a,.navigation * a:active {
+  color:#333;
 }
 .brand-name {
     text-decoration: none;
-    color: black;
+    color: 333;
     font-size: 1.3rem;
     margin-left: 1rem;
   }
@@ -26,11 +31,25 @@
   .navigation-menu ul {
     display: flex;
     padding: 0;
+    height:100%;
+    
   }
   .navigation-menu li {
     /* // removes default disc bullet for li tags and applies margin to left & right side */
     list-style-type: none;
-    margin: 0 1rem;
+    margin: 20px 0;
+    height:60px;
+    line-height: 60px;;
+     padding:0px 20px; 
+  }
+  .navigation-menu ul li a:{
+    color: #15cdfc;
+  }
+
+  .navigation-menu li:hover {
+    color: #15cdfc;
+      transition: all 0.3s ease-in-out;
+      background-color:#c2fbd7;
   }
   .navigation-menu li a {
     /* // increases the surface area of the anchor tag to span more than just the anchor text */
@@ -60,17 +79,26 @@
   .hamburger:hover {
     background-color: #2642af;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 635px) {
     .hamburger {
       display: block;
     }
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 635px) {
     .navigation-menu ul {
       display: none;
     }
   }
-  @media screen and (max-width: 768px) {
+
+
+
+
+
+
+
+
+
+  @media screen and (max-width: 635px) {
     .navigation-menu ul {
       /* // navigation menu is positioned to start 60px from the top of the document (which is directly below the navbar) */
       position: absolute;
@@ -88,7 +116,10 @@
       /* // centers link text and strips off margin */
       text-align: center;
       margin: 0;
+
     }
+
+
     .navigation-menu li a {
       color: black;
       /* // increases the surface area of the anchor tag to span the full width of the menu */
@@ -96,16 +127,26 @@
       padding: 1.5rem 0;
     }
     .navigation-menu li:hover {
-      background-color: #eee;
+      color: #15cdfc;
+      transition: all 0.3s ease-in-out;
+      background-color:#c2fbd7;
     }
   }
-  @media screen and (max-width: 768px) {
+
+
+
+
+
+  @media screen and (max-width: 635px) {
     .navigation-menu ul {
       /* previous styles */
       display: none;
     }
   }
-  @media screen and (max-width: 768px) {
+
+
+
+  @media screen and (max-width: 635px) {
     .navigation-menu.expanded ul {
       display: block;
     }

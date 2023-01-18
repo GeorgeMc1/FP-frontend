@@ -11,7 +11,7 @@ import RecipeInfoPage from "./pages/RecipeInfoPage";
 import RecipeSearchPage from "./pages/RecipeSearchPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserProfilePage from "./pages/UserProfilePage";
-import Navbar from "./components/Navbar";
+
 import Footer from "./components/Footer";
 import PreFooter from "./components/PreFooter/PreFooter";
 
@@ -31,6 +31,27 @@ function App() {
 	const [currentRecipeInCurrentBook, setCurrentInCurrentBook] = useState();
 	const [favList, setFavList] = useState();
 	const [isInBook, setIsInBook] = useState();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
 		if (cookie !== false) {
@@ -38,6 +59,18 @@ function App() {
 		}
 	}, []);
 	
+
+
+
+
+
+
+
+
+
+
+
+
 	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 
@@ -52,10 +85,7 @@ function App() {
 		<BrowserRouter>
 		<NavMenu loggedInUser={loggedInUser}
 				recipe={recipe}/>
-			<Navbar
-				loggedInUser={loggedInUser}
-				recipe={recipe}
-			/>
+			
 			
 			<Routes>
 				<Route path="/" element={<Homepage />} />
