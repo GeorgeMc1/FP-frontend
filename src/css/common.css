@@ -22,7 +22,7 @@ dd {
 	margin: 0;
 }
 
-#recipe-search {
+/* #recipe-search {
 	background-color: wheat;
 	width: 100%;
 	display: flex;
@@ -31,7 +31,7 @@ dd {
 	border: 1px solid #444;
 	border-radius: 10px;
 	margin-top: 10px;
-}
+} */
 
 #loginPageForm input,
 #loginPageForm select,
