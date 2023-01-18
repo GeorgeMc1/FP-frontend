@@ -1,6 +1,6 @@
 // Navbar.js 
 import "../../components/NavMenu/navStyles.css"
-import {  NavIconLink } from "./NavbarElements";
+import { NavIconLink } from "./NavbarElements";
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 // Navbar.js
@@ -39,7 +39,12 @@ export default function NavMenu({ loggedInUser, recipe }) {
         }>
         <ul>
           <li> <a href="/SearchRecipes">Search</a>  </li>
-          {recipe ? <li><a href="/ViewRecipie">View Recipie</a></li> : null}
+          {recipe ? 
+            <li>
+              <a href="/ViewRecipie">View Recipie</a>
+            </li>
+            
+          : null}
 
           {loggedInUser ? (
             <>
