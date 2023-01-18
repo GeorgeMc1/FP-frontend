@@ -59,7 +59,7 @@ const FavBookBar = ({
             console.log("rvp...",currentBook,recipeObj)
         }
         else {
-            match = currentBook.recipes.includes(searchResults?.hits[galleryIndex])
+            match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
             console.log("rsg...")
         }
         console.log(match)

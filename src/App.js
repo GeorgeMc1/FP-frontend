@@ -27,7 +27,7 @@ function App() {
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
 	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
-	const [cookBookName, setCookBookName] = useState("Default")
+	const [cookBookName, setCookBookName] = useState("test")
 	const [currentRecipeInCurrentBook, setCurrentInCurrentBook] = useState();
 	const [favList, setFavList] = useState();
 	const [isInBook, setIsInBook] = useState();
@@ -38,7 +38,7 @@ function App() {
 		}
 	}, []);
 	
-
+	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 
 	const loginWithToken = async (cookie) => {
@@ -101,7 +101,6 @@ function App() {
 							setCurrentInCurrentBook={setCurrentInCurrentBook}
 							favList={favList}
 							setFavList={setFavList}
-
 							isInBook={isInBook} setIsInBook={setIsInBook}
 						/>}
 					/>
