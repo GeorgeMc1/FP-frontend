@@ -45,7 +45,7 @@ const FavBookBar = ({
 
         let currentBook;
         let match;
-        for (let i = 0; i < loggedInUser.books.length; i++) {
+        for (let i = 0; i < loggedInUser?.books?.length; i++) {
             if (loggedInUser.books[i].bookName === cookBookName) {
                 console.log("book found in user")
                 currentBook = loggedInUser.books[i]
@@ -54,7 +54,7 @@ const FavBookBar = ({
 
         console.log(currentBook)
         if (recipeObj) {
-            match = currentBook.recipes.includes(recipeObj)
+            match = currentBook?.recipes?.includes(recipeObj)
             console.log("rvp...",currentBook,recipeObj)
         }
         else {
