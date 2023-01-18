@@ -78,6 +78,7 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     }
 
     const onCogClick = (element) => {
+        console.log("cog click",element)
         setEditing(true);
         setUpdateKey(element);
     }
@@ -105,12 +106,14 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                                 return (
                                     <div key={index} className="cardRow">
                                         {/* display emelemnts key */}
-                                        <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
+                                        <p >{element.charAt(0).toUpperCase() + element.slice(1)}</p>
                                         {/* //display elements value if not password */}
                                         <input type="text" defaultValue={(element === "password") ? null : loggedInUser[element]}
                                             onChange={(event) => {
                                                 userEdits[element] = event.target.value
-                                            }} />
+                                            }} 
+                                            
+                                            />
                                         {/* if state has editing true */}
                                         {editing
                                             ?
@@ -131,10 +134,10 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
                                 return (
                                     <div key={index} className="cardRow">
                                         {/* display currently mapped items key */}
-                                        <p>{element.charAt(0).toUpperCase() + element.slice(1)}</p>
+                                        <p >{element.charAt(0).toUpperCase() + element.slice(1)}</p>
                                         {
                                             // if current element in map is password display empty <P> else keys state saved value
-                                            (element === "password") ? <p></p> : <p>{loggedInUser[element]}</p>
+                                            (element === "password") ? <p onClick={(e) => { onCogClick(element) }}></p> : <p onClick={(e) => { onCogClick(element) }}>{loggedInUser[element]}</p>
                                         }
 
                                         {/* if somethings being eddited - icons will be displayed according to icon sets above 
