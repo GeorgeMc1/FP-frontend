@@ -20,16 +20,12 @@
 	position: relative;
 	color: #fff;
 	text-align: center;
-	
-	
 	background: linear-gradient(0deg, rgb(193, 231, 225), rgb(225, 246, 243));
 }
 .shadow:before,
 .shadow:after {
 	content: "";
 	position: absolute;
-	/* top: -2px;
-	left: -2px; */
 	background: var(--gradient-shadow);
 	background-size: 200%;
 	width: calc(100% + 4px);
@@ -59,7 +55,6 @@
     width: 100%;
     max-height: 150px;
     position: relative;
-    margin-bottom: 20px;
 }
 
 .avatarOverlay {
@@ -74,10 +69,11 @@
     display: flex;
     flex-direction: column;
     flex: 1 1 30%;
-    margin-left: 5%;
+    margin-left: 5%;min-width:300px;
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;
+        max-width: 400px;
 }
 
 @media screen and (max-width: 600px) {
@@ -88,9 +84,9 @@
 
 .profileCard {
     flex: 0 0 50%;
-    /* margin: auto; */
     text-align: center;
     width: 100%;
+    
 }
 
 /* top section : 2 divs width css */
@@ -123,7 +119,7 @@
     flex-direction: column;
     margin-top: 20px;
     border-radius: 10px;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .cardRow {
@@ -177,16 +173,55 @@
     background-color: rgb(194, 251, 215);
     cursor: pointer;
 }
+.noButtonShow {
+    background-color: inherit;
+    margin:0px;
+    padding:0px;
+    border:none;
+}
+.noButtonShow:focus img {
+   
+    transform: rotate(360deg);}
+
+ .noButtonShow:focus  p  {
+   font-size: 1.1em;
+    color:red;
+   
+}
+.profileCard input , .cardRow p { 
+    border-radius:15px;
+    margin: 0px auto;  
+}
+
+.cardRow {
+    display:flex;
+    flex-direction: row;
+  
+}
+.cardRow p { 
+border:1px solid rgb(51, 51, 51,0.3); 
+border-left:none;
+border-top-left-radius: 0;
+border-bottom-left-radius: 0px;
+}
+.cardRow p:first-child {
+    border:1px solid rgb(51, 51, 51,0.3);
+    border-radius: 5px;
+    background-color: rgb(194, 251, 215);
+}
 
 .favsContainer {
     flex: 1 1 50%;
     background-color: none;
-    padding-left: 5%;
-    padding-right: 5%;
-
-
+    margin-left: 5%;
+    margin-right: 5%;
 }
-
+@media screen and (min-width: 600px) {
+    .favsContainer {
+         margin-left: 3%;
+        /* margin-right: 3%; */ 
+    }
+}
 .favsTitle,
 .bookShelfTitle {
     width: max-content;
@@ -211,23 +246,29 @@
     color: rgb(249, 182, 132);
 
 }
-
+@media screen and (max-width: 500px) {
+    .favsTitle ,
+    .bookShelfTitle  {
+        text-align: center;
+        width:100%;
+        
+    }
+}
 
 .favList {
-    border: 2px solid rgb(70, 66, 66, 0.2);
-    flex: 1 1 20%;
+    /* border: 2px solid rgb(70, 66, 66, 0.2); */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    min-height: 40vh;
-    max-height:40vh;
+    min-height: 50vh;
+    max-height:50vh;
     
-    background-color: rgb(225, 246, 243);
+    background-color: rgb(225, 249, 245);
   
-    margin: 0px;
-    padding: 5px;
+    padding: 10px;
+    border:3px inset rgb(194, 251, 215);
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;
@@ -321,7 +362,6 @@
  border-width: 30px;; transform:   rotateX(10deg);
 }
 
-
 .book {
     height:200px;
     padding:10px 10px 0px 10px;
@@ -330,6 +370,7 @@
     margin:20px 0px 0px 0px;
     transition: transform .7s ease-in-out;
 }
+
 .book:hover {
   
     transform: scale(1.1);
@@ -343,7 +384,11 @@
     z-index: 10;
     top:35%;
     left: 10%;
-    margin:5px 15px;  
+    width:100px;
+    margin:5px 10px;  color:black;
+    background:rgb(238, 238, 238,0.8);
+    padding:2px 12px;
+    border-radius: 15px;
 }
 
 .bookImg {
@@ -360,4 +405,28 @@
     transform: rotate(360deg);
     /* transform: scale(3); */
 
+}
+
+@media screen and (max-width: 500px) {
+    .book {
+          position:relative;
+        align-content: center;
+        justify-content: center;
+        margin-bottom: 30px;;
+       
+    }
+    .bookShelf { display:flex;
+    flex-direction: column;
+
+}
+    .book:first-child {
+        margin-left:20px;;
+    }
+    .book p {
+        position: absolute;
+        z-index: 10;
+        top:30%;
+        left: 25%;
+        
+    }
 }

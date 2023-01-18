@@ -36,7 +36,7 @@ const RecipeGallery = ({ jwt,
     const tapped = (index) => {
         setRecipe(searchResults.hits[index]);
         setIndexMemory(index);
-        navigate("/viewRecipie", {
+        navigate("/viewRecipe", {
         });
     }
 
