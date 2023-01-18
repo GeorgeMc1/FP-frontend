@@ -5,8 +5,8 @@ import cogImg from "../../assets/images/OptionsCog.png"
 import redCrossImg from "../../assets/images/redCross.png"
 import { updateUser, deleteUser } from "../../utils"
 import SaveImg from "../../assets/images/SaveImg.png"
-import "../../css/profilePage.css"
-const UserProfilePage = ({ setSearchResults,loggedInUser, setLoggedInUser, jwt, setJWT }) => {
+
+const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
    
     const [updateKey, setUpdateKey] = useState();
     const [editing, setEditing] = useState();

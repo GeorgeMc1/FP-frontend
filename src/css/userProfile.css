@@ -192,7 +192,8 @@
     width: max-content;
     padding: 10px 35px;
     margin-bottom: 20px;
-    background: linear-gradient(0deg, rgb(193, 231, 225), rgb(225, 246, 243));
+    background: linear-gradient(0deg, rgb(194, 251, 215),rgb(231, 253, 239),
+     rgb(230, 241, 236)   );
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
@@ -220,8 +221,8 @@
     flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    min-height: 50vh;
-    max-height:50vh;
+    min-height: 40vh;
+    max-height:40vh;
     
     background-color: rgb(225, 246, 243);
   
@@ -238,7 +239,8 @@
     margin: 10px;
     cursor: pointer;
     flex: 1 1 30%;
-    max-width: 200px;
+    max-width: auto;
+    max-height: auto;
     transition: transform 5.7s ease-in-out;
 }
 
@@ -302,6 +304,7 @@
     width: 90%;
     margin: auto;
     margin-top: 20px;
+   
 }
 
 .bookShelf {
@@ -313,16 +316,18 @@
     box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
         rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
         rgb(0 0 0 / 9%) 0px -3px 5px;
- 
+ border-style: ridge;
+ border-right:ridge;
+ border-width: 30px;; transform:   rotateX(10deg);
 }
 
 
 .book {
     height:200px;
-    padding:10px;
+    padding:10px 10px 0px 10px;
     cursor: pointer;
     position: relative;
-    margin:20px 0px;
+    margin:20px 0px 0px 0px;
     transition: transform .7s ease-in-out;
 }
 .book:hover {
