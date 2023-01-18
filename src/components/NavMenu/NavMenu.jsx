@@ -42,7 +42,7 @@ export default function NavMenu({ loggedInUser, recipe }) {
             </li>
           {recipe ? 
             <li>
-              <NavLink to="/ViewRecipe">View Recipie</NavLink>
+              <NavLink to="/ViewRecipe">View Recipe</NavLink>
             </li>
             
           : null}

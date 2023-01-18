@@ -1,4 +1,3 @@
-
 .navigation * {
   z-index: 200;;
   
@@ -30,6 +29,7 @@
   }
   .navigation-menu ul {
     display: flex;
+    flex-wrap: nowrap;
     padding: 0;
     height:100%;
     
@@ -39,15 +39,14 @@
     list-style-type: none;
     margin: 20px 0;
     height:60px;
-    line-height: 60px;;
-     padding:0px 20px; 
+    line-height: 60px;
   }
  
 
   .navigation-menu li:hover {
-    color: #15cdfc;
+    color: red;
       transition: all 0.3s ease-in-out;
-      background-color:#c2fbd7;
+      background-color: linear-gradient(0deg, rgb(194, 251, 215), rgb(231, 253, 239), rgb(230, 241, 236));
   }
   .navigation-menu li a {
     /* // increases the surface area of the anchor tag to span more than just the anchor text */
@@ -87,15 +86,6 @@
       display: none;
     }
   }
-
-
-
-
-
-
-
-
-
   @media screen and (max-width: 635px) {
     .navigation-menu ul {
       /* // navigation menu is positioned to start 60px from the top of the document (which is directly below the navbar) */
@@ -116,8 +106,6 @@
       margin: 0;
 
     }
-
-
     .navigation-menu li a {
       color: black;
       /* // increases the surface area of the anchor tag to span the full width of the menu */
@@ -130,20 +118,12 @@
       background-color:#c2fbd7;
     }
   }
-
-
-
-
-
   @media screen and (max-width: 635px) {
     .navigation-menu ul {
       /* previous styles */
       display: none;
     }
   }
-
-
-
   @media screen and (max-width: 635px) {
     .navigation-menu.expanded ul {
       display: block;
