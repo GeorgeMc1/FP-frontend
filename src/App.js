@@ -18,6 +18,7 @@ import PreFooter from "./components/PreFooter/PreFooter";
 
 // import cookie functions
 import { getCookie } from "./common";
+import NavMenu from "./components/NavMenu/NavMenu";
 
 function App() {
 	const [jwt, setJWT] = useState();
@@ -49,14 +50,16 @@ function App() {
 
 	return (
 		<BrowserRouter>
+		<NavMenu loggedInUser={loggedInUser}
+				recipe={recipe}/>
 			<Navbar
 				loggedInUser={loggedInUser}
-				setLoggedInUser={setLoggedInUser}
 				recipe={recipe}
 			/>
+			
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				
+			
 				<Route
 					path="/searchRecipes"
 					element={
