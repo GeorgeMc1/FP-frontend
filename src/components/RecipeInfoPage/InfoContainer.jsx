@@ -57,6 +57,22 @@ const InfoContainer = styled.div`
             }
         }
     }
+    &#cautions{
+        ul {
+            padding-left: 55px;
+            list-style-image: url(${checkMark});
+            li {
+                font-size: 20px;
+                position: relative;
+                div {
+                    position: absolute;
+                    top: 50%;
+                    -ms-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
     &#ingredients {
         ul {
             padding-left: 55px;
