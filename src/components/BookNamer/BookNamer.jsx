@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./bookNamerStyles.css"
 import cogIcon from "../../assets/images/OptionsCog.png"
 
