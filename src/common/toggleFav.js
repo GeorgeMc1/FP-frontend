@@ -1,7 +1,6 @@
 import { updateUser } from "../utils";
 
-export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurrentRecipeLiked, jwt,
-    setFavList, favList) => {
+export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurrentRecipeLiked, jwt, setFavList, favList) => {
     if (loggedInUser) {
         try {
             let obj = {};
@@ -16,7 +15,7 @@ export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurre
          
             let isFaved;
             //if so unlike it
-            if (match) {
+            if (match && allowToggleFavs) {
                 //unlike
                 console.debug("found in user favs - unfavouring")
                 //remove recipe from favs
