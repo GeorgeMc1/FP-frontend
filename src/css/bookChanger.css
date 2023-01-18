@@ -1,17 +1,23 @@
 .dropbtn {
     background-color: rgb(194, 251, 215);
-    padding:2px 10px;
-    font-size: 1em;
+    padding:2px 20px;
+    font-size: 1.25em;
     border-radius:5px;
-    border: none;
+    
     cursor: pointer;
     justify-content: center;
-    align-self: center;
-    align-items: center;;
-    align-content: center;
-    justify-items: center;
-    justify-self: center;
+  
+    border:3px outset #444;
+    border-color: #ededed;
+    background-color:  rgb(10, 11, 10);
+    color: #d8d8d8;
+    min-width:150px;
+    max-width:150px;
+    overflow: hidden;
+    height: 100%;
   }
+
+
   
   /* Dropdown button on hover & focus */
   .dropbtn:hover, .dropbtn:focus {
