@@ -33,25 +33,6 @@ function App() {
 	const [isInBook, setIsInBook] = useState();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
 		if (cookie !== false) {
@@ -59,17 +40,6 @@ function App() {
 		}
 	}, []);
 	
-
-
-
-
-
-
-
-
-
-
-
 
 	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])

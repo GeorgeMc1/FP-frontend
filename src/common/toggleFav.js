@@ -34,7 +34,7 @@ export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurre
                 loggedInUser.favRecipes = newFavs;
                 console.log("favouties length", newFavs.length)
 
-            } else if (!match ) {
+            } else if (!match  ) {
                 //like it
                 console.debug("not in user favs - favouring")
                 console.debug("trying to favourite")

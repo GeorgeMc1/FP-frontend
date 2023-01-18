@@ -1,6 +1,6 @@
 // Navbar.js 
 import "../../components/NavMenu/navStyles.css"
-import { NavIconLink } from "./NavbarElements";
+import { NavIconLink,NavLink } from "./NavbarElements";
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 // Navbar.js
@@ -37,24 +37,26 @@ export default function NavMenu({ loggedInUser, recipe }) {
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }>
         <ul>
-          <li> <a href="/SearchRecipes">Search</a>  </li>
+          <li> 
+            <NavLink to="/SearchRecipes">Search</NavLink>  
+            </li>
           {recipe ? 
             <li>
-              <a href="/ViewRecipe">View Recipie</a>
+              <NavLink to="/ViewRecipe">View Recipie</NavLink>
             </li>
             
           : null}
 
           {loggedInUser ? (
             <>
-              <li><a href="/UserProfile">UserProfile</a></li>
-              <li><a href="/logout" action="logout">Logout    </a></li>
+              <li><NavLink to="/UserProfile">UserProfile</NavLink></li>
+              <li><NavLink to="/logout" action="logout">Logout    </NavLink></li>
             </>
           ) : (
 
             <>
-              <li><a href="/SignUp">Sign Up</a></li>
-              <li><a href="/login" action="login">login</a></li>
+              <li><NavLink to="/SignUp">Sign Up</NavLink></li>
+              <li><NavLink to="/login" action="login">login</NavLink></li>
             </>
 
 
