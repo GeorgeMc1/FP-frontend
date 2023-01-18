@@ -73,7 +73,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
 
     return (
         <Container id="RecipeSearchForm">
-            <h2>RecipeSearchPage</h2>
+            <h2>Search your recipes here</h2>
             <form id="recipe-search" onSubmit={submitHandler}>
                 <input type="text" placeholder="...ingredients" onChange={
                     (event) => {

@@ -14,7 +14,7 @@
 	margin: 2rem auto;
 	padding: 5px 10px;
 	min-height: 400px;
-	width: 60%;
+	width: 100%;
 	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
 		rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
 		rgb(0 0 0 / 9%) 0px -3px 5px;
@@ -90,5 +90,16 @@
 .yourBooksContainer {
 	background-color: #bef9d4;
 	min-height: 500px;
-	font-size: 1.25rem;
+	font-size: 1.2rem;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 5px;
+	padding: 2rem;
+}
+
+.yourBooksTitle p {
+	text-align: center;
+	margin: 12px auto;
 }

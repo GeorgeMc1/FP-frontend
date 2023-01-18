@@ -1,5 +1,5 @@
 import React from 'react'
-import bookRed from "../assets/images/bookRed.png"
+import bookRed from "../assets/images/blueBook.png"
 import { getBook } from "../common/getBook";
 // import { useNavigate } from "react-router-dom";
 
