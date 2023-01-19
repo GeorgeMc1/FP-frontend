@@ -44,12 +44,10 @@ export const NavLink = styled(Link)`
     }
 `
 
-export const NavIconLink = styled(Link)` 
-flex:1 1 100%;
-background-color:#f1f9f8;
+export const NavIconLink = styled(Link)`
+    background-color:#f1f9f8;
     text-decoration: none;
     display:inline-block;
-    flex:1 1 100%;
     &:hover {
            
         // background-color:#c2fbd7;
