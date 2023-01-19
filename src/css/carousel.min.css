@@ -281,4 +281,6 @@
     transition: opacity .35s ease-in-out;
     transition: opacity .35s ease-in-out
 }
-
+.carousel {
+    border-color:#8cd8a8;
+}

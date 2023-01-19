@@ -50,7 +50,7 @@ dd {
 	flex-direction: row;
 	padding:5px;
 	justify-content: flex-start;
-
+flex-wrap: wrap;
 	
 }
 .socials p {
@@ -60,6 +60,11 @@ dd {
 	/* max-height: 55px; */
 	/* max-width: 55px; */
 	margin:10px;
+	
+}
+@media screen and (max-width: 500px) {
+	.socials {justify-content: center}
+	#v_center_text {width:100%;text-align: center;}
 	
 }
 #v_center_text  { 

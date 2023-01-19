@@ -42,25 +42,26 @@ const Homepage = () => {
                 <div className="level2">
                     <figure className="item">
                         <figcaption className="caption">most viewed recipes</figcaption>
+                        
                         <div className="row">
                             <div className="imagecontainer">
                                 <img src={picture1} alt="" />
                                 <div >
-                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                </div>
-                            </div>
-                        
-                            <div className="imagecontainer">
-                                <img src={picture1} alt="" />
-                                <div >
-                                <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                 </div>
                             </div>
 
                             <div className="imagecontainer">
                                 <img src={picture1} alt="" />
                                 <div >
-                                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                            </div>
+
+                            <div className="imagecontainer">
+                                <img src={picture1} alt="" />
+                                <div >
+                                    <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                                 </div>
                             </div>
                         </div>
