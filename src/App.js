@@ -58,7 +58,7 @@ function App() {
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 	useEffect(() => { console.log("isInBook chaged", isInBook) }, [isInBook])
 
-	useEffect(() => { console.log("favList chaged", favList.length) }, [favList])
+	useEffect(() => { console.log("favList chaged", favList?.length) }, [favList])
 
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
