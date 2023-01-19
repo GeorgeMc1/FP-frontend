@@ -1,8 +1,8 @@
 .carousel .control-arrow,
 .carousel.carousel-slider .control-arrow {
     transition: all .25s ease-in;
-    opacity: .4;
-    filter: alpha(opacity=40);
+    opacity: 1;
+    filter: alpha(opacity=100);
     position: absolute;
     z-index: 2;
     top: 20px;
@@ -68,6 +68,7 @@
     top: 50%;
     margin-top: -13px;
     font-size: 18px;
+    
 
 }
 
@@ -84,7 +85,7 @@
     position: relative;
     list-style: none;
     white-space: nowrap;
-    top:-15px;
+    top:-16px;
 }
 
 .carousel .thumb {
@@ -238,8 +239,9 @@
 .carousel .thumbs-wrapper  {
     border:5px solid rgb(140, 216, 168);
     background-color: rgb(140, 216, 168);
-    height:100px;
-    flex-direction: column;
+    height:88px;
+    flex-direction: row;
+    margin-left:0px;
 }
 
 /*  */
@@ -249,7 +251,7 @@
 }
 
 .carousel .control-prev.control-arrow:before {
-    border-right: 18px solid rgb(98, 186, 130);
+    border-right: 18px solid rgb(10, 246, 45);
 }
 
 .carousel .control-next.control-arrow {
@@ -257,7 +259,7 @@
 }
 
 .carousel .control-next.control-arrow:before {
-    border-left: 18px solid rgb(98, 186, 130);
+    border-left: 18px solid rgb(10, 246, 45);
 }
 
 
@@ -275,7 +277,7 @@
     padding: 10px;
     font-size: 12px;
     text-align: center;
-    opacity: 0.25;
+    opacity: 0.7;
     transition: opacity .35s ease-in-out;
     transition: opacity .35s ease-in-out
 }

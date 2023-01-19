@@ -33,7 +33,7 @@ export const Container = styled.div`
 `;
 export const GalleryContainer = styled.div`
 	width: 100%;
-	max-width: 400px;
+	max-width: 350px;
 	margin: auto auto;
 `;
 

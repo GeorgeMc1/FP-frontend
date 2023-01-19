@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
-
+import erroImg from "../../assets/images/brokenLink.png"
 import FavBookIconBar from '../FavBookIconBar/FavBookIconBar';
-
+import dot from "../../assets/images/dot.png"
 //https://www.npmjs.com/package/react-responsive-carousel
 
 const CarouselWrapper = ({ jwt,
@@ -20,6 +20,7 @@ const CarouselWrapper = ({ jwt,
     isInBook,setIsInBook
 }) => {
 
+    const[thumbs,setThumbs]=useState(true);
     const navigate = useNavigate();
     const [galleryIndex, setGalleryIndex] = useState(galleryIndexMemory || 0)
 
@@ -56,11 +57,17 @@ const CarouselWrapper = ({ jwt,
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
     if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); }
+
+    const toggleThumbs=() => {
+        setThumbs(!thumbs)
+    }
   
     return (
         <>
 
             <div className="Carousel" >
+                <button onClick={((e)=>toggleThumbs())} >Toggle thumbnails</button>
+                <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
                 {loggedInUser ?
 
                     <FavBookIconBar
@@ -98,34 +105,35 @@ const CarouselWrapper = ({ jwt,
                     onClickItem={tapped}
                     swipeable={true}
                 // autoPlay={true}
-                showThumbs
+                showThumbs={thumbs}
                 showIndicators
                 showStatus
                 swipeScrollTolerance={3}
-                width={400}
+                width={350}
+                thumbWidth={80}
 // 
 renderIndicator={(onClickHandler, isSelected, index, label) => {
-    const defStyle = { marginLeft: 20, color: "white", cursor: "pointer" };
-    const style = isSelected
-      ? { ...defStyle, color: "red" }
-      : { ...defStyle };
+    // const defStyle = { marginLeft: 20, color: "white", cursor: "pointer" };
+    // const style = isSelected
+    //   ? { ...defStyle, color: "red" }
+    //   : { ...defStyle };
     return (
-      <span
-        style={style}
-        onClick={onClickHandler}
-        onKeyDown={onClickHandler}
-        value={index}
-        key={index}
-        role="button"
-        tabIndex={0}
-        aria-label={`${label} ${index + 1}`}
-      >
-        {""}
-      </span>
+    //   <span
+    //     style={style}
+    //     onClick={onClickHandler}
+    //     onKeyDown={onClickHandler}
+    //     value={index}
+    //     key={index}
+    //     role="button"
+    //     tabIndex={0}
+    //     aria-label={`${label} ${index + 1}`}
+    //   >
+        
+        <img className="dot" alt="indicator" src={dot} />
+    //   </span>
+    
     );
   }}
-
-// 
                 >
                     {
                         searchResults.hits.map((result, index) => {
@@ -134,8 +142,11 @@ renderIndicator={(onClickHandler, isSelected, index, label) => {
                             return (
                                 <div key={index}>
 
-                                    <img src={image} alt={legend} ></img>
-                                    <p className="legend">{legend} 1</p>
+                                    <img src={image} alt={legend} onError={ ({currentTarget} )=> { 
+                                        currentTarget.src=erroImg
+                                        console.log(currentTarget)
+                                    }}></img>
+                                    <p className="legend">{legend}</p>
                                 </div>
                             )
                         }
