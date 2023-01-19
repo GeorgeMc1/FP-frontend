@@ -24,9 +24,10 @@ const RecipeSearchPage = ({
     isInBook,setIsInBook
 
 }) => {
+    console.log(searchResults)
     return (
         <PageContainer className="RecipeSearchPage">
-            {!searchResults ?
+            {!searchResults || searchResults?.hits<=0 ?
                 <ContainerFlexedColumn>
                     <div className="formAndBooksContainer">
                         <UsersBooks user={loggedInUser} setSearchResults={setSearchResults}/>
