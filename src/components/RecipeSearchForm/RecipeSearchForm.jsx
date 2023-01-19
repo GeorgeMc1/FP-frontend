@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/common.css"
 import { Container } from "../../css/common-styles"
+// import RecentSearch from "../RecentSearch"
 import { useState } from "react";
 import { useRef } from 'react'
 import { getRecipiesFromApi } from "../../utils"
@@ -72,7 +73,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
 
     return (
         <Container id="RecipeSearchForm">
-            <h2>RecipeSearchPage</h2>
+            <h2>Search your recipes here</h2>
             <form id="recipe-search" onSubmit={submitHandler}>
                 <input type="text" placeholder="...ingredients" onChange={
                     (event) => {
@@ -139,8 +140,9 @@ const RecipeSearchForm = ({ setSearchResults }) => {
                     <option value="world">world</option>
                 </select>
                 <input type="submit" hidden />
-                <button type="submit" >Search Recipies</button>
+                <button className="search-btn" type="submit" >Search Recipies</button>
             </form>
+            {/* <RecentSearch/> */}
         </Container>
     );
 

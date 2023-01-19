@@ -3,7 +3,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./pages/HomePage";
-import HomepageScaff from "./pages/HomePageScaff";
 import LoginPage from "./pages/LoginPage";
 import { authCheck } from "./utils";
 import LogOutPage from "./pages/LogOutPage";
@@ -12,13 +11,14 @@ import RecipeInfoPage from "./pages/RecipeInfoPage";
 import RecipeSearchPage from "./pages/RecipeSearchPage";
 import RegisterPage from "./pages/RegisterPage";
 import UserProfilePage from "./pages/UserProfilePage";
-import Navbar from "./components/Navbar";
+
 import Footer from "./components/Footer";
-// import { useNavigate } from "react-router-dom";
+import PreFooter from "./components/PreFooter/PreFooter";
+
 
 // import cookie functions
 import { getCookie } from "./common";
-import PreFooter from "./components/PreFooter/PreFooter";
+import NavMenu from "./components/NavMenu/NavMenu";
 
 function App() {
 	const [jwt, setJWT] = useState();
@@ -27,76 +27,83 @@ function App() {
 	const [recipe, setRecipe] = useState();
 	const [galleryIndexMemory, setIndexMemory] = useState();
 	const [currentRecipeLiked, setCurrentRecipeLiked] = useState(false);
-	const [cookBookName,setCookBookName] = useState("so taxt doen't need slanting")
-	// set state to update user and cookie
-	// const [cookie, setCookie] = useState();
-	// const [user, setUser] = useState();
+	const [cookBookName, setCookBookName] = useState("test")
+	const [currentRecipeInCurrentBook, setCurrentInCurrentBook] = useState();
+	const [favList, setFavList] = useState();
+	const [isInBook, setIsInBook] = useState();
+
 
 	useEffect(() => {
 		let cookie = getCookie("jwt_token");
-		console.log(cookie);
 		if (cookie !== false) {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
 	}, []);
+	
 
-	// useEffect(() => {
-	// 	window.location.replace("/UserProfile");
-	// }, [forcelogin]);
+	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
+	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
-		// setUser(user);
+
 		setJWT(cookie);
 		setLoggedInUser(user);
 	};
 
-	// tests
-	// console.log("set user is:", user);
-	// console.log("cookie is:", cookie);
-	// console.log("jwt is:", jwt);
-
 	return (
 		<BrowserRouter>
-			<Navbar
-				loggedInUser={loggedInUser}
-				setLoggedInUser={setLoggedInUser}
-				recipe={recipe}
-			/>
+		<NavMenu loggedInUser={loggedInUser}
+				recipe={recipe}/>
+			
+			
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-				<Route path="/hpblocks" element={<HomepageScaff />} />
+			
 				<Route
 					path="/searchRecipes"
 					element={
 						<RecipeSearchPage
 							searchResults={searchResults}
 							setSearchResults={setSearchResults}
-							setRecipe={setRecipe}
+
 							galleryIndexMemory={galleryIndexMemory}
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
 							jwt={jwt}
+							recipe={recipe} setRecipe={setRecipe}
 							currentRecipeLiked={currentRecipeLiked}
-							 setCurrentRecipeLiked={setCurrentRecipeLiked}
-							 cookBookName={cookBookName}
-							 setCookBookName={setCookBookName}
+							setCurrentRecipeLiked={setCurrentRecipeLiked}
+							cookBookName={cookBookName}
+							setCookBookName={setCookBookName}
+							currentRecipeInCurrentBook={currentRecipeInCurrentBook}
+							setCurrentInCurrentBook={setCurrentInCurrentBook}
+							favList={favList}
+							setFavList={setFavList}
+							isInBook={isInBook} setIsInBook={setIsInBook}
+
 						/>
 					}
 				/>
 				{recipe ? (
 					<Route
-						path="/viewRecipie"
+						path="/viewRecipe"
 						element={<RecipeInfoPage
 							data={recipe}
 							loggedInUser={loggedInUser}
-                			setSearchResults={setSearchResults}
-                			setIndexMemory={setIndexMemory}
-                			jwt={jwt}
-                			searchResults={searchResults}
-                			setCurrentRecipeLiked={setCurrentRecipeLiked}
-                			setCookBookName={setCookBookName}
-                			cookBookName={cookBookName}
+							setSearchResults={setSearchResults}
+							setIndexMemory={setIndexMemory}
+							jwt={jwt}
+							recipe={recipe}
+							searchResults={searchResults}
+							setCurrentRecipeLiked={setCurrentRecipeLiked}
+							setCookBookName={setCookBookName}
+							cookBookName={cookBookName}
+							currentRecipeInCurrentBook={currentRecipeInCurrentBook}
+							setCurrentInCurrentBook={setCurrentInCurrentBook}
+							favList={favList}
+							setFavList={setFavList}
+							isInBook={isInBook} setIsInBook={setIsInBook}
 						/>}
 					/>
 				) : null}
@@ -123,7 +130,8 @@ function App() {
 								setJWT={setJWT}
 								setSearchResults={setSearchResults}
 								cookBookName={cookBookName}
-							 setCookBookName={setCookBookName}
+								setCookBookName={setCookBookName}
+								setRecipe={setRecipe}
 							/>
 						) : (
 							<Homepage />

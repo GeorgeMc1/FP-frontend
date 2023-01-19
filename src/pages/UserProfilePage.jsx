@@ -1,16 +1,16 @@
 import { PageContainer } from "../css/common-styles"
 import React, { useState } from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard.jsx"
-import { getBook } from "../common/getBook";
 import { useNavigate } from "react-router-dom";
 import bannerImg from "../assets/images/profile.banner.png"
-import bookRed from "../assets/images/bookRed.png"
+import bookRed from "../assets/images/redBook.png";
+import bookBlue from "../assets/images/blueBook.png"
 import avatarImg from "../assets/images/profile.png"
 import "../css/userProfile.css"
 import { getRecipiesFromApi } from "../utils";
 
 
-const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt, setJWT }) => {
+const UserProfilePage = ({ setSearchResults,setRecipe, loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     const navigate = useNavigate();
 
     //  const [favSet, setFavImageSet] = useState([]);
@@ -23,7 +23,15 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
         try {
             let bookName = e.target.attributes.book.value
             console.log(`bookName ${bookName}`, loggedInUser.books)
-            let currentBook = await getBook(bookName, loggedInUser)
+            // let currentBook = await getBook(bookName, loggedInUser)
+            let currentBook ;
+            for (let i = 0; i < loggedInUser?.books?.length; i++) {
+                if (loggedInUser.books[i].bookName === bookName) {
+                    console.log("book found in user")
+                    currentBook = loggedInUser.books[i];
+                }}
+    
+
             let searchHits = { "hits": currentBook.recipes }
             setSearchResults(searchHits)
             console.log(searchHits)
@@ -61,16 +69,24 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
 
         }
     }
+
+
+    const favClick =(e,elm) => {
+console.log(elm)
+setRecipe(elm)
+navigate("/viewRecipe")
+    }
     console.log(loggedInUser)
     if (!savedData) {
         console.log("call populate array")
         populateImageArray();
     }
     return (
+        <> <div className="banner" >
+        <img src={bannerImg} alt="banner" />
+    </div>
         <PageContainer id="userProfilePage">
-            <div className="banner" >
-                <img src={bannerImg} alt="banner" />
-            </div>
+           
             <img className="avatarOverlay" src={avatarImg} alt="avatar" />
             <div className="FlexRowTwo">
                 <div className="profileContainer">
@@ -78,7 +94,7 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
                         <div className="profileTitle" >
                             <p >EDIT YOUR DETAILS HERE</p>
                         </div>
-                        <ProfileCard setSearchResults={setSearchResults} loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT={setJWT} />
+                        <ProfileCard  loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} jwt={jwt} setJWT={setJWT} />
                     </div>
                     <div className="actions">
                         <button onClick={(e) => { onSearchClick(e) }}>CLICK HERE TO SEARCH RECIPES</button>
@@ -91,15 +107,14 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
                     <div className="favList" >
                         {/* map function to get image per fav in array */}
                         {
-                            allFavsData.map((e, index) => {
+                            allFavsData.map((elm, index) => {
 
                                 return (
 
-                                    <div key={index} className="onefavContainer tooltip">
-                                        <img className="profileFavImage" src={e?.recipe?.image} alt="" />
-                                        <span className="tooltiptext">{e?.recipe?.label}</span>
+                                    <div key={index} className="onefavContainer tooltip" onClick={(e)=>{favClick(e,elm)}}>
+                                        <img className="profileFavImage" src={elm?.recipe?.image} alt={elm?.recipe?.label} />
+                                        <span className="tooltiptext">{elm?.recipe?.label}</span>
                                         <div className="infoTab">info
-
                                         </div>
                                     </div>
                                 )
@@ -113,26 +128,28 @@ const UserProfilePage = ({ setSearchResults, loggedInUser, setLoggedInUser, jwt,
                 <div className="bookShelfTitle">
                     <p>Books</p>
                 </div>
-                <div className="bookShelf" setSearchResults={setSearchResults}>
-
+                <div className="bookShelf shadow" >
                     {loggedInUser?.books?.map((e, index) => {
+
                         return (
                             <div className="book" key={index}>
-                                {/* make absolut to move over books div */}
-
-                                <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p>
-
-                                <img className="bookImg" book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)} src={bookRed}  >
-
-                                </img>
+                         <button className="noButtonShow"   >    <p key={index} book={e.bookName} alt={e.bookName} onClick={(e) => loadGalleryWith(e, loggedInUser)}>{e.bookName}</p></button>  
+                                <img
+                                    className="bookImg"
+                                    book={e.bookName}
+                                    alt={e.bookName}
+                                    onClick={(e) => loadGalleryWith(e, loggedInUser)} src={ index%2 === 0 ? bookBlue : bookRed} />
                             </div>
                         )
+
+
                     })
                     }
                 </div>
             </div>
 
         </PageContainer >
+        </>
     );
 
 };

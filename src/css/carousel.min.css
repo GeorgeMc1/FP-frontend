@@ -334,4 +334,12 @@
 .favHeartImg {
     width: 32px;
     height: 32px;
+    margin-left :10px;
 }
+
+.bookIcon{
+    width:100%;
+    margin-top:5px;
+    height: 38px;
+}
+.bookIconContainer { width:80px;;}
