@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../css/favBookIconBar.css"
-import cogIcon from "../../assets/images/OptionsCog.png"
 
 
 export const BookNamer = ({
@@ -12,11 +11,6 @@ export const BookNamer = ({
     const [newBookName, setNewBookName] = useState();
 
 
-
-
-    const onCogClick = (e) => {
-        console.log("clicked")
-    }
 
 
     const submitHandler = (e) => {

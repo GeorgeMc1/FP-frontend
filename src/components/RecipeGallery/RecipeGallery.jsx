@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
 import "../../css/carousel.min.css"
-import { Carousel } from 'react-responsive-carousel';
-import { useNavigate } from "react-router-dom";
 
-import FavBookIconBar from '../FavBookIconBar/FavBookIconBar';
 import CarouselWrapper from '../CarouselWrapper/CarouselWrapper';
 
 //https://www.npmjs.com/package/react-responsive-carousel
@@ -20,8 +16,6 @@ const RecipeGallery = ({ jwt,
     setFavList,
     isInBook, setIsInBook
 }) => {
-
-    const navigate = useNavigate();
 
 
     return (

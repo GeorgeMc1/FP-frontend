@@ -5,7 +5,7 @@ import FavHeartIcon from "../FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
 import "../../css/favBookIconBar.css"
-import { BookNamer } from "../BookNamer/BookNamer";
+
 const FavBookBar = ({
     loggedInUser,
     galleryIndex,
