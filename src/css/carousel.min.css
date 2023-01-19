@@ -1,12 +1,8 @@
 .carousel .control-arrow,
 .carousel.carousel-slider .control-arrow {
-    -webkit-transition: all .25s ease-in;
-    -moz-transition: all .25s ease-in;
-    -ms-transition: all .25s ease-in;
-    -o-transition: all .25s ease-in;
     transition: all .25s ease-in;
-    opacity: .4;
-    filter: alpha(opacity=40);
+    opacity: 1;
+    filter: alpha(opacity=100);
     position: absolute;
     z-index: 2;
     top: 20px;
@@ -38,24 +34,10 @@
     display: none
 }
 
-.carousel .control-prev.control-arrow {
-    left: 0
-}
 
-.carousel .control-prev.control-arrow:before {
-    border-right: 8px solid #fff
-}
-
-.carousel .control-next.control-arrow {
-    right: 0
-}
-
-.carousel .control-next.control-arrow:before {
-    border-left: 8px solid #fff
-}
 
 .carousel-root {
-    outline: none
+    outline:#333;
 }
 
 .carousel {
@@ -64,8 +46,8 @@
 }
 
 .carousel * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
     box-sizing: border-box
 }
 
@@ -85,38 +67,31 @@
     background: none;
     top: 50%;
     margin-top: -13px;
-    font-size: 18px
+    font-size: 18px;
+    
+
 }
 
 .carousel .thumbs-wrapper {
-    margin: 20px;
-    overflow: hidden
+    /* margin: 20px; */
+    overflow: hidden;
+    margin:0px;padding:0px;
 }
 
 .carousel .thumbs {
-    -webkit-transition: all .15s ease-in;
-    -moz-transition: all .15s ease-in;
-    -ms-transition: all .15s ease-in;
-    -o-transition: all .15s ease-in;
-    transition: all .15s ease-in;
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    -ms-transform: translate3d(0, 0, 0);
-    -o-transform: translate3d(0, 0, 0);
+    transition: all .5s ease-in;
+    transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     position: relative;
     list-style: none;
-    white-space: nowrap
+    white-space: nowrap;
+    top:-16px;
 }
 
 .carousel .thumb {
-    -webkit-transition: border .15s ease-in;
-    -moz-transition: border .15s ease-in;
-    -ms-transition: border .15s ease-in;
-    -o-transition: border .15s ease-in;
     transition: border .15s ease-in;
     display: inline-block;
-    margin-right: 6px;
+    /* margin-right: 6px; */
     white-space: nowrap;
     overflow: hidden;
     border: 3px solid #fff;
@@ -153,49 +128,26 @@
 }
 
 .carousel.carousel-slider .control-arrow:hover {
-    background: rgba(0, 0, 0, 0.2)
+    background: rgb(140, 216, 168,0.2);
+    
 }
 
 .carousel .slider-wrapper {
     overflow: hidden;
     margin: auto;
     width: 100%;
-    -webkit-transition: height .15s ease-in;
-    -moz-transition: height .15s ease-in;
-    -ms-transition: height .15s ease-in;
-    -o-transition: height .15s ease-in;
     transition: height .15s ease-in
 }
 
 .carousel .slider-wrapper.axis-horizontal .slider {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
     display: flex
 }
-
-.carousel .slider-wrapper.axis-horizontal .slider .slide {
-    flex-direction: column;
-    flex-flow: column
-}
-
 .carousel .slider-wrapper.axis-vertical {
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
+ 
     display: flex
 }
 
-.carousel .slider-wrapper.axis-vertical .slider {
-    -webkit-flex-direction: column;
-    flex-direction: column
-}
+
 
 .carousel .slider {
     margin: 0;
@@ -206,10 +158,7 @@
 }
 
 .carousel .slider.animated {
-    -webkit-transition: all .35s ease-in-out;
-    -moz-transition: all .35s ease-in-out;
-    -ms-transition: all .35s ease-in-out;
-    -o-transition: all .35s ease-in-out;
+    transition: all .35s ease-in-out;
     transition: all .35s ease-in-out
 }
 
@@ -221,9 +170,8 @@
 }
 
 .carousel .slide img {
-    width: 100%;
+    width: 100%;border:5px solid rgb(98, 186, 130);;
     vertical-align: top;
-    border: 0
 }
 
 .carousel .slide iframe {
@@ -233,30 +181,7 @@
     border: 0
 }
 
-.carousel .slide .legend {
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    margin-left: -45%;
-    width: 90%;
-    border-radius: 10px;
-    background: #000;
-    color: #fff;
-    padding: 10px;
-    font-size: 12px;
-    text-align: center;
-    opacity: 0.25;
-    -webkit-transition: opacity .35s ease-in-out;
-    -moz-transition: opacity .35s ease-in-out;
-    -ms-transition: opacity .35s ease-in-out;
-    -o-transition: opacity .35s ease-in-out;
-    transition: opacity .35s ease-in-out
-}
+
 
 .carousel .control-dots {
     position: absolute;
@@ -275,10 +200,6 @@
 }
 
 .carousel .control-dots .dot {
-    -webkit-transition: opacity .25s ease-in;
-    -moz-transition: opacity .25s ease-in;
-    -ms-transition: opacity .25s ease-in;
-    -o-transition: opacity .25s ease-in;
     transition: opacity .25s ease-in;
     opacity: .3;
     filter: alpha(opacity=30);
@@ -312,34 +233,52 @@
     opacity: 1
 }
 
-.favBox {
-    display: flex;
+
+
+/*  */
+.carousel .thumbs-wrapper  {
+    border:5px solid rgb(140, 216, 168);
+    background-color: rgb(140, 216, 168);
+    height:88px;
     flex-direction: row;
-    width: 100%;
-    background-color: rgb(194, 251, 215);
-    height: 40px;
-    padding: 2px;
-    /* center in width */
-    /* justify-content: center; */
-
-    /* center icons in height */
-    align-items: center;
+    margin-left:0px;
 }
 
-.favTotal {
-    color: rgb(247, 30, 30);
-    line-height: 3;
+/*  */
+
+.carousel .control-prev.control-arrow {
+    left: 0
 }
 
-.favHeartImg {
-    width: 32px;
-    height: 32px;
-    margin-left :10px;
+.carousel .control-prev.control-arrow:before {
+    border-right: 18px solid rgb(10, 246, 45);
 }
 
-.bookIcon{
-    width:100%;
-    margin-top:5px;
-    height: 38px;
+.carousel .control-next.control-arrow {
+    right: 0
 }
-.bookIconContainer { width:80px;;}
+
+.carousel .control-next.control-arrow:before {
+    border-left: 18px solid rgb(10, 246, 45);
+}
+
+
+.carousel .slide .legend {
+    transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    margin-left: -45%;
+    width: 90%;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.7;
+    transition: opacity .35s ease-in-out;
+    transition: opacity .35s ease-in-out
+}
+

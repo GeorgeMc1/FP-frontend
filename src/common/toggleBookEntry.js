@@ -2,7 +2,7 @@ import { updateUser } from "../utils";
 import { toggleFav } from "./toggleFav";
 
 
-export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList) => {
+export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList, isLiked) => {
     try {
 
         if (loggedInUser) {
@@ -10,7 +10,7 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
             let bookname = cookBookName || "default"
             let galleryItemsRecipe = recipe;
 
-
+            let addedToBook = false;
             //does book exist
             let currentBook;
             for (let i = 0; i < loggedInUser?.books?.length; i++) {
@@ -22,9 +22,8 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
 
 
             //current book is { bookname: "" ,recipies [{recipe:var,links:v}]}
-
             //if book not written - will be adding recipe to new book obj
-       
+
             if (!currentBook) {
                 console.log(`${bookname} not created yet - creating book\n`);
                 let bookToAdd = {
@@ -39,7 +38,7 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                     "value": loggedInUser.books
                 }
                 setIsInBook(true);
-
+                addedToBook = true;
             }
 
             //if the books already written
@@ -57,7 +56,6 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                         }
                     })
                     setIsInBook(false)
-
                     console.log(currentBook)
                 }
                 //if NOT in book - add it
@@ -71,6 +69,7 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                     }
 
                     setIsInBook(true)
+                    addedToBook = true;
                 }
 
                 //book now rewritten so change it
@@ -80,13 +79,13 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                     "value": loggedInUser.books
                 }
                 console.log(obj)
-
             }
 
             await updateUser(obj, jwt)
-
-            await toggleFav(false, loggedInUser, recipe, setCurrentRecipeLiked, jwt, setFavList, favList)
-
+            //not already liked allow update.
+            if (!isLiked) {
+                await toggleFav(addedToBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, setFavList, favList)
+            }
 
 
 

@@ -1,10 +1,11 @@
 import React from "react";
 import { toggleFav } from '../../common/toggleFav';
 import { toggleBookEntry } from '../../common/toggleBookEntry';
-import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
+import FavHeartIcon from "../FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
-import { BookNamer } from "../BookNamer/BookNamer";
+import "../../css/favBookIconBar.css"
+
 const FavBookBar = ({
     loggedInUser,
     galleryIndex,
@@ -26,7 +27,7 @@ const FavBookBar = ({
         if (recipeObj) {
             //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
             let match = loggedInUser?.favRecipes.includes(recipeObj._links.self.href)
-            // console.log(match)
+            console.log("match in favs?",match)
             return match
         } else {
             // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
@@ -35,41 +36,46 @@ const FavBookBar = ({
             if (loggedInUser) {
                 //match if logged in user favourites contains the recipie.self   
                 let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
+                console.log("match in favs?",match)
                 return match
             }
         }
     }
 
-    const checkIfInCurrentBook =  () => {
-        console.log("****",cookBookName)
+    const checkIfInCurrentBook = () => {
+        try {
+      
 
         let currentBook;
         let match;
         for (let i = 0; i < loggedInUser?.books?.length; i++) {
             if (loggedInUser.books[i].bookName === cookBookName) {
-                console.log("book found in user")
-                currentBook = loggedInUser.books[i]
+                
+                currentBook = loggedInUser.books[i];
+                console.log(`book found "${cookBookName}" with ${currentBook?.recipes?.length}`)
+            } else {
+                console.log(`NO BOOK YET  with name ${cookBookName}`)
             }
         }
 
-        console.log(currentBook)
         if (recipeObj) {
             match = currentBook?.recipes?.includes(recipeObj)
-            console.log("rvp...",currentBook,recipeObj)
         }
         else {
             match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
-            console.log("rsg...")
         }
-        console.log(match || false)
-        return match;
+        console.log("match in book?",match )
+        return match;}
+        catch(err){console.log(err)}
     }
 
 
     return (
         <>
             {loggedInUser ?
-                <div className="favBox">
+
+                <div className="favBoxIconContainer">
+
                     <FavHeartIcon
                         favList={favList}
                         setFavList={setFavList}
@@ -83,42 +89,37 @@ const FavBookBar = ({
                         setIsInBook={setIsInBook}
                         isInBook={isInBook} />
 
-                    {/* 
-                    <div className="favTotal">
-                        <p >
-                            {galleryIndex}
-                        </p>
-                    </div > */}
 
 
-                    <div className="cookbook">
-                        <CookBookIcon
-                            favList={favList}
-                            setFavList={setFavList}
-                            isLiked={checkIfFavourites()}
-                            setIsInBook={setIsInBook}
-                            isInBook={checkIfInCurrentBook()}
-                            updateFav={false}
-                            loggedInUser={loggedInUser}
-                            toggleCookBookEntry={toggleBookEntry}
-                            recipe={
-                                recipeObj ? recipeObj : searchResults.hits[galleryIndex]
-                            }
-                            jwt={jwt}
-                            setCurrentRecipeLiked={setCurrentRecipeLiked}
-                            cookBookName={cookBookName} />
-                    </div>
-                    <div className="bookchanger" >
+                    <CookBookIcon
+                        favList={favList}
+                        setFavList={setFavList}
+                        isLiked={checkIfFavourites()}
+                        setIsInBook={setIsInBook}
+                        isInBook={checkIfInCurrentBook()}
+                        updateFav={
+                            checkIfFavourites() ? false : true
 
-                        <BookChanger
-                            setSearchResults={setSearchResults}
-                            setCookBookName={setCookBookName}
-                            cookBookName={cookBookName}
-                            loggedInUser={loggedInUser} />
-                    </div>
+                        }
+                        loggedInUser={loggedInUser}
+                        toggleCookBookEntry={toggleBookEntry}
+                        recipe={
+                            recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                        }
+                        jwt={jwt}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        cookBookName={cookBookName} />
+                    <BookChanger
+                        setSearchResults={setSearchResults}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}
+                        loggedInUser={loggedInUser} />
 
-                    <BookNamer loggedInUser={loggedInUser} setSearchResults={setSearchResults} setCookBookName={setCookBookName}/>
+
                 </div>
+
+
+
                 :
                 <div className="favBox">
                 </div>

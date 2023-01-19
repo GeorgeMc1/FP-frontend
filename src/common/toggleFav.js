@@ -8,7 +8,7 @@ export const toggleFav = async (allowToggleFavs , loggedInUser, recipe, setCurre
             let newFavs;
             
             if (!allowToggleFavs) {return}
-            console.log("fav toggle",allowToggleFavs,recipe)
+            console.log("allow fav toggle?",allowToggleFavs)
 
             //does users favs contain the recipie
             let match = loggedInUser.favRecipes.includes(recipe._links.self.href)

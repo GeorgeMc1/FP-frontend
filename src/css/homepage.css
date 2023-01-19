@@ -1,5 +1,4 @@
 body {
-	font-family: "Libre Baskerville", serif;
 	background-color: #F1f9F8;
 	
 }
@@ -13,6 +12,12 @@ body {
 	text-align: center;
 	font-size: 15px;
 	border-radius: 5px;
+	text-decoration: none;
+}
+
+.button:hover {
+	transition: all 0.3s ease-in-out;
+    background: linear-gradient(0deg, rgb(194, 251, 215), rgb(231, 253, 239), rgb(230, 241, 236));
 }
 
 .btn-group {
@@ -57,16 +62,21 @@ body {
 }
 
 #demo {
-	border:1px solid red;
+	/* border:1px solid red; */
 	padding:2px;
 }
 
 .signtext {
-	margin-top: 50px;
-	margin-bottom: 50px;
+	
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	padding: 2em;
+	margin: 0px auto 50px;
+	max-width: 1000px;
+	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
 	
 }
 
@@ -95,13 +105,40 @@ body {
 
 .level1 {
 	background:rgb(157, 235, 157);
-	border:1px dashed red;
+	/* border:1px dashed red; */
 	margin:4px;
+	font-size: 30px;
+}
+
+.caption {
+	/* border: 1px dashed red; */
+	font-size: 27px;
 }
 
 .level2 {
-	border:1px dashed red;
+	/* border:1px dashed red; */
+	padding: 15px 0px;
+	max-width: 1000px;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
+	box-shadow: rgb(0 0 0 / 25%) 0px 54px 55px, rgb(0 0 0 / 12%) 0px -12px 30px,
+        rgb(0 0 0 / 12%) 0px 4px 6px, rgb(0 0 0 / 17%) 0px 12px 13px,
+        rgb(0 0 0 / 9%) 0px -3px 5px;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.imagecontainer {
+	margin: 0 5px;
+	
+}
+
+.imagecontainer img {
+	max-width: 250px;
+	width: 100%;
 }

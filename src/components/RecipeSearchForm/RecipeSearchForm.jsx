@@ -23,7 +23,7 @@ const RecipeSearchForm = ({ setSearchResults }) => {
         const cuisineTypes = [...cuisineTypeRef.current.options].filter(option => option.selected).map(option => option.value);
         console.debug("Ingredients",searchIngredients, "\nmealTypeRef", mealTypes, "\ndishTypeRef", dishTypes, "\ncuisineTypeRef", cuisineTypes)
 
-        let fetchUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=7c740329&app_key=f21987039962879e2cea188d07749819";
+        let fetchUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=67be408c&app_key=775fc1a9ff4af73af87e3471bb5e0f2e";
 
         //build url for fetch
         if (searchIngredients) {
