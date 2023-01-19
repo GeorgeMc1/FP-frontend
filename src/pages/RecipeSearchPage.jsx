@@ -20,23 +20,31 @@ const RecipeSearchPage = ({
     setCookBookName,
     favList,
     setFavList,
-    
-    isInBook,setIsInBook
+
+    isInBook, setIsInBook
 
 }) => {
+    console.log(searchResults)
     return (
         <PageContainer className="RecipeSearchPage">
-            {!searchResults ?
+            {!searchResults || searchResults?.hits <= 0
+                ?
+
+
                 <ContainerFlexedColumn>
                     <div className="formAndBooksContainer">
-                        <UsersBooks user={loggedInUser} setSearchResults={setSearchResults}/>
+                        <UsersBooks user={loggedInUser} setSearchResults={setSearchResults} />
                         <RecipeSearchForm setSearchResults={setSearchResults} loggedInUser={loggedInUser} />
                         <ResultsCounter count={searchResults?.count || null}></ResultsCounter>
                     </div>
-                    <RecentSearch/>
-                </ContainerFlexedColumn> :
+                    <RecentSearch />
+                </ContainerFlexedColumn>
+
+
+                :
+
+
                 <ContainerFlexedColumn>
-                    <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
                     <GalleryContainer>
                         <RecipeGallery jwt={jwt}
                             currentRecipeLiked={currentRecipeLiked}
@@ -50,10 +58,8 @@ const RecipeSearchPage = ({
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
                             favList={favList}
-							setFavList={setFavList}
-                            
-							isInBook={isInBook} setIsInBook={setIsInBook}
-
+                            setFavList={setFavList}
+                            isInBook={isInBook} setIsInBook={setIsInBook}
                         ></RecipeGallery>
                     </GalleryContainer>
                 </ContainerFlexedColumn>

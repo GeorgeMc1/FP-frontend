@@ -40,7 +40,7 @@ function App() {
 		}
 	}, []);
 	
-
+useEffect(()=>{console.log("loggedInUser data updated")},[loggedInUser])
 	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 

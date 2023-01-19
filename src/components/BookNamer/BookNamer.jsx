@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import "./bookNamerStyles.css"
-import cogIcon from "../../assets/images/OptionsCog.png"
+import "../../css/favBookIconBar.css"
 
 
 export const BookNamer = ({
 
     setCookBookName,
-    cookBookName,
-    loggedInUser,
-    setSearchResults
+    loggedInUser
+    
 }) => {
     const [newBookName, setNewBookName] = useState();
 
 
-
-
-    const onCogClick = (e) => {
-        console.log("clicked")
-    }
 
 
     const submitHandler = (e) => {
@@ -64,16 +57,16 @@ export const BookNamer = ({
 
     return (
 
-        <div className="bookNamer">
+        <div className="bookNamer show">
             <form className="bookNamerForm" onSubmit={submitHandler}>
-                <input type="text" defaultValue="New Menu" placeholder="New Menu"
+                <input className="holdOpen" type="text" defaultValue="New Menu" placeholder="New Menu"
                     onChange={(event) => {
                         setNewBookName(event.target.value)
 
                     }}
 
                 />
-                <button className="noButtonShow" type="submit">  <img id="cogImg" src={cogIcon} alt="editCog" onClick={(e) => { onCogClick(e) }} /></button>
+                {/* <button className="icon" type="submit">  <img  src={cogIcon} alt="editCog" onClick={(e) => { onCogClick(e) }} /></button> */}
             </form>
         </div>
     )
