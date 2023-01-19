@@ -82,5 +82,6 @@ const RecipeInfoPage = ({
 const TopRow = styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 `
 export default RecipeInfoPage;

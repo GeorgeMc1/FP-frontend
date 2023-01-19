@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png"
 import { PreFooterHalfColumnContainer } from "./PreFooter.styles";
 const PreFooterLeft = () => {
@@ -10,7 +11,7 @@ const PreFooterLeft = () => {
             <img alt="logo" src={logo} />
             <h5>SIGN UP WITH US FOR MORE RECIPES!</h5>
 
-            <button >SIGN UP</button>
+            <NavLink className="button" to="/SignUp">SIGN UP</NavLink>
 
         </PreFooterHalfColumnContainer>
 

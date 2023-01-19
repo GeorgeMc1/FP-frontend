@@ -61,7 +61,7 @@ export default function NavMenu({ loggedInUser, recipe }) {
               <li><NavLink to="/logout" onClick={() => {
                 setIsNavExpanded(false);
               }}
-                action="logout">Logout    </NavLink></li>
+                action="logout" className="log">Logout</NavLink></li>
             </>
           ) : (
 
@@ -71,7 +71,7 @@ export default function NavMenu({ loggedInUser, recipe }) {
               }} to="/SignUp">Sign Up</NavLink></li>
               <li><NavLink onClick={() => {
                 setIsNavExpanded(false);
-              }} to="/login" action="login">login</NavLink></li>
+              }} to="/login" action="login" className="log">login</NavLink></li>
             </>
 
 
