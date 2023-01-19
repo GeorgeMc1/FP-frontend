@@ -1,6 +1,6 @@
 // Navbar.js 
 import "../../components/NavMenu/navStyles.css"
-import { NavIconLink,NavLink } from "./NavbarElements";
+import { NavIconLink, NavLink } from "./NavbarElements";
 import { useState } from "react";
 import logo from "../../assets/images/logo.png";
 // Navbar.js
@@ -8,12 +8,14 @@ export default function NavMenu({ loggedInUser, recipe }) {
   const [isNavExpanded, setIsNavExpanded] = useState(false)
   return (
     <nav className="navigation">
-      
 
 
-        <NavIconLink  className="brand-name" to='/'>
-          <img alt="logo" src={logo} />
-        </NavIconLink>
+
+      <NavIconLink className="brand-name" to='/'>
+        <img alt="logo" src={logo} onClick={() => {
+          setIsNavExpanded(false);
+        }} />
+      </NavIconLink>
       <button className="hamburger"
         onClick={() => {
           setIsNavExpanded(!isNavExpanded);
@@ -37,26 +39,39 @@ export default function NavMenu({ loggedInUser, recipe }) {
           isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
         }>
         <ul>
-          <li> 
-            <NavLink to="/SearchRecipes">Search</NavLink>  
-            </li>
-          {recipe ? 
+          <li>
+            <NavLink to="/SearchRecipes" onClick={() => {
+              setIsNavExpanded(false);
+            }}>Search</NavLink>
+          </li>
+          {recipe ?
             <li>
-              <NavLink to="/ViewRecipe">View Recipe</NavLink>
+              <NavLink to="/ViewRecipe" onClick={() => {
+                setIsNavExpanded(false);
+              }}>View Recipe</NavLink>
             </li>
-            
-          : null}
+
+            : null}
 
           {loggedInUser ? (
             <>
-              <li><NavLink to="/UserProfile">UserProfile</NavLink></li>
-              <li><NavLink to="/logout" action="logout">Logout    </NavLink></li>
+              <li><NavLink to="/UserProfile" onClick={() => {
+                setIsNavExpanded(false);
+              }}>UserProfile</NavLink></li>
+              <li><NavLink to="/logout" onClick={() => {
+                setIsNavExpanded(false);
+              }}
+                action="logout" className="log">Logout</NavLink></li>
             </>
           ) : (
 
             <>
-              <li><NavLink to="/SignUp">Sign Up</NavLink></li>
-              <li><NavLink to="/login" action="login">login</NavLink></li>
+              <li><NavLink onClick={() => {
+                setIsNavExpanded(false);
+              }} to="/SignUp">Sign Up</NavLink></li>
+              <li><NavLink onClick={() => {
+                setIsNavExpanded(false);
+              }} to="/login" action="login" className="log">login</NavLink></li>
             </>
 
 

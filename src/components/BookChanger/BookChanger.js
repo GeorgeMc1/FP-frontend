@@ -1,7 +1,8 @@
 import React from "react";
 import { getBook } from "../../common/getBook";
-import "../../css/bookChanger.css"
+import "../../css/favBookIconBar.css"
 import { useNavigate } from "react-router-dom";
+import { BookNamer } from "../BookNamer/BookNamer";
 
 
 const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedInUser }) => {
@@ -26,10 +27,11 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
             });
         }
     }
- 
+
     // Close the dropdown menu if the user clicks outside of it
     window.onclick = function (event) {
         if (!event.target.matches('.dropbtn')) {
+            if (event.target.matches('.holdOpen')) { return }
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -42,21 +44,27 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
     }
 
     let allBookNames = loggedInUser?.books?.map((e) => { return e.bookName })
-    console.log(allBookNames)
+    console.log("allBookNames",allBookNames)
 
     return (
-        <div className="dropdown">
-            <button onClick={() => myFunction()} className="dropbtn">{cookBookName}</button>
-            <div id="myDropdown" className="dropdown-content">
-                {
-                    loggedInUser?.books?.map((e, index) => {
-                        let name = e.bookName
-                        return (
-                            <p onClick={() => changeBook(name)} key={index}>{name}</p>
-                        )
-                    })
-                }
+        <div className="toggleContainer">
+            <div className="dropdown">
+                <button onClick={() => myFunction()} className="dropbtn">{cookBookName}</button>
+                <div id="myDropdown" className="dropdown-content">
+                    <>
+                        <BookNamer
+                            setCookBookName={setCookBookName}
+                            loggedInUser={loggedInUser} />
+                        {loggedInUser?.books?.map((e, index) => {
+                            let name = e.bookName
+                            return (
+                                <p className="menuTabs" onClick={() => changeBook(name)} key={index}>{name}</p>
+                            )
+                        })}
+                    </>
 
+
+                </div>
             </div>
         </div>
     )

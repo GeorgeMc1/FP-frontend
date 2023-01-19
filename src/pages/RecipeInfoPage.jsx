@@ -4,7 +4,7 @@ import RecipieImage from "../components/RecipeInfoPage/RecipeImage/RecipeImage";
 import RecipeInfoPageAction from "../components/RecipeInfoPage/RecipeInfoPageActionContainer/RecipeInfoPageAction"
 import styled from "styled-components";
 import InfoBottomSec from "../components/RecipeInfoPage/InfoBottomSec";
-import FavBookBar from "../components/FavBookBar/FavBookBar";
+import FavBookIconBar from "../components/FavBookIconBar/FavBookIconBar";
 
 const RecipeInfoPage = ({
     data,
@@ -26,22 +26,22 @@ const RecipeInfoPage = ({
     console.log("inside recipieinfopage");
     console.debug(data);
     console.log(searchResults, galleryIndex)
-    const images = data.recipe.images;
+    const images = data?.recipe.images;
     // const ingredients = data.recipe.ingredients;
     // const totalDaily = data.recipe.totalDaily;
     // const totalNutrients = data.recipe.totalNutrients;
-    const digest = data.recipe.digest;
-    const cautions = data.recipe.cautions;
+    const digest = data?.recipe.digest;
+    const cautions = data?.recipe.cautions;
     // const calories = data.recipe.calories;
-    const cuisineType = data.recipe.cuisineType;
-    const dishType = data.recipe.dishType;
+    const cuisineType = data?.recipe.cuisineType;
+    const dishType = data?.recipe.dishType;
     // const healthLabels = data.recipe.healthLabels
-    const ingLines = data.recipe.ingredientLines;
-    const timeToPlate = data.recipe.totalTime;
-    const serves = data.recipe.yield;
-    const mealType = data.recipe.mealType;
-    const recipeLink = data.recipe.url;
-    const selfLink = data._links.self.href;
+    const ingLines = data?.recipe.ingredientLines;
+    const timeToPlate = data?.recipe.totalTime;
+    const serves = data?.recipe.yield;
+    const mealType = data?.recipe.mealType;
+    const recipeLink = data?.recipe.url;
+    const selfLink = data?._links.self.href;
     //theres still more
 
     return (
@@ -49,7 +49,7 @@ const RecipeInfoPage = ({
             <h2>{data.recipe.label}</h2>
             <TopRow>
                 <div>
-                    <FavBookBar
+                    <FavBookIconBar
                         loggedInUser={loggedInUser}
                         galleryIndex={galleryIndex}
                         setSearchResults={setSearchResults}
@@ -82,5 +82,6 @@ const RecipeInfoPage = ({
 const TopRow = styled.div`
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 `
 export default RecipeInfoPage;

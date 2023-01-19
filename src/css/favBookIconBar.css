@@ -1,0 +1,111 @@
+:root {
+  --primary-col: rgb(140, 216, 168);
+  --button-hover-border:0;
+  --icon-bk:rgb(98, 186, 130);
+    --btn-border:2px outset #aaa7a7;
+    --btn-border-hov:2px inset rgb(151, 146, 146)
+}
+
+.favBoxIconContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: var(--primary-col);
+  padding:5px 10px;
+}
+
+.icon {
+  width:50px;
+  height:50px; 
+  border:2px outset rgb(151, 146, 146);
+  padding:5px;
+  border-radius: 50%;
+  background-color: var(--icon-bk);
+}
+.dropbtn:hover,
+.icon:hover{
+  background-color:  var(--primary-col);
+  cursor: pointer;
+  border-style: inset;
+}
+
+
+.toggleContainer,.bookIconContainer,.favHeartIconContainer{
+  display:flex;
+  margin:2px;
+}
+.dropdown,
+.toggleContainer {
+  flex:1 1 100%;
+}
+
+
+.dropbtn {
+  border-radius: 15px;
+  flex:1 1 60%;
+  background-color: var(--icon-bk);
+  cursor: pointer;
+  border: 2px outset #aaa7a7;
+  color: #222;
+  flex-grow: 1;
+  line-height: 50px;
+  height:50px;
+ width:100%;
+} 
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+ 
+}
+.flexedEnd {
+  display: flex;
+}
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(194, 251, 215);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width:100%;
+  border:1px solid rgb(51, 51, 51,0.3);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: rgb(194, 251, 215);
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.bookNamer{  
+  width:100%;
+    margin:auto;
+  background-color: var(--primary-col); 
+
+}
+.bookNamerForm {position:relative;z-index: 30;}
+.bookNamer input {
+  border:3px solid rgb(51, 51, 51,0.3);
+  width:96%;
+ margin:2%;
+ z-index: 20;
+}
+.menuTabs {
+  margin:2px 5px;;
+
+}
+
+
+
