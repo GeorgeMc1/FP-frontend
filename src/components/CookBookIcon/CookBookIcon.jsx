@@ -1,7 +1,7 @@
 
 import bookOFF from "../../assets/images/cookbookIconOff.png"
 import bookON from "../../assets/images/cookbookIcon.png"
-import "../../css/carousel.min.css"
+import "../../css/favBookIconBar.css"
 const CookBookIcon = ({ favList,
   setFavList,  isInBook,setIsInBook, setCurrentRecipeLiked,  updateFav, toggleCookBookEntry, loggedInUser, jwt, recipe, cookBookName }) => {
    
@@ -11,9 +11,9 @@ const CookBookIcon = ({ favList,
     <div className="bookIconContainer" onClick={() => toggleCookBookEntry(updateFav,isInBook,setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList)}>
 
       {isInBook ?
-        <img className="bookIcon" alt="add to book icon" src={bookON} />
+        <img className="icon" alt="add to book icon" src={bookON} />
         :
-        <img className="bookIcon" alt="remove from book icon" src={bookOFF} />
+        <img className="icon" alt="remove from book icon" src={bookOFF} />
 
       }
     </div>

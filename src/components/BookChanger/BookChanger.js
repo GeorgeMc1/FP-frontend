@@ -1,7 +1,8 @@
 import React from "react";
 import { getBook } from "../../common/getBook";
-import "../../css/bookChanger.css"
+import "../../css/favBookIconBar.css"
 import { useNavigate } from "react-router-dom";
+import { BookNamer } from "../BookNamer/BookNamer";
 
 
 const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedInUser }) => {
@@ -45,18 +46,22 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
     console.log(allBookNames)
 
     return (
+        <div className="toggleContainer">
         <div className="dropdown">
             <button onClick={() => myFunction()} className="dropbtn">{cookBookName}</button>
             <div id="myDropdown" className="dropdown-content">
-                {
-                    loggedInUser?.books?.map((e, index) => {
+                <>
+                 
+                    {loggedInUser?.books?.map((e, index) => {
                         let name = e.bookName
                         return (
                             <p onClick={() => changeBook(name)} key={index}>{name}</p>
                         )
-                    })
-                }
+                    })}
+                    </>
+                
 
+            </div>
             </div>
         </div>
     )

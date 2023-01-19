@@ -312,34 +312,3 @@
     opacity: 1
 }
 
-.favBox {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    background-color: rgb(194, 251, 215);
-    height: 40px;
-    padding: 2px;
-    /* center in width */
-    /* justify-content: center; */
-
-    /* center icons in height */
-    align-items: center;
-}
-
-.favTotal {
-    color: rgb(247, 30, 30);
-    line-height: 3;
-}
-
-.favHeartImg {
-    width: 32px;
-    height: 32px;
-    margin-left :10px;
-}
-
-.bookIcon{
-    width:100%;
-    margin-top:5px;
-    height: 38px;
-}
-.bookIconContainer { width:80px;;}

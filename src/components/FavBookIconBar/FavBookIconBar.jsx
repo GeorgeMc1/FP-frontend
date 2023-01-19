@@ -1,10 +1,10 @@
 import React from "react";
 import { toggleFav } from '../../common/toggleFav';
 import { toggleBookEntry } from '../../common/toggleBookEntry';
-import FavHeartIcon from "../../components/FavHeartIcon/FavHeartIcon.jsx";
+import FavHeartIcon from "../FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
-import { BookNamer } from "../BookNamer/BookNamer";
+import "../../css/favBookIconBar.css"
 const FavBookBar = ({
     loggedInUser,
     galleryIndex,
@@ -40,8 +40,8 @@ const FavBookBar = ({
         }
     }
 
-    const checkIfInCurrentBook =  () => {
-        console.log("****",cookBookName)
+    const checkIfInCurrentBook = () => {
+        console.log("****", cookBookName)
 
         let currentBook;
         let match;
@@ -55,7 +55,7 @@ const FavBookBar = ({
         console.log(currentBook)
         if (recipeObj) {
             match = currentBook?.recipes?.includes(recipeObj)
-            console.log("rvp...",currentBook,recipeObj)
+            console.log("rvp...", currentBook, recipeObj)
         }
         else {
             match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
@@ -69,7 +69,7 @@ const FavBookBar = ({
     return (
         <>
             {loggedInUser ?
-                <div className="favBox">
+                <div className="favBoxIconContainer">
                     <FavHeartIcon
                         favList={favList}
                         setFavList={setFavList}
@@ -83,41 +83,33 @@ const FavBookBar = ({
                         setIsInBook={setIsInBook}
                         isInBook={isInBook} />
 
-                    {/* 
-                    <div className="favTotal">
-                        <p >
-                            {galleryIndex}
-                        </p>
-                    </div > */}
 
 
-                    <div className="cookbook">
-                        <CookBookIcon
-                            favList={favList}
-                            setFavList={setFavList}
-                            isLiked={checkIfFavourites()}
-                            setIsInBook={setIsInBook}
-                            isInBook={checkIfInCurrentBook()}
-                            updateFav={false}
-                            loggedInUser={loggedInUser}
-                            toggleCookBookEntry={toggleBookEntry}
-                            recipe={
-                                recipeObj ? recipeObj : searchResults.hits[galleryIndex]
-                            }
-                            jwt={jwt}
-                            setCurrentRecipeLiked={setCurrentRecipeLiked}
-                            cookBookName={cookBookName} />
-                    </div>
-                    <div className="bookchanger" >
+                    <CookBookIcon
+                        favList={favList}
+                        setFavList={setFavList}
+                        isLiked={checkIfFavourites()}
+                        setIsInBook={setIsInBook}
+                        isInBook={checkIfInCurrentBook()}
+                        updateFav={false}
+                        loggedInUser={loggedInUser}
+                        toggleCookBookEntry={toggleBookEntry}
+                        recipe={
+                            recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                        }
+                        jwt={jwt}
+                        setCurrentRecipeLiked={setCurrentRecipeLiked}
+                        cookBookName={cookBookName} />
 
-                        <BookChanger
-                            setSearchResults={setSearchResults}
-                            setCookBookName={setCookBookName}
-                            cookBookName={cookBookName}
-                            loggedInUser={loggedInUser} />
-                    </div>
 
-                    <BookNamer loggedInUser={loggedInUser} setSearchResults={setSearchResults} setCookBookName={setCookBookName}/>
+
+                    <BookChanger
+                        setSearchResults={setSearchResults}
+                        setCookBookName={setCookBookName}
+                        cookBookName={cookBookName}
+                        loggedInUser={loggedInUser} />
+
+
                 </div>
                 :
                 <div className="favBox">

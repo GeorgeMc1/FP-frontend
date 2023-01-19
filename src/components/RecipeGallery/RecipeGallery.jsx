@@ -3,7 +3,7 @@ import "../../css/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 
-import FavBookBar from '../FavBookBar/FavBookBar';
+import FavBookIconBar from '../FavBookIconBar/FavBookIconBar';
 
 //https://www.npmjs.com/package/react-responsive-carousel
 
@@ -62,7 +62,7 @@ const RecipeGallery = ({ jwt,
             <div className="Carousel" >
                 {loggedInUser ?
 
-                    <FavBookBar
+                    <FavBookIconBar
                         loggedInUser={loggedInUser}
                         galleryIndex={galleryIndex}
                         setSearchResults={setSearchResults}
@@ -88,7 +88,7 @@ const RecipeGallery = ({ jwt,
                 }
 
                 <Carousel
-                    selectedItem={galleryIndex >= searchResults?.hits.length ? galleryIndex : 0}
+                    selectedItem={galleryIndex >= searchResults?.hits?.length ? galleryIndex : 0}
                     // infiniteLoop={true}
                     useKeyboardArrows={true}
                     emulateTouch={true}
@@ -100,8 +100,8 @@ const RecipeGallery = ({ jwt,
                 >
                     {
                         searchResults.hits.map((result, index) => {
-                            let image = result.recipe.image
-                            let legend = result.recipe.label
+                            let image = result?.recipe?.image
+                            let legend = result?.recipe?.label
                             return (
                                 <div key={index}>
 
