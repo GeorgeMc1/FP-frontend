@@ -4,7 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 import erroImg from "../../assets/images/brokenLink.png"
 import FavBookIconBar from '../FavBookIconBar/FavBookIconBar';
-import dot from "../../assets/images/dot.png"
 //https://www.npmjs.com/package/react-responsive-carousel
 
 const CarouselWrapper = ({ jwt,
@@ -66,8 +65,10 @@ const CarouselWrapper = ({ jwt,
         <>
 
             <div className="Carousel" >
+                < div className="bgcol" >
                 <button onClick={((e)=>toggleThumbs())} >Toggle thumbnails</button>
                 <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
+                </div>
                 {loggedInUser ?
 
                     <FavBookIconBar
@@ -111,29 +112,8 @@ const CarouselWrapper = ({ jwt,
                 swipeScrollTolerance={3}
                 width={350}
                 thumbWidth={80}
-// 
-renderIndicator={(onClickHandler, isSelected, index, label) => {
-    // const defStyle = { marginLeft: 20, color: "white", cursor: "pointer" };
-    // const style = isSelected
-    //   ? { ...defStyle, color: "red" }
-    //   : { ...defStyle };
-    return (
-    //   <span
-    //     style={style}
-    //     onClick={onClickHandler}
-    //     onKeyDown={onClickHandler}
-    //     value={index}
-    //     key={index}
-    //     role="button"
-    //     tabIndex={0}
-    //     aria-label={`${label} ${index + 1}`}
-    //   >
-        
-        <img className="dot" alt="indicator" src={dot} />
-    //   </span>
-    
-    );
-  }}
+
+
                 >
                     {
                         searchResults.hits.map((result, index) => {

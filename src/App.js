@@ -39,34 +39,29 @@ function App() {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
 	}, []);
-	
-useEffect(()=>{console.log("loggedInUser data updated")},[loggedInUser])
+
+	useEffect(() => { console.log("loggedInUser data updated") }, [loggedInUser])
 	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
 
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
-
 		setJWT(cookie);
 		setLoggedInUser(user);
 	};
 
 	return (
 		<BrowserRouter>
-		<NavMenu loggedInUser={loggedInUser}
-				recipe={recipe}/>
-			
-			
+			<NavMenu loggedInUser={loggedInUser}
+				recipe={recipe} />
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-			
 				<Route
 					path="/searchRecipes"
 					element={
 						<RecipeSearchPage
 							searchResults={searchResults}
 							setSearchResults={setSearchResults}
-
 							galleryIndexMemory={galleryIndexMemory}
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
