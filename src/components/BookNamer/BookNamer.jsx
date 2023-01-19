@@ -65,7 +65,7 @@ export const BookNamer = ({
 
         <div className="bookNamer show">
             <form className="bookNamerForm" onSubmit={submitHandler}>
-                <input type="text" defaultValue="New Menu" placeholder="New Menu"
+                <input className="holdOpen" type="text" defaultValue="New Menu" placeholder="New Menu"
                     onChange={(event) => {
                         setNewBookName(event.target.value)
 

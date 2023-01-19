@@ -30,7 +30,9 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
  
     // Close the dropdown menu if the user clicks outside of it
     window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
+        console.log(event)
+        if (!event.target.matches('.dropbtn')  ) {
+            if (event.target.matches('.holdOpen')) {return}
             var dropdowns = document.getElementsByClassName("dropdown-content");
             var i;
             for (i = 0; i < dropdowns.length; i++) {
@@ -51,11 +53,13 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
             <button onClick={() => myFunction()} className="dropbtn">{cookBookName}</button>
             <div id="myDropdown" className="dropdown-content">
                 <>
-                 
+                <BookNamer
+                        setCookBookName={setCookBookName}
+                        loggedInUser={loggedInUser} />
                     {loggedInUser?.books?.map((e, index) => {
                         let name = e.bookName
                         return (
-                            <p onClick={() => changeBook(name)} key={index}>{name}</p>
+                            <p className="menuTabs" onClick={() => changeBook(name)} key={index}>{name}</p>
                         )
                     })}
                     </>

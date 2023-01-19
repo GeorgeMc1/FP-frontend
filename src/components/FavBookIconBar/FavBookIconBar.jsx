@@ -70,7 +70,7 @@ const FavBookBar = ({
     return (
         <>
             {loggedInUser ?
-                <div>
+               
                     <div className="favBoxIconContainer">
 
                         <FavHeartIcon
@@ -112,10 +112,8 @@ const FavBookBar = ({
 
                     </div>
 
-                    <BookNamer
-                        setCookBookName={setCookBookName}
-                        loggedInUser={loggedInUser} />
-                </div>
+                  
+               
                 :
                 <div className="favBox">
                 </div>

@@ -70,6 +70,7 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   width:100%;
+  border:1px solid rgb(51, 51, 51,0.3);
 }
 
 /* Links inside the dropdown */
@@ -88,13 +89,22 @@
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
-.bookNamer{  display:flex;
-  justify-content: flex-end;
-  flex:1 1 100%; 
-  background-color: var(--primary-col);
+.bookNamer{  
+  width:100%;
+    margin:auto;
+  background-color: var(--primary-col); 
+
 }
+.bookNamerForm {position:relative;z-index: 30;}
 .bookNamer input {
-  margin-right: 12px;
+  border:3px solid rgb(51, 51, 51,0.3);
+  width:96%;
+ margin:2%;
+ z-index: 20;
+}
+.menuTabs {
+  margin:2px 5px;;
+
 }
 
 
