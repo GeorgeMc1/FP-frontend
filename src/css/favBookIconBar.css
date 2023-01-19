@@ -32,23 +32,17 @@
 
 .toggleContainer,.bookIconContainer,.favHeartIconContainer{
   display:flex;
-}
-.toggleContainer,.bookIconContainer,.favHeartIconContainer {
   margin:2px;
 }
+.dropdown,
 .toggleContainer {
   flex:1 1 100%;
 }
 
-.dropdown{
-  flex:1 1 100%;
-}
-.bookNamerFrom input{
-color:red;
-}
-.dropbtn ,.bookNamerFrom input{
+
+.dropbtn {
   border-radius: 15px;
-  flex:1 1 100%;
+  flex:1 1 60%;
   background-color: var(--icon-bk);
   cursor: pointer;
   border: 2px outset #aaa7a7;
@@ -64,7 +58,9 @@ color:red;
   display: inline-block;
  
 }
-
+.flexedEnd {
+  display: flex;
+}
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;
@@ -73,6 +69,7 @@ color:red;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  width:100%;
 }
 
 /* Links inside the dropdown */
@@ -90,3 +87,15 @@ color:red;
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+.bookNamer{  display:flex;
+  justify-content: flex-end;
+  flex:1 1 100%; 
+  background-color: var(--primary-col);
+}
+.bookNamer input {
+  margin-right: 12px;
+}
+
+
+

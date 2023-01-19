@@ -5,6 +5,7 @@ import FavHeartIcon from "../FavHeartIcon/FavHeartIcon.jsx";
 import CookBookIcon from '../CookBookIcon/CookBookIcon';
 import BookChanger from '../BookChanger/BookChanger';
 import "../../css/favBookIconBar.css"
+import { BookNamer } from "../BookNamer/BookNamer";
 const FavBookBar = ({
     loggedInUser,
     galleryIndex,
@@ -69,47 +70,51 @@ const FavBookBar = ({
     return (
         <>
             {loggedInUser ?
-                <div className="favBoxIconContainer">
-                    <FavHeartIcon
-                        favList={favList}
-                        setFavList={setFavList}
-                        isLiked={checkIfFavourites()}
-                        loggedInUser={loggedInUser}
-                        toggleFav={toggleFav}
-                        recipe={
-                            recipeObj ? recipeObj : searchResults.hits[galleryIndex]
-                        }
-                        jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked}
-                        setIsInBook={setIsInBook}
-                        isInBook={isInBook} />
+                <div>
+                    <div className="favBoxIconContainer">
+
+                        <FavHeartIcon
+                            favList={favList}
+                            setFavList={setFavList}
+                            isLiked={checkIfFavourites()}
+                            loggedInUser={loggedInUser}
+                            toggleFav={toggleFav}
+                            recipe={
+                                recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                            }
+                            jwt={jwt} setCurrentRecipeLiked={setCurrentRecipeLiked}
+                            setIsInBook={setIsInBook}
+                            isInBook={isInBook} />
 
 
 
-                    <CookBookIcon
-                        favList={favList}
-                        setFavList={setFavList}
-                        isLiked={checkIfFavourites()}
-                        setIsInBook={setIsInBook}
-                        isInBook={checkIfInCurrentBook()}
-                        updateFav={false}
-                        loggedInUser={loggedInUser}
-                        toggleCookBookEntry={toggleBookEntry}
-                        recipe={
-                            recipeObj ? recipeObj : searchResults.hits[galleryIndex]
-                        }
-                        jwt={jwt}
-                        setCurrentRecipeLiked={setCurrentRecipeLiked}
-                        cookBookName={cookBookName} />
+                        <CookBookIcon
+                            favList={favList}
+                            setFavList={setFavList}
+                            isLiked={checkIfFavourites()}
+                            setIsInBook={setIsInBook}
+                            isInBook={checkIfInCurrentBook()}
+                            updateFav={false}
+                            loggedInUser={loggedInUser}
+                            toggleCookBookEntry={toggleBookEntry}
+                            recipe={
+                                recipeObj ? recipeObj : searchResults.hits[galleryIndex]
+                            }
+                            jwt={jwt}
+                            setCurrentRecipeLiked={setCurrentRecipeLiked}
+                            cookBookName={cookBookName} />
+                        <BookChanger
+                            setSearchResults={setSearchResults}
+                            setCookBookName={setCookBookName}
+                            cookBookName={cookBookName}
+                            loggedInUser={loggedInUser} />
 
 
+                    </div>
 
-                    <BookChanger
-                        setSearchResults={setSearchResults}
+                    <BookNamer
                         setCookBookName={setCookBookName}
-                        cookBookName={cookBookName}
                         loggedInUser={loggedInUser} />
-
-
                 </div>
                 :
                 <div className="favBox">
