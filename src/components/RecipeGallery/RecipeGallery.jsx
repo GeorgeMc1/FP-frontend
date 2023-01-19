@@ -97,6 +97,34 @@ const RecipeGallery = ({ jwt,
                     onClickItem={tapped}
                     swipeable={true}
                 // autoPlay={true}
+                showThumbs
+                showIndicators
+                showStatus
+                swipeScrollTolerance={3}
+                width={400}
+// 
+renderIndicator={(onClickHandler, isSelected, index, label) => {
+    const defStyle = { marginLeft: 20, color: "white", cursor: "pointer" };
+    const style = isSelected
+      ? { ...defStyle, color: "red" }
+      : { ...defStyle };
+    return (
+      <span
+        style={style}
+        onClick={onClickHandler}
+        onKeyDown={onClickHandler}
+        value={index}
+        key={index}
+        role="button"
+        tabIndex={0}
+        aria-label={`${label} ${index + 1}`}
+      >
+        {""}
+      </span>
+    );
+  }}
+
+// 
                 >
                     {
                         searchResults.hits.map((result, index) => {
