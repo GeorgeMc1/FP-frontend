@@ -43,8 +43,8 @@ const BookChanger = ({ setCookBookName, setSearchResults, cookBookName, loggedIn
         }
     }
 
-    let allBookNames = loggedInUser?.books?.map((e) => { return e.bookName })
-    console.log("allBookNames",allBookNames)
+    
+    
 
     return (
         <div className="toggleContainer">

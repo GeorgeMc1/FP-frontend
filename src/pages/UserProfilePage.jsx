@@ -10,7 +10,7 @@ import "../css/userProfile.css"
 import { getRecipiesFromApi } from "../utils";
 
 
-const UserProfilePage = ({ setSearchResults,setRecipe, loggedInUser, setLoggedInUser, jwt, setJWT }) => {
+const UserProfilePage = ({ setCookBookName,setSearchResults,setRecipe, loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     const navigate = useNavigate();
 
     //  const [favSet, setFavImageSet] = useState([]);
@@ -27,8 +27,9 @@ const UserProfilePage = ({ setSearchResults,setRecipe, loggedInUser, setLoggedIn
             let currentBook ;
             for (let i = 0; i < loggedInUser?.books?.length; i++) {
                 if (loggedInUser.books[i].bookName === bookName) {
-                    console.log("book found in user")
+                    console.log(`${bookName} book found in user index`,i)
                     currentBook = loggedInUser.books[i];
+                    setCookBookName(bookName);
                 }}
     
 

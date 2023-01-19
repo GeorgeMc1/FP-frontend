@@ -46,7 +46,7 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                 //does it include the recipe
                 if (currentBook?.recipes?.includes(galleryItemsRecipe)) {
                     //if so remove it
-                    console.log("recipie was in book - removing recipe from book")
+                    console.log(`recipie was in "${currentBook} - removing recipe from book`)
                     currentBook.recipes = await currentBook.recipes.filter(e => {
                         if (e === galleryItemsRecipe) {
                             return false

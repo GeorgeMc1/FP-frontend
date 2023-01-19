@@ -19,6 +19,7 @@ import PreFooter from "./components/PreFooter/PreFooter";
 // import cookie functions
 import { getCookie } from "./common";
 import NavMenu from "./components/NavMenu/NavMenu";
+import { getBook } from "./common/getBook";
 
 function App() {
 	const [jwt, setJWT] = useState();
@@ -39,10 +40,25 @@ function App() {
 			loginWithToken(cookie); //log in with Token if the cookie exist
 		}
 	}, []);
+	useEffect(() => { console.log("searchResults chaged", searchResults) }, [searchResults])
+	useEffect(() => { console.log("galleryIndexMemory chaged", galleryIndexMemory) }, [galleryIndexMemory])
+	useEffect(() => { console.log("currentRecipeLiked chaged", currentRecipeLiked) }, [currentRecipeLiked])
+	useEffect(() => { console.log("loggedInUser data updated", loggedInUser) }, [loggedInUser])
 	
-useEffect(()=>{console.log("loggedInUser data updated")},[loggedInUser])
-	useEffect(() => { console.log("cookbook chaged", cookBookName) }, [cookBookName])
+	//cookbook chaged
+	useEffect(() => {
+		console.log("cookbook chaged", cookBookName)
+		try {
+			 getBook(cookBookName, loggedInUser)
+			
+			console.log("swapped search results")
+		} catch (err) { console.log(err) }
+	}, [cookBookName,loggedInUser])
+
 	useEffect(() => { console.log("recipe chaged", recipe) }, [recipe])
+	useEffect(() => { console.log("isInBook chaged", isInBook) }, [isInBook])
+
+	useEffect(() => { console.log("favList chaged", favList.length) }, [favList])
 
 	const loginWithToken = async (cookie) => {
 		const user = await authCheck(cookie);
@@ -53,13 +69,13 @@ useEffect(()=>{console.log("loggedInUser data updated")},[loggedInUser])
 
 	return (
 		<BrowserRouter>
-		<NavMenu loggedInUser={loggedInUser}
-				recipe={recipe}/>
-			
-			
+			<NavMenu loggedInUser={loggedInUser}
+				recipe={recipe} />
+
+
 			<Routes>
 				<Route path="/" element={<Homepage />} />
-			
+
 				<Route
 					path="/searchRecipes"
 					element={

@@ -27,7 +27,7 @@ const FavBookBar = ({
         if (recipeObj) {
             //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
             let match = loggedInUser?.favRecipes.includes(recipeObj._links.self.href)
-            console.log("match in favs?",match)
+            console.log("match in favs?", match)
             return match
         } else {
             // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
@@ -36,7 +36,7 @@ const FavBookBar = ({
             if (loggedInUser) {
                 //match if logged in user favourites contains the recipie.self   
                 let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
-                console.log("match in favs?",match)
+                console.log("match in favs?", match)
                 return match
             }
         }
@@ -44,29 +44,28 @@ const FavBookBar = ({
 
     const checkIfInCurrentBook = () => {
         try {
-      
 
-        let currentBook;
-        let match;
-        for (let i = 0; i < loggedInUser?.books?.length; i++) {
-            if (loggedInUser.books[i].bookName === cookBookName) {
-                
-                currentBook = loggedInUser.books[i];
-                console.log(`book found "${cookBookName}" with ${currentBook?.recipes?.length}`)
-            } else {
-                console.log(`NO BOOK YET  with name ${cookBookName}`)
+
+            let currentBook;
+            let match;
+            for (let i = 0; i < loggedInUser?.books?.length; i++) {
+                if (loggedInUser.books[i].bookName === cookBookName) {
+
+                    currentBook = loggedInUser.books[i];
+                    console.log(`book found "${cookBookName}" with ${currentBook?.recipes?.length}`)
+                }
             }
-        }
 
-        if (recipeObj) {
-            match = currentBook?.recipes?.includes(recipeObj)
+            if (recipeObj) {
+                match = currentBook?.recipes?.includes(recipeObj)
+            }
+            else {
+                match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
+            }
+            console.log("match in book?", match)
+            return match;
         }
-        else {
-            match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
-        }
-        console.log("match in book?",match )
-        return match;}
-        catch(err){console.log(err)}
+        catch (err) { console.log(err) }
     }
 
 

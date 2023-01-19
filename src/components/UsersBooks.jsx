@@ -3,7 +3,7 @@ import bookRed from "../assets/images/blueBook.png"
 import { getBook } from "../common/getBook";
 // import { useNavigate } from "react-router-dom";
 
-const UsersBooks = ({ user, setSearchResults}) => {
+const UsersBooks = ({ user, setCookBookName,setSearchResults}) => {
     // const navigate = useNavigate();
     const loadGalleryWith = async (e, user) => {
         try {
@@ -11,7 +11,9 @@ const UsersBooks = ({ user, setSearchResults}) => {
             console.log(`bookName ${bookName}`, user.books)
             let currentBook = await getBook(bookName, user)
             let searchHits = { "hits": currentBook.recipes }
+            console.log(searchHits)
             setSearchResults(searchHits)
+            setCookBookName(setCookBookName)
             console.log(searchHits)
             // navigate("/searchRecipes", {
             // });
@@ -26,7 +28,7 @@ const UsersBooks = ({ user, setSearchResults}) => {
                 </div>
                 <div className="yourBooks">
                     {user?.books?.map((e, index) => {
-                        console.log(user.books);
+                        // console.log(user.books);
                         return (
                             <div className="book" key={index}>
                               
