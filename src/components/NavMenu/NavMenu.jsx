@@ -50,13 +50,13 @@ export default function NavMenu({ loggedInUser, recipe }) {
           {loggedInUser ? (
             <>
               <li><NavLink to="/UserProfile">UserProfile</NavLink></li>
-              <li><NavLink to="/logout" action="logout">Logout    </NavLink></li>
+              <li><NavLink to="/logout" action="logout" className="log">Logout</NavLink></li>
             </>
           ) : (
 
             <>
               <li><NavLink to="/SignUp">Sign Up</NavLink></li>
-              <li><NavLink to="/login" action="login">login</NavLink></li>
+              <li><NavLink to="/login" action="login" className="log">login</NavLink></li>
             </>
 
 
