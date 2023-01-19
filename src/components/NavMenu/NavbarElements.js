@@ -39,6 +39,9 @@ export const NavLink = styled(Link)`
         transition: all 0.3s ease-in-out;
         background: linear-gradient(0deg, rgb(194, 251, 215), rgb(231, 253, 239), rgb(230, 241, 236));
     }
+    &.log{
+        border-right: 0;
+    }
 `
 
 export const NavIconLink = styled(Link)` 
