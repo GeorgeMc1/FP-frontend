@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { toggleFav } from '../../common/toggleFav';
 import { toggleBookEntry } from '../../common/toggleBookEntry';
 import FavHeartIcon from "../FavHeartIcon/FavHeartIcon.jsx";
@@ -23,12 +23,16 @@ const FavBookBar = ({
     //only sent from recipeinfopage
     recipeObj
 }) => {
+
+    const [update,setUpdate] =useState(false);
+
     const checkIfFavourites = () => {
         if (!loggedInUser) { return false }
         if (recipeObj) {
             //   console.log("recipie object", recipeObj, recipe, searchResults?.hits, galleryIndex)
             let match = loggedInUser?.favRecipes.includes(recipeObj._links.self.href)
             console.log("match in favs?", match)
+            if (match !== update) {setUpdate(match)}
             return match
         } else {
             // console.log("!recipieobj", galleryIndex, searchResults?.hits.length)
@@ -38,6 +42,7 @@ const FavBookBar = ({
                 //match if logged in user favourites contains the recipie.self   
                 let match = loggedInUser?.favRecipes.includes(searchResults?.hits[galleryIndex]?._links.self.href)
                 console.log("match in favs?", match)
+                if (match !== update) {setUpdate(match)}
                 return match
             }
         }

@@ -55,7 +55,7 @@ const CarouselWrapper = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); }
+    if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); setGalleryIndex(0)}
 
     const toggleThumbs=() => {
         setThumbs(!thumbs)
