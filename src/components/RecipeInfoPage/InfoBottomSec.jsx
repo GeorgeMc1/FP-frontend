@@ -15,7 +15,7 @@ const InfoBottomSec = ({ingLines, cautions, digest}) => {
             <div className="tabs">
                 {cautions.length > 0 ? <h3 className={caution ? "selected" : ""} onClick={() => {setCaution(true); setIngredients(false); setNutrition(false); setNotes(false)}}>Cautions</h3> : null}
                 <h3 className={ingredients ? "selected" : ""} onClick={() => {setIngredients(true); setNutrition(false); setNotes(false); setCaution(false)}}>Ingredients</h3>
-                <h3 className={nutrition ? "selected" : ""} onClick={() => {setNutrition(true); setIngredients(false); setNotes(false); setCaution(false)}}>Nutritinal Info</h3>
+                <h3 className={nutrition ? "selected" : ""} onClick={() => {setNutrition(true); setIngredients(false); setNotes(false); setCaution(false)}}>Nutritional Info</h3>
                 <h3 className={notes ? "selected" : ""} onClick={() => {setNotes(true); setIngredients(false); setNutrition(false); setCaution(false)}}>Notes</h3>
             </div>
             <div className="info">
