@@ -1,0 +1,51 @@
+.todoPanel {
+    display: flex;
+    margin:auto;
+    flex-direction: column;
+    border: 5px outset #8cd8a8;
+    background-color: rgb(209, 244, 222);
+    width: 350px;
+    height:200px;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    align-items:center;
+    justify-self: center;
+}
+.innerTodo * img {
+    height:100%;
+    max-height:150px;
+}
+
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    align-items:center;
+    justify-self: center;
+
+}
+.flexCol {
+    display:flex;
+    flex-direction: column;
+    margin:auto;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
+    align-self: center;
+    align-items:center;
+    justify-self: center;
+    margin:0px 30px;
+}
+
+.flexCol .todoPanel:first-child {
+    margin-bottom: 30px;
+}
+
+.bgcol{background-color: rgb(98, 186, 130);justify-content: space-around;}
+.bgcol * { width:45%;}

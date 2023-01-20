@@ -9,7 +9,7 @@
     background: none;
     border: 0;
     font-size: 32px;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .carousel .control-arrow:focus,
@@ -237,7 +237,7 @@
 
 /*  */
 .carousel .thumbs-wrapper  {
-    border:5px solid rgb(140, 216, 168);
+    border:5px solid rgb(98, 186, 130);;
     background-color: rgb(140, 216, 168);
     height:88px;
     flex-direction: row;
@@ -281,4 +281,6 @@
     transition: opacity .35s ease-in-out;
     transition: opacity .35s ease-in-out
 }
-
+.carousel {
+    border-color:#8cd8a8;
+}

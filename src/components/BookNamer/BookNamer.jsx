@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,  } from "react";
 import "../../css/favBookIconBar.css"
 
 
 export const BookNamer = ({
-
     setCookBookName,
-    loggedInUser
-    
-}) => {
+    loggedInUser}) => {
     const [newBookName, setNewBookName] = useState();
+   
 
-
-
+    
 
     const submitHandler = (e) => {
+        /* When the input tag submits toggle the class  */
+        document.getElementById("myDropdown").classList.toggle("show");
         e.preventDefault();
         console.log(newBookName, loggedInUser.books);
 
@@ -39,8 +38,9 @@ export const BookNamer = ({
                     console.log("no book")
                     temp = [{ "bookName": newBookName }]
                     console.log(temp)
+                    console.log("book not found in user")
                 }
-                console.log("book not found in user")
+
 
                 console.log(temp)
             } catch (error) {
@@ -62,9 +62,7 @@ export const BookNamer = ({
                 <input className="holdOpen" type="text" defaultValue="New Menu" placeholder="New Menu"
                     onChange={(event) => {
                         setNewBookName(event.target.value)
-
                     }}
-
                 />
                 {/* <button className="icon" type="submit">  <img  src={cogIcon} alt="editCog" onClick={(e) => { onCogClick(e) }} /></button> */}
             </form>

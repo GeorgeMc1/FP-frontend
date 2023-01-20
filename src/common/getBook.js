@@ -1,4 +1,4 @@
-export const getBook = async (bookName, loggedInUser) => {
+export const getBook =  (bookName, loggedInUser) => {
     if (loggedInUser) {
         for (let i = 0; i < loggedInUser.books.length; i++) {
             if (loggedInUser.books[i].bookName === bookName) {

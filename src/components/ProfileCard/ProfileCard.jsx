@@ -92,9 +92,11 @@ const UserProfilePage = ({ loggedInUser, setLoggedInUser, jwt, setJWT }) => {
     return (
         <Container>
             {/* display any error messages form failed update using state variable */}
-            <div className="error"> {errMsg}</div>
+           
             <Container id="userProfileCard">
+            <div className="errorMsg"> {errMsg}</div>
                 {
+                    
                     //map user objects
                     Object.keys(loggedInUser).map((element, index) => {
                         //ignore keys with starting _

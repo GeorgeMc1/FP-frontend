@@ -4,7 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 import { useNavigate } from "react-router-dom";
 import erroImg from "../../assets/images/brokenLink.png"
 import FavBookIconBar from '../FavBookIconBar/FavBookIconBar';
-import dot from "../../assets/images/dot.png"
 //https://www.npmjs.com/package/react-responsive-carousel
 
 const CarouselWrapper = ({ jwt,
@@ -16,7 +15,7 @@ const CarouselWrapper = ({ jwt,
     currentRecipeInCurrentBook, setCurrentInCurrentBook,
     loggedInUser,
     favList,
-    setFavList,
+    setFavList,setLoggedInUser,
     isInBook,setIsInBook
 }) => {
 
@@ -56,7 +55,7 @@ const CarouselWrapper = ({ jwt,
     //side wont toggle on/off properly
     //easiest work around is as is
     //console.log here to use the state so netlfy stops crying
-    if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); }
+    if (galleryIndex >= searchResults?.hits.length) { setIndexMemory(0); setGalleryIndex(0)}
 
     const toggleThumbs=() => {
         setThumbs(!thumbs)
@@ -65,9 +64,11 @@ const CarouselWrapper = ({ jwt,
     return (
         <>
 
-            <div className="Carousel" >
+<div className="Carousel" >
+                < div className="bgcol" >
                 <button onClick={((e)=>toggleThumbs())} >Toggle thumbnails</button>
                 <button className="searchAgain" onClick={(e) => { setSearchResults() }}>Search Again</button>
+                </div>
                 {loggedInUser ?
 
                     <FavBookIconBar
@@ -77,6 +78,7 @@ const CarouselWrapper = ({ jwt,
                         setIndexMemory={setIndexMemory}
                         jwt={jwt}
                         recipe={recipe}
+                        setLoggedInUser={setLoggedInUser}
                         searchResults={searchResults}
                         setCurrentRecipeLiked={setCurrentRecipeLiked}
                         setCookBookName={setCookBookName}
@@ -97,44 +99,20 @@ const CarouselWrapper = ({ jwt,
 
                 <Carousel
                     selectedItem={galleryIndex >= searchResults?.hits?.length ? galleryIndex : 0}
-                    // infiniteLoop={true}
+                   // infiniteLoop={true}
                     useKeyboardArrows={true}
                     emulateTouch={true}
                     className='search-carousel'
                     onChange={onSlideChange}
                     onClickItem={tapped}
                     swipeable={true}
-                // autoPlay={true}
+                //autoPlay={true}
                 showThumbs={thumbs}
                 showIndicators
                 showStatus
                 swipeScrollTolerance={3}
                 width={350}
-                thumbWidth={80}
-// 
-renderIndicator={(onClickHandler, isSelected, index, label) => {
-    // const defStyle = { marginLeft: 20, color: "white", cursor: "pointer" };
-    // const style = isSelected
-    //   ? { ...defStyle, color: "red" }
-    //   : { ...defStyle };
-    return (
-    //   <span
-    //     style={style}
-    //     onClick={onClickHandler}
-    //     onKeyDown={onClickHandler}
-    //     value={index}
-    //     key={index}
-    //     role="button"
-    //     tabIndex={0}
-    //     aria-label={`${label} ${index + 1}`}
-    //   >
-        
-        <img className="dot" alt="indicator" src={dot} />
-    //   </span>
-    
-    );
-  }}
-                >
+                thumbWidth={80} >
                     {
                         searchResults.hits.map((result, index) => {
                             let image = result?.recipe?.image
