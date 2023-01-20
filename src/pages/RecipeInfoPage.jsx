@@ -21,7 +21,8 @@ const RecipeInfoPage = ({
     setFavList,
     recipe,
     isInBook,
-    setIsInBook
+    setIsInBook,
+    setLoggedInUser
 }) => {
     console.log("inside recipieinfopage");
     console.debug(data);
@@ -55,6 +56,7 @@ const RecipeInfoPage = ({
                         setSearchResults={setSearchResults}
                         setIndexMemory={setIndexMemory}
                         jwt={jwt}
+                        setLoggedInUser={setLoggedInUser}
                         searchResults={searchResults}
                         setCurrentRecipeLiked={setCurrentRecipeLiked}
                         setCookBookName={setCookBookName}

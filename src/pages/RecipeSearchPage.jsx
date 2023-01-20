@@ -26,7 +26,7 @@ const RecipeSearchPage = ({
     setCookBookName,
     favList,
     setFavList,
-
+    setLoggedInUser,
     isInBook, setIsInBook
 
 }) => {
@@ -69,6 +69,7 @@ const RecipeSearchPage = ({
                             cookBookName={cookBookName}
                             setCookBookName={setCookBookName}
                             favList={favList}
+                            setLoggedInUser={setLoggedInUser}
                             setFavList={setFavList}
                             isInBook={isInBook} setIsInBook={setIsInBook}
                         ></RecipeGallery>

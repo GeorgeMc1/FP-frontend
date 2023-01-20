@@ -82,7 +82,7 @@ function App() {
 						<RecipeSearchPage
 							searchResults={searchResults}
 							setSearchResults={setSearchResults}
-
+							setLoggedInUser={setLoggedInUser}
 							galleryIndexMemory={galleryIndexMemory}
 							setIndexMemory={setIndexMemory}
 							loggedInUser={loggedInUser}
@@ -111,6 +111,7 @@ function App() {
 							setIndexMemory={setIndexMemory}
 							jwt={jwt}
 							recipe={recipe}
+							setLoggedInUser={setLoggedInUser}
 							searchResults={searchResults}
 							setCurrentRecipeLiked={setCurrentRecipeLiked}
 							setCookBookName={setCookBookName}

@@ -16,6 +16,7 @@ const FavBookBar = ({
     setCurrentRecipeLiked,
     setCookBookName,
     cookBookName,
+    setLoggedInUser,
     favList,
     setFavList, setIsInBook,
     isInBook,
@@ -42,7 +43,7 @@ const FavBookBar = ({
         }
     }
 
-    const checkIfInCurrentBook = () => {
+    const checkIfInCurrentBook = (setIsInBook) => {
         try {
 
 
@@ -63,6 +64,7 @@ const FavBookBar = ({
                 match = currentBook?.recipes?.includes(searchResults?.hits[galleryIndex])
             }
             console.log("match in book?", match)
+            setIsInBook(match)
             return match;
         }
         catch (err) { console.log(err) }
@@ -95,11 +97,12 @@ const FavBookBar = ({
                         setFavList={setFavList}
                         isLiked={checkIfFavourites()}
                         setIsInBook={setIsInBook}
-                        isInBook={checkIfInCurrentBook()}
+                        isInBook={checkIfInCurrentBook(setIsInBook)}
                         updateFav={
                             checkIfFavourites() ? false : true
 
                         }
+                        setLoggedInUser={setLoggedInUser}
                         loggedInUser={loggedInUser}
                         toggleCookBookEntry={toggleBookEntry}
                         recipe={

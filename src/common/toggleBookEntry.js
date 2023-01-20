@@ -2,7 +2,7 @@ import { updateUser } from "../utils";
 import { toggleFav } from "./toggleFav";
 
 
-export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList, isLiked) => {
+export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedInUser, recipe, setCurrentRecipeLiked, jwt, cookBookName, setFavList, favList, isLiked,setLoggedInUser) => {
     try {
 
         if (loggedInUser) {
@@ -79,6 +79,22 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
                     "value": loggedInUser.books
                 }
                 console.log(obj)
+
+///reget i and give user updated book
+
+                // currentBook = loggedInUser.books[i];
+                for (let i = 0; i < loggedInUser?.books?.length; i++) {
+                    if (loggedInUser.books[i].bookName === bookname) {
+                        console.log("book found in user")
+                        //oldref = loggedInUser.books[i];
+                        loggedInUser.books[i] = currentBook;
+                        setLoggedInUser(loggedInUser)
+                    }
+                }
+                
+
+
+                //end test 
             }
 
             await updateUser(obj, jwt)
@@ -88,7 +104,7 @@ export const toggleBookEntry = async (updateFav, isInBook, setIsInBook, loggedIn
             }
 
 
-
+            setFavList(loggedInUser.favRecipes)
 
         }
     } catch (err) { console.log("error in toggleBookEntry", err) }

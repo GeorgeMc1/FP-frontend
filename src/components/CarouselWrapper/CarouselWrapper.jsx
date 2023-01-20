@@ -15,7 +15,7 @@ const CarouselWrapper = ({ jwt,
     currentRecipeInCurrentBook, setCurrentInCurrentBook,
     loggedInUser,
     favList,
-    setFavList,
+    setFavList,setLoggedInUser,
     isInBook,setIsInBook
 }) => {
 
@@ -78,6 +78,7 @@ const CarouselWrapper = ({ jwt,
                         setIndexMemory={setIndexMemory}
                         jwt={jwt}
                         recipe={recipe}
+                        setLoggedInUser={setLoggedInUser}
                         searchResults={searchResults}
                         setCurrentRecipeLiked={setCurrentRecipeLiked}
                         setCookBookName={setCookBookName}
@@ -98,14 +99,14 @@ const CarouselWrapper = ({ jwt,
 
                 <Carousel
                     selectedItem={galleryIndex >= searchResults?.hits?.length ? galleryIndex : 0}
-                    // infiniteLoop={true}
+                   // infiniteLoop={true}
                     useKeyboardArrows={true}
                     emulateTouch={true}
                     className='search-carousel'
                     onChange={onSlideChange}
                     onClickItem={tapped}
                     swipeable={true}
-                // autoPlay={true}
+                //autoPlay={true}
                 showThumbs={thumbs}
                 showIndicators
                 showStatus

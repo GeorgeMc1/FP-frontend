@@ -14,7 +14,8 @@ const RecipeGallery = ({ jwt,
     loggedInUser,
     favList,
     setFavList,
-    isInBook, setIsInBook
+    isInBook, setIsInBook,
+    setLoggedInUser
 }) => {
 
 
@@ -27,6 +28,7 @@ const RecipeGallery = ({ jwt,
         setSearchResults={setSearchResults}
         setRecipe={setRecipe}
         recipe={recipe}
+        setLoggedInUser={setLoggedInUser}
         galleryIndexMemory={galleryIndexMemory}
         setIndexMemory={setIndexMemory}
         cookBookName={cookBookName}
